@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import "../src/assets/css/Base.css";
+import "../src/assets/css/Grid.css";
+import "../src/assets/css/Main.css";
+import "../src/assets/css/Responsive.css";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
