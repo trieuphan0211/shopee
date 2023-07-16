@@ -2,7 +2,7 @@ import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
 import { ListProduct, Search } from '../components/index';
-import { Home, Cart } from '../pages';
+import { Home, Cart, Order } from '../pages';
 
 const Router = () => {
     const routing = useRoutes([
@@ -17,6 +17,10 @@ const Router = () => {
                 {
                     path: '/customer/cart',
                     element: <Cart />,
+                },
+                {
+                    path: '/customer/order',
+                    element: <Order />,
                 },
             ],
         },
