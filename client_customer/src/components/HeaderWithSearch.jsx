@@ -18,7 +18,11 @@ export const HeaderWithSearch = () => {
                     <HiMagnifyingGlass className="header__mobile-search-icon fa-solid fa-magnifying-glass" />
                 </label>
                 <div className="header__logo hide-on-tablet">
-                    <a onClick={() => navigate('/customer/home')} className="header__logo-link">
+                    <a
+                        onClick={() => navigate('/customer/home')}
+                        className="header__logo-link"
+                        style={{ cursor: 'pointer' }}
+                    >
                         <svg viewBox="0 0 192 65" className="header__logo-img">
                             <g fillRule="evenodd">
                                 <path
