@@ -25,6 +25,14 @@ const Router = () => {
             ],
         },
         {
+            path: '/customer/login',
+            children: [{ path: '/customer/login', element: <Login /> }],
+        },
+        {
+            path: '/customer/register',
+            children: [{ path: '/customer/register', element: <Register /> }],
+        },
+        {
             path: '*',
             //   element: <NotFound />,
         },
