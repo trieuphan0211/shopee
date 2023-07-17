@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaList } from 'react-icons/fa6';
 
-export const ListProducts = () => {
+export const ListProducts = ({ categories, apiGetProductsByCatID }) => {
     return (
         <nav className="category">
             <h3 className="category__heading" style={{ display: 'flex', alignItems: 'center' }}>
@@ -10,21 +10,17 @@ export const ListProducts = () => {
                 Danh Mục
             </h3>
             <ul className="category-list">
-                <li className="category-item category-item-active">
-                    <a href="#" className="category-item__link">
-                        Balo Nữ
-                    </a>
-                </li>
-                <li className="category-item">
-                    <a href="#" className="category-item__link">
-                        Áo Khoác
-                    </a>
-                </li>
-                <li className="category-item">
-                    <a href="#" className="category-item__link">
-                        Dép
-                    </a>
-                </li>
+                {categories?.map((element, index) => {
+                    return (
+                        <li
+                            key={index}
+                            onClick={() => apiGetProductsByCatID(element._id)}
+                            className="category-item category-item-active"
+                        >
+                            <a className="category-item__link">{element.name}</a>
+                        </li>
+                    );
+                })}
             </ul>
         </nav>
     );
