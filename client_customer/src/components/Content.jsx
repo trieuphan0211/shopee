@@ -60,18 +60,13 @@ export const Content = ({ product }) => {
                                             }
                                         }
                                     />
-                                    <h4 className="home-product-item__name">
-                                        Balo Nữ mini Dáng Siêu Xinh Thiết Kế Thời Trang Đi Chơi Đi Học Phong Cách Trẻ
-                                        Trung Cá Tính Giá Siêu Rẻ - BL012
-                                    </h4>
+                                    <h4 className="home-product-item__name">{e.name}</h4>
                                     <div className="home-product-item__price">
-                                        <span className="home-product-item__price-old">đ1.299.000</span>
-                                        <span className="home-product-item__price-current">đ789.000</span>
+                                        {/* <span className="home-product-item__price-old">đ1.299.000</span> */}
+                                        <span className="home-product-item__price-current">đ{e.price}.000</span>
                                     </div>
                                     <div className="home-product-item__action">
-                                        {'{'}/* {/* Liked: home-product-item__like--liked */} */{'}'}
                                         <span className="home-product-item__like">
-                                            {/*               <i className="home-product-item__like-icon-empty fa-regular fa-heart" /> */}
                                             <FaRegHeart className="home-product-item__like-icon-empty" />
                                             <i className="home-product-item__like-icon-fill fa-solid fa-heart" />
                                         </span>

@@ -11,6 +11,7 @@ export const ListProducts = ({ categories, apiGetProductsByCatID }) => {
             </h3>
             <ul className="category-list">
                 {categories?.map((element, index) => {
+                    console.log(element._id);
                     return (
                         <li
                             key={index}
