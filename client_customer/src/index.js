@@ -9,6 +9,7 @@ import '../src/assets/css/Main.css';
 import '../src/assets/css/Responsive.css';
 import '../src/assets/css/MyCart.css';
 import '../src/assets/css/Order.css';
+import '../src/assets/css/ProductDetail.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
