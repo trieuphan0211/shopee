@@ -1,64 +1,40 @@
 import React from 'react';
 import '../assets/css/MyProfile.css';
+import { User } from '../components';
 
 export const MyProfile = () => {
     return (
-        <div>
-            <div>
-                <div className="col l-10 m-12 c-12">
-                    <div className="Profile">
-                        <div className="Profile__customer_header border-b">
-                            <h1 className="Profile__customer_header_1 ">Hồ Sở Của Tôi</h1>
-                            <div className="Profile__customer_header_2">
-                                Quản lý thông tin hồ sơ để bảo mật tài khoản
+        <div className="app__container">
+            <div className="grid wide">
+                <div className="row sm-gutter app__content">
+                    <User />
+                    <div className="col l-10 m-9 c-9">
+                        <div className="profile__contents">
+                            <div className="profile__contents-header">
+                                <h1 className="content-heading">Hồ Sơ Của Tôi</h1>
+                                <div className="content-des">Quản lý thông tin hồ sơ để bảo mật tài khoản</div>
                             </div>
-                        </div>
-                        <div className="Profile__name">
-                            <form action className="Profile__detail">
-                                <div className="Profile__detail-Email">
-                                    <div className="email">
-                                        Email
-                                        <input
-                                            placeholder="email"
-                                            type="email"
-                                            className="Profile__detail-buttonEmail update__boder"
-                                        />
+                            <div className="profile__info">
+                                <form action className="profile__form">
+                                    <div className="profile__form-detail">
+                                        <div className="detail-label">Email</div>
+                                        <div className="detail-input">Bo email vao day</div>
                                     </div>
-                                </div>
-                                <div className="Profile__detail-Email">
-                                    <div className="email">
-                                        Tên
-                                        <input
-                                            placeholder="Tên Người Dùng"
-                                            type="email"
-                                            className="Profile__detail-buttonEmail update__boder"
-                                        />
+                                    <div className="profile__form-detail">
+                                        <div className="detail-label">Tên</div>
+                                        <input placeholder="Tên người dùng" type="text" className="detail-input" />
                                     </div>
-                                </div>
-                                <div className="Profile__detail-Email">
-                                    <div className="email">
-                                        Số Điện Thoại
-                                        <input
-                                            placeholder="Số Điện thoại"
-                                            type="email"
-                                            className="Profile__detail-buttonEmail update__boder"
-                                        />
+                                    <div className="profile__form-detail">
+                                        <div className="detail-label">Số Điện Thoại</div>
+                                        <input placeholder="Số điện thoại" type="text" className="detail-input" />
                                     </div>
-                                </div>
-                                <div className="Profile__detail-Email">
-                                    <div className="email">
-                                        Địa chỉ
-                                        <input
-                                            placeholder="Địa Chỉ"
-                                            type="email"
-                                            className="Profile__detail-buttonEmail update__boder"
-                                        />
+                                    <div className="profile__form-detail">
+                                        <div className="detail-label">Địa chỉ</div>
+                                        <input placeholder="Địa chỉ" type="text" className="detail-input" />
                                     </div>
-                                </div>
-                                <div className="Profile__detail-Email">
-                                    <div className="email">
-                                        Ngày Sinh
-                                        <div className="Profile__detail-buttonEmail edit">
+                                    <div className="profile__form-detail">
+                                        <div className="detail-label">Ngày Sinh</div>
+                                        <div className="detail-input">
                                             <select className="birth-date ">
                                                 <option value>Ngày</option>
                                                 <option value>1</option>
@@ -110,6 +86,8 @@ export const MyProfile = () => {
                                             </select>
                                             <select className="birth-year">
                                                 <option value>Năm</option>
+                                                <option value>1999</option>
+                                                <option value>2000</option>
                                                 <option value>2001</option>
                                                 <option value>2002</option>
                                                 <option value>2003</option>
@@ -133,28 +111,18 @@ export const MyProfile = () => {
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="Profile__detail-Email">
-                                    <div className="email">
-                                        <p />
-                                        <button className="Profile__detail-buttonEmail btn__update">Cập Nhật</button>
+                                    <div className="profile__form-detail">
+                                        <button className="btn btn--primary ">Cập Nhật</button>
                                     </div>
-                                </div>
-                            </form>
-                            <div className="Add__avatar">
-                                <div className="Add__avatar-1">
-                                    <div className="Import_img">
-                                        <img src="./assets/img/avartar.png" alt className="Import_img-0" />
-                                    </div>
-                                    <div className="Import_img-1 input">
-                                        <label className="custom-file-upload">
-                                            <input type="file" accept="image/*" />
-                                            <span>Chọn ảnh</span>
-                                        </label>
-                                    </div>
-                                    <div className="Text_push">
-                                        <div style={{ marginTop: 12 }}>Dụng lượng file tối đa 1 MB</div>
-                                        <div style={{ marginTop: 12 }}>Định dạng .jpg .jpeg .png</div>
+                                </form>
+                                <div className="profile__avatar">
+                                    <div className="avatar__upload">
+                                        <img src="./assets/img/avartar.png" alt="" className="avatar__upload-img" />
+                                        <button className="btn btn--primary avatar__upload-btn">Chọn ảnh</button>
+                                        <div className="avtar__upload-text">
+                                            <div style={{ marginTop: 12 }}>Dụng lượng file tối đa 1 MB</div>
+                                            <div style={{ marginTop: 12 }}>Định dạng .jpg .jpeg .png</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

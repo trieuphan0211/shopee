@@ -1,8 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+
+import { Link, useParams } from 'react-router-dom';
 import { BsCartPlus } from 'react-icons/bs';
+import MyContext from '../contexts/MyContext';
 
 export const ProductDetail = () => {
+    const [product, setProduct] = useState({});
+    const [txtQuantity, setTxtQuantity] = useState(1);
+    const params = useParams();
+
+    const context = useContext(MyContext);
+
+    useEffect(() => {
+        apiGetProduct(params.id);
+    });
+    // apis
+    const apiGetProduct = (id) => {
+        axios.get('/api/customer/products/' + id).then((res) => {
+            const result = res.data;
+            setProduct(result);
+        });
+    };
+
+    // event-handlers
+    const btnAdd2CartClick = (e) => {
+        e.preventDefault();
+        const quantity = parseInt(txtQuantity);
+        if (quantity) {
+            const mycart = context.mycart;
+            const index = mycart.findIndex((x) => x.product._id === product._id); // check if the _id exists in mycart
+            if (index === -1) {
+                // not found, push newItem
+                const newItem = { product: product, quantity: quantity };
+                mycart.push(newItem);
+            } else {
+                // increasing the quantity
+                mycart[index].quantity += quantity;
+            }
+            context.setMycart(mycart);
+            alert('Thêm vào giỏ hàng thành công');
+        } else {
+            alert('Số lượng không hợp lệ');
+        }
+    };
+
     return (
         <div>
             <div className="app__container container__main ">
@@ -11,7 +53,9 @@ export const ProductDetail = () => {
                         <div className="col l-6 m-0 c-0">
                             <div className="product-detail__image">
                                 <img
-                                    src="https://user-images.githubusercontent.com/102477140/215768914-e3129899-6e50-4a33-bbaa-cc730c61a4b4.png"
+                                    src={'data:image/jpg;base64,' + product.image}
+                                    width="500px"
+                                    height="500px"
                                     alt=""
                                     className="product-detail__image-img"
                                 />
@@ -19,17 +63,27 @@ export const ProductDetail = () => {
                         </div>
                         <div className="col l-6 m-12 c-12">
                             <div className="product-detail__content">
-                                <h1 className="product-detail__content-name">Hahahahahahahahahah</h1>
+                                <h1 className="product-detail__content-name">{product.name}</h1>
                             </div>
                             <div className="product-detail__price">
-                                <span className="detail__price">100.000đ</span>
+                                <span className="detail__price">{product.price}.000đ</span>
                             </div>
                             <div className="product-detail__quantity">
                                 <span className="detail__quantity">Số Lượng</span>
-                                <input className="detail__number" type="number" min="1" max="99" />
+                                <input
+                                    className="detail__number"
+                                    type="number"
+                                    min="1"
+                                    max="99"
+                                    placeholder="0"
+                                    value={txtQuantity}
+                                    onChange={(e) => {
+                                        setTxtQuantity(e.target.value);
+                                    }}
+                                />
                             </div>
                             <div className="product-detail__button">
-                                <button className="btn btn--normal detail__button">
+                                <button className="btn btn--normal detail__button" onClick={(e) => btnAdd2CartClick(e)}>
                                     <BsCartPlus className="detail__icon" />
                                     Thêm Vào Giỏ Hàng
                                 </button>

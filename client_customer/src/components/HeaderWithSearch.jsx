@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { HiMagnifyingGlass, HiShoppingCart } from 'react-icons/hi2';
 import { Search } from './index';
 
@@ -7,9 +8,13 @@ import Item1 from '../assets/img/ao_khoac_long.png';
 import Item2 from '../assets/img/dep_ha_ma.png';
 import Item3 from '../assets/img/balo_nu_mini.png';
 import { useNavigate } from 'react-router-dom';
+import MyContext from '../contexts/MyContext';
 
 export const HeaderWithSearch = () => {
     const navigate = useNavigate();
+    const context = useContext(MyContext);
+    console.log(context.mycart);
+
     return (
         <div>
             {/* Header with search */}
@@ -18,7 +23,8 @@ export const HeaderWithSearch = () => {
                     <HiMagnifyingGlass className="header__mobile-search-icon fa-solid fa-magnifying-glass" />
                 </label>
                 <div className="header__logo hide-on-tablet">
-                    <a
+                    <Link
+                        to=""
                         onClick={() => navigate('/customer/home')}
                         className="header__logo-link"
                         style={{ cursor: 'pointer' }}
@@ -31,7 +37,7 @@ export const HeaderWithSearch = () => {
                                 />
                             </g>
                         </svg>
-                    </a>
+                    </Link>
                 </div>
                 <input type="checkbox" hidden id="mobile-search-checkbox" className="header__checkbox" />
 
@@ -41,17 +47,17 @@ export const HeaderWithSearch = () => {
                 <div className="header__cart">
                     <div className="header__cart-wrap">
                         <HiShoppingCart className="header__cart-icon fa-solid fa-cart-shopping" />
-                        <span className="header__cart-notice">3</span>
+                        <span className="header__cart-notice">{context.mycart.length}</span>
 
                         {/* No cart: header__cart-list--no-cart */}
                         <div className="header__cart-list">
-                            <img src={NoCart} className="header__cart-no-cart-img" />
+                            <img src={NoCart} alt="" className="header__cart-no-cart-img" />
                             <span className="header__cart-list-no-cart-msg">Chưa Có Sản Phẩm</span>
                             <h4 className="header__cart-heading">Sản phẩm đã thêm</h4>
                             <ul className="header__cart-list-item">
                                 {/* Cart item */}
                                 <li className="header__cart-item">
-                                    <img src={Item1} className="header__cart-img" />
+                                    <img src={Item1} alt="" className="header__cart-img" />
                                     <div className="header__cart-item-info">
                                         <div className="header__cart-item-head">
                                             <h5 className="header__cart-item-name">
@@ -71,7 +77,7 @@ export const HeaderWithSearch = () => {
                                     </div>
                                 </li>
                                 <li className="header__cart-item">
-                                    <img src={Item2} className="header__cart-img" />
+                                    <img src={Item2} alt="" className="header__cart-img" />
                                     <div className="header__cart-item-info">
                                         <div className="header__cart-item-head">
                                             <h5 className="header__cart-item-name">
@@ -92,7 +98,7 @@ export const HeaderWithSearch = () => {
                                     </div>
                                 </li>
                                 <li className="header__cart-item">
-                                    <img src={Item3} className="header__cart-img" />
+                                    <img src={Item3} alt="" className="header__cart-img" />
                                     <div className="header__cart-item-info">
                                         <div className="header__cart-item-head">
                                             <h5 className="header__cart-item-name">
@@ -111,12 +117,13 @@ export const HeaderWithSearch = () => {
                                     </div>
                                 </li>
                             </ul>
-                            <a
+                            <Link
+                                to=""
                                 onClick={() => navigate('/customer/cart')}
                                 className="header__cart-view-cart btn btn--primary"
                             >
                                 Xem giỏ hàng
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

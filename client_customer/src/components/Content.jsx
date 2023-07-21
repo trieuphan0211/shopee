@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaStar, FaArrowDown, FaAngleLeft, FaAngleRight, FaRegHeart, FaCheck } from 'react-icons/fa6';
-import anh1 from '../assets/img/ao_khoac_long.png';
+
 export const Content = ({ product }) => {
+    const navigate = useNavigate();
     return (
         <div>
             <div className="home-filter hide-on-mobile-tablet">
@@ -49,9 +51,16 @@ export const Content = ({ product }) => {
                 <div className="row sm-gutter">
                     {product?.map((e) => {
                         return (
-                            <div className="col l-2-4 m-4 c-6">
-                                <a href="#" className="home-product-item">
+                            <div
+                                className="col l-2-4 m-4 c-6"
+                                key={e._id}
+                                onClick={() => {
+                                    navigate('/customer/products/' + e._id);
+                                }}
+                            >
+                                <Link to="#" className="home-product-item">
                                     <img
+                                        alt=""
                                         src={'data:image/jpg;base64,' + e.image}
                                         className="home-product-item__img"
                                         style={
@@ -92,7 +101,7 @@ export const Content = ({ product }) => {
                                         <span className="home-product-item__sale-off-percent">20%</span>
                                         <span className="home-product-item__sale-off-label">GIẢM</span>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                         );
                     })}

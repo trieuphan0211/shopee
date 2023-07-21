@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BiLogoFacebookCircle, BiLogoInstagram, BiBell } from 'react-icons/bi';
 import { RiQuestionLine } from 'react-icons/ri';
 
@@ -10,10 +11,8 @@ import Spay from '../assets/img/shopee.png';
 import Voucher from '../assets/img/samnganmayman.png';
 import Sale from '../assets/img/muahangxuyentet.png';
 import Avatar from '../assets/img/avartar.png';
-import { useNavigate } from 'react-router-dom';
 
 export const HeaderNavBar = () => {
-    const navigate = useNavigate();
     return (
         <div>
             <nav className="header__navbar hide-on-mobile-tablet">
@@ -83,8 +82,8 @@ export const HeaderNavBar = () => {
                                     </a>
                                 </li>
                                 <li className="header__notify-item header__notify-item--viewed">
-                                    <a href="#" className="header__notify-link">
-                                        <img src={Sale} className="header__notify-img" />
+                                    <Link className="header__notify-link">
+                                        <img alt="" src={Sale} className="header__notify-img" />
                                         <div className="header__notify-info">
                                             <span className="header__notify-name">TẾT SALE HÀNG HIỆU TỚI 50%</span>
                                             <span className="header__notify-descriotion">
@@ -92,19 +91,19 @@ export const HeaderNavBar = () => {
                                                 sẵn hàng hiệu, Sắm hàng cực điệu
                                             </span>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                             <footer className="header__notify-footer">
-                                <a className="header__notify-footer-btn">Xem tất cả</a>
+                                <Link className="header__notify-footer-btn">Xem tất cả</Link>
                             </footer>
                         </div>
                     </li>
                     <li className="header__navbar-item">
-                        <a className="header__navbar-item-link">
+                        <Link className="header__navbar-item-link">
                             <RiQuestionLine className="header__navbar-icon fa-regular fa-circle-question" />
                             Trợ giúp
-                        </a>
+                        </Link>
                     </li>
                     {/* <li
                         class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
@@ -115,20 +114,17 @@ export const HeaderNavBar = () => {
                         Đăng nhập
                         </li> */}
                     <li className="header__navbar-item header__navbar-user">
-                        <img src={Avatar} className="header__navbar-user-img" />
+                        <img src={Avatar} alt="" className="header__navbar-user-img" />
                         <span className="header__navbar-user-name">Đức Long</span>
                         <ul className="header__navbar-user-menu">
                             <li className="header__navbar-user-item">
-                                <a>Tài khoản của tôi</a>
+                                <Link to="/customer/user/profile">Tài khoản của tôi</Link>
                             </li>
                             <li className="header__navbar-user-item">
-                                <a>Địa chỉ của tôi</a>
-                            </li>
-                            <li className="header__navbar-user-item" onClick={() => navigate('/customer/order')}>
-                                <a>Đơn mua</a>
+                                <Link to="/customer/user/order">Đơn mua</Link>
                             </li>
                             <li className="header__navbar-user-item header__navbar-user-item--separate">
-                                <a>Đăng xuất</a>
+                                <Link to="#">Đăng xuất</Link>
                             </li>
                         </ul>
                     </li>

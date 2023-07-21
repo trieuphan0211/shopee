@@ -1,13 +1,7 @@
 .order {
-    background-color: rgb(242, 242, 242);
-    margin-top: 68px;
-    padding: 64px 16px;
     display: flex;
-    width: 100%;
 }
-.order_info {
-    width: 20%;
-}
+
 .oder_info_name {
     padding: 16px 0;
     align-items: center;
@@ -17,6 +11,7 @@
 .order_info-edit {
     padding-left: 16px;
     font-size: 14px;
+    cursor: pointer;
 }
 .order_info-edit p {
     margin: 0 0 10px 0;
@@ -46,12 +41,10 @@
     margin-right: 10px;
     color: #0046b1;
 }
-.sellected {
-    color: #ee4d2d !important;
-}
-.order_product {
+
+/* .order_product {
     width: 80%;
-}
+} */
 .order_product-header {
     background-color: #fff;
     display: flex;

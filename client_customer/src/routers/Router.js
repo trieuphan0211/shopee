@@ -1,8 +1,7 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
-import { Home, Cart, Login, Register, ProductDetail, User } from '../pages';
-import { MyProfile, Order } from '../components/index';
+import { Home, Cart, Login, Register, MyProfile, Order, ProductDetail } from '../pages';
 
 const Router = () => {
     const routing = useRoutes([
@@ -19,21 +18,15 @@ const Router = () => {
                     element: <Cart />,
                 },
                 {
-                    path: '/customer/user',
-                    element: <User />,
-                    children: [
-                        {
-                            path: '/customer/user/order',
-                            element: <Order />,
-                        },
-                        {
-                            path: '/customer/user/profile',
-                            element: <MyProfile />,
-                        },
-                    ],
+                    path: '/customer/user/order',
+                    element: <Order />,
                 },
                 {
-                    path: '/customer/productdetail',
+                    path: '/customer/user/profile',
+                    element: <MyProfile />,
+                },
+                {
+                    path: '/customer/products/:id',
                     element: <ProductDetail />,
                 },
             ],

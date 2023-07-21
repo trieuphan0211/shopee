@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaList } from 'react-icons/fa6';
 
 export const ListProducts = ({ categories, apiGetProductsByCatID }) => {
@@ -18,7 +19,9 @@ export const ListProducts = ({ categories, apiGetProductsByCatID }) => {
                             onClick={() => apiGetProductsByCatID(element._id)}
                             className="category-item category-item-active"
                         >
-                            <a className="category-item__link">{element.name}</a>
+                            <Link to="" className="category-item__link">
+                                {element.name}
+                            </Link>
                         </li>
                     );
                 })}
