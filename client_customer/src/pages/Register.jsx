@@ -1,7 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
+import axios from 'axios';
+
+import { Link, useNavigate } from 'react-router-dom';
+import { BiLogoFacebookCircle, BiLogoInstagram } from 'react-icons/bi';
 
 export const Register = () => {
+    const navigate = useNavigate();
+    const email = useRef();
+    const username = useRef();
+    const password = useRef();
+
+    // event-handlers
+    const btnRegisterClick = (e) => {
+        e.preventDefault();
+
+        const emailValue = email.current.value;
+        const usernameValue = username.current.value;
+        const passwordValue = password.current.value;
+        const nameValue = usernameValue;
+        const phoneValue = '';
+
+        if (emailValue && usernameValue && passwordValue) {
+            const account = {
+                email: emailValue,
+                username: usernameValue,
+                password: passwordValue,
+                name: nameValue,
+                phone: phoneValue,
+            };
+            apiRegister(account);
+        } else {
+            alert('Vui lòng nhập đầy đủ thông tin');
+        }
+    };
+
+    // apis
+    const apiRegister = (account) => {
+        axios.post('/api/customer/register', account).then((res) => {
+            const result = res.data;
+            alert(result.message);
+            if (result.success === true) {
+                navigate('/customer/active');
+            }
+        });
+    };
+
     return (
         <div>
             {/* Register form */}
@@ -16,39 +59,68 @@ export const Register = () => {
                         </div>
                         <div className="auth-form__form">
                             <div className="auth-form__group">
-                                <input type="text" className="auth-form__input" placeholder="Email của bạn" />
+                                <input
+                                    type="email"
+                                    className="auth-form__input"
+                                    placeholder="Email của bạn"
+                                    ref={email}
+                                />
                             </div>
                             <div className="auth-form__group">
-                                <input type="password" className="auth-form__input" placeholder="Mật khẩu của bạn" />
+                                <input
+                                    type="text"
+                                    className="auth-form__input"
+                                    placeholder="Username của bạn"
+                                    ref={username}
+                                />
                             </div>
                             <div className="auth-form__group">
-                                <input type="password" className="auth-form__input" placeholder="Nhập lại mật khẩu" />
+                                <input
+                                    type="password"
+                                    className="auth-form__input"
+                                    placeholder="Mật khẩu của bạn"
+                                    ref={password}
+                                />
                             </div>
                         </div>
                         <div className="auth-form__aside">
                             <p className="auth-form__policy-text">
-                                Bằng việc đăng ký, bạn đã đồng ý với Shopee về
+                                Bằng việc đăng ký, bạn đã đồng ý với Shopee về{' '}
                                 <a href className="auth-form__text-link">
                                     Điều khoản dịch vụ
-                                </a>
-                                &amp;
+                                </a>{' '}
+                                &amp;{' '}
                                 <a href className="auth-form__text-link">
                                     Chính sách bảo mật
                                 </a>
                             </p>
                         </div>
                         <div className="auth-form__control">
-                            <button className="btn btn--normal auth-form__control-back">TRỞ LẠI</button>
-                            <button className="btn btn--primary">ĐĂNG KÝ</button>
+                            <button
+                                className="btn btn--normal auth-form__control-back"
+                                onClick={() => {
+                                    navigate('/customer/home');
+                                }}
+                            >
+                                TRỞ LẠI
+                            </button>
+                            <button
+                                className="btn btn--primary"
+                                onClick={(e) => {
+                                    btnRegisterClick(e);
+                                }}
+                            >
+                                ĐĂNG KÝ
+                            </button>
                         </div>
                     </div>
                     <div className="auth-form__socials">
                         <a href className="auth-form__socials--facebook btn btn--size-s btn--with-icon">
-                            <i className="auth-form__socials-icon fa-brands fa-square-facebook" />
+                            <BiLogoFacebookCircle className="auth-form__socials-icon fa-brands fa-square-facebook" />
                             <span className="auth-form__socials-title">Kết nối với Facebook</span>
                         </a>
                         <a href className="auth-form__socials--google btn btn--size-s btn--with-icon">
-                            <i className="auth-form__socials-icon fa-brands fa-google" />
+                            <BiLogoInstagram className="auth-form__socials-icon fa-brands fa-google" />
                             <span className="auth-form__socials-title">Kết nối với Google</span>
                         </a>
                     </div>

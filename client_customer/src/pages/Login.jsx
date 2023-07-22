@@ -1,7 +1,45 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { BiLogoFacebookCircle, BiLogoInstagram } from 'react-icons/bi';
+
+import MyContext from '../contexts/MyContext';
 
 export const Login = () => {
+    const username = useRef(null);
+    const password = useRef(null);
+    const context = useContext(MyContext);
+    const navigate = useNavigate();
+
+    // event-handlers
+    const btnLoginClick = (e) => {
+        e.preventDefault();
+
+        // Use the local state values directly
+        if (username.current.value && password.current.value) {
+            const account = { username: username.current.value, password: password.current.value };
+            apiLogin(account);
+        } else {
+            alert('Vui lòng nhập đầy đủ thông tin');
+        }
+    };
+
+    // Define apiLogin as an arrow function
+    const apiLogin = (account) => {
+        axios.post('/api/customer/login', account).then((res) => {
+            const result = res.data;
+            if (result.success === true) {
+                // Assuming you have the "context" object available to set the token and customer
+                context.setToken(result.token);
+                context.setCustomer(result.customer);
+                // Assuming you have access to "props" to navigate to the home page
+                navigate('/customer/home');
+            } else {
+                alert(result.message);
+            }
+        });
+    };
+
     return (
         <div className="auth-modal">
             {/* Login form */}
@@ -15,10 +53,15 @@ export const Login = () => {
                     </div>
                     <div className="auth-form__form">
                         <div className="auth-form__group">
-                            <input type="text" className="auth-form__input" placeholder="Email của bạn" />
+                            <input type="text" className="auth-form__input" placeholder="Username" ref={username} />
                         </div>
                         <div className="auth-form__group">
-                            <input type="password" className="auth-form__input" placeholder="Mật khẩu của bạn" />
+                            <input
+                                type="password"
+                                className="auth-form__input"
+                                placeholder="Mật khẩu của bạn"
+                                ref={password}
+                            />
                         </div>
                     </div>
                     <div className="auth-form__aside">
@@ -33,17 +76,31 @@ export const Login = () => {
                         </div>
                     </div>
                     <div className="auth-form__control">
-                        <button className="btn btn--normal auth-form__control-back">TRỞ LẠI</button>
-                        <button className="btn btn--primary">ĐĂNG NHẬP</button>
+                        <button
+                            className="btn btn--normal auth-form__control-back"
+                            onClick={() => {
+                                navigate('/customer/home');
+                            }}
+                        >
+                            TRỞ LẠI
+                        </button>
+                        <button
+                            onClick={(e) => {
+                                btnLoginClick(e);
+                            }}
+                            className="btn btn--primary"
+                        >
+                            ĐĂNG NHẬP
+                        </button>
                     </div>
                 </div>
                 <div className="auth-form__socials">
                     <a href className="auth-form__socials--facebook btn btn--size-s btn--with-icon">
-                        <i className="auth-form__socials-icon fa-brands fa-square-facebook" />
+                        <BiLogoFacebookCircle className="auth-form__socials-icon fa-brands fa-square-facebook" />
                         <span className="auth-form__socials-title">Kết nối với Facebook</span>
                     </a>
                     <a href className="auth-form__socials--google btn btn--size-s btn--with-icon">
-                        <i className="auth-form__socials-icon fa-brands fa-google" />
+                        <BiLogoInstagram className="auth-form__socials-icon fa-brands fa-google" />
                         <span className="auth-form__socials-title">Kết nối với Google</span>
                     </a>
                 </div>
