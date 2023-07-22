@@ -1,19 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { HiMagnifyingGlass, HiShoppingCart } from 'react-icons/hi2';
+
 import { Search } from './index';
+import MyContext from '../contexts/MyContext';
 
 import NoCart from '../assets/img/no_cart.png';
-import Item1 from '../assets/img/ao_khoac_long.png';
-import Item2 from '../assets/img/dep_ha_ma.png';
-import Item3 from '../assets/img/balo_nu_mini.png';
-import { useNavigate } from 'react-router-dom';
-import MyContext from '../contexts/MyContext';
 
 export const HeaderWithSearch = () => {
     const navigate = useNavigate();
     const context = useContext(MyContext);
+
     console.log(context.mycart);
+    useEffect(() => {
+        console.log(context.mycart);
+    }, [context.mycart]);
 
     return (
         <div>
@@ -24,7 +26,7 @@ export const HeaderWithSearch = () => {
                 </label>
                 <div className="header__logo hide-on-tablet">
                     <Link
-                        to=""
+                        to="/customer/home"
                         onClick={() => navigate('/customer/home')}
                         className="header__logo-link"
                         style={{ cursor: 'pointer' }}
@@ -57,13 +59,16 @@ export const HeaderWithSearch = () => {
                             <ul className="header__cart-list-item">
                                 {/* Cart item */}
                                 <li className="header__cart-item">
-                                    <img src={Item1} alt="" className="header__cart-img" />
+                                    <img
+                                        src={
+                                            'https://user-images.githubusercontent.com/102477140/215768914-e3129899-6e50-4a33-bbaa-cc730c61a4b4.png'
+                                        }
+                                        alt=""
+                                        className="header__cart-img"
+                                    />
                                     <div className="header__cart-item-info">
                                         <div className="header__cart-item-head">
-                                            <h5 className="header__cart-item-name">
-                                                Áo Khoác Lông Thome Lông Cừu 2 Lớp Dày Dặn , Phong Cách Trẻ Trung Năng
-                                                Động Fom Rộng Thời Trang Phong Cách
-                                            </h5>
+                                            <h5 className="header__cart-item-name">{}</h5>
                                             <div className="header__cart-item-price-wrap">
                                                 <span className="header__cart-item-price">500.000Đ</span>
                                                 <span className="header__cart-item-multiply">x</span>
@@ -76,49 +81,9 @@ export const HeaderWithSearch = () => {
                                         </div>
                                     </div>
                                 </li>
-                                <li className="header__cart-item">
-                                    <img src={Item2} alt="" className="header__cart-img" />
-                                    <div className="header__cart-item-info">
-                                        <div className="header__cart-item-head">
-                                            <h5 className="header__cart-item-name">
-                                                Dép hà mã yêu yêu dành cho các tình yêu
-                                            </h5>
-                                            <div className="header__cart-item-price-wrap">
-                                                <span className="header__cart-item-price">178.000Đ</span>
-                                                <span className="header__cart-item-multiply">x</span>
-                                                <span className="header__cart-item-qnt">1</span>
-                                            </div>
-                                        </div>
-                                        <div className="header__cart-item-body">
-                                            <span className="header__cart-item-description">
-                                                Phân loại: Xanh da trời
-                                            </span>
-                                            <span className="header__cart-item-remove">Xóa</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="header__cart-item">
-                                    <img src={Item3} alt="" className="header__cart-img" />
-                                    <div className="header__cart-item-info">
-                                        <div className="header__cart-item-head">
-                                            <h5 className="header__cart-item-name">
-                                                Balo Nữ mini Dáng Siêu Xinh Thiết Kế Thời Trang
-                                            </h5>
-                                            <div className="header__cart-item-price-wrap">
-                                                <span className="header__cart-item-price">789.000Đ</span>
-                                                <span className="header__cart-item-multiply">x</span>
-                                                <span className="header__cart-item-qnt">1</span>
-                                            </div>
-                                        </div>
-                                        <div className="header__cart-item-body">
-                                            <span className="header__cart-item-description">Phân loại: Kem</span>
-                                            <span className="header__cart-item-remove">Xóa</span>
-                                        </div>
-                                    </div>
-                                </li>
                             </ul>
                             <Link
-                                to=""
+                                to="/customer/cart"
                                 onClick={() => navigate('/customer/cart')}
                                 className="header__cart-view-cart btn btn--primary"
                             >

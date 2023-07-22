@@ -6,6 +6,7 @@ import { BsCartPlus } from 'react-icons/bs';
 import MyContext from '../contexts/MyContext';
 
 export const ProductDetail = () => {
+    const [numberProduct, setNummberProduct] = useState(1);
     const [product, setProduct] = useState({});
     const [txtQuantity, setTxtQuantity] = useState(1);
     const params = useParams();
@@ -14,7 +15,8 @@ export const ProductDetail = () => {
 
     useEffect(() => {
         apiGetProduct(params.id);
-    });
+    }, [params.id]); // Only runs when 'params.id' changes);
+
     // apis
     const apiGetProduct = (id) => {
         axios.get('/api/customer/products/' + id).then((res) => {
@@ -25,22 +27,31 @@ export const ProductDetail = () => {
 
     // event-handlers
     const btnAdd2CartClick = (e) => {
-        e.preventDefault();
-        const quantity = parseInt(txtQuantity);
+        e.preventDefault(); // Prevents the default form submission behavior of the button click event
+
+        const quantity = parseInt(txtQuantity); // Parse the input quantity to an integer
+
         if (quantity) {
-            const mycart = context.mycart;
-            const index = mycart.findIndex((x) => x.product._id === product._id); // check if the _id exists in mycart
+            // Check if a valid quantity is provided (greater than 0)
+            const mycart = context.mycart; // Get the cart items from the context
+            const index = mycart.findIndex((x) => x.product._id === product._id); // Check if the product already exists in the cart
+
             if (index === -1) {
-                // not found, push newItem
+                // If the product is not found in the cart, add a new cart item
                 const newItem = { product: product, quantity: quantity };
                 mycart.push(newItem);
             } else {
-                // increasing the quantity
+                // If the product is already in the cart, increase its quantity
                 mycart[index].quantity += quantity;
             }
+
+            // Update the cart in the context with the modified mycart array
             context.setMycart(mycart);
+
+            // Show a success message
             alert('Thêm vào giỏ hàng thành công');
         } else {
+            // If an invalid quantity is provided (not a number or less than or equal to 0), show an error message
             alert('Số lượng không hợp lệ');
         }
     };
@@ -70,7 +81,12 @@ export const ProductDetail = () => {
                             </div>
                             <div className="product-detail__quantity">
                                 <span className="detail__quantity">Số Lượng</span>
-                                <input
+                                <div className="product_number">
+                                    <button onClick={() => setNummberProduct(numberProduct - 1)}>-</button>
+                                    <div>{numberProduct}</div>
+                                    <button onClick={() => setNummberProduct(numberProduct + 1)}>+</button>
+                                </div>
+                                {/* <input
                                     className="detail__number"
                                     type="number"
                                     min="1"
@@ -80,7 +96,7 @@ export const ProductDetail = () => {
                                     onChange={(e) => {
                                         setTxtQuantity(e.target.value);
                                     }}
-                                />
+                                /> */}
                             </div>
                             <div className="product-detail__button">
                                 <button className="btn btn--normal detail__button" onClick={(e) => btnAdd2CartClick(e)}>
