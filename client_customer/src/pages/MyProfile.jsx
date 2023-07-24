@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import '../assets/css/MyProfile.css';
 import { User } from '../components';
 
 export const MyProfile = () => {
+    const fileInputRef = useRef(null);
+
+    const handleButtonClick = () => {
+        fileInputRef.click();
+    };
+
+    const [avatar , setAvatar] = useState(0);
+    
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        if (event.target.files[0].name) {
+            const reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onload = (event) => {
+              var base64data = reader.result;
+              setAvatar(base64data);
+            };
+        }
+
+        if (!file) {
+            alert('Vui lòng chọn một hình ảnh!');
+            return;
+        }
+
+        // Xử lý việc tải lên hình ảnh ở đây
+        console.log('Đã chọn hình ảnh:', file.name);
+
+    };
     return (
         <div className="app__container">
             <div className="grid wide">
@@ -18,7 +47,7 @@ export const MyProfile = () => {
                                 <form action className="profile__form">
                                     <div className="profile__form-detail">
                                         <div className="detail-label">Email</div>
-                                        <div className="detail-input">Bo email vao day</div>
+                                        <input placeholder="Tên Gmail" type="text" className="detail-input" />
                                     </div>
                                     <div className="profile__form-detail">
                                         <div className="detail-label">Tên</div>
@@ -34,7 +63,7 @@ export const MyProfile = () => {
                                     </div>
                                     <div className="profile__form-detail">
                                         <div className="detail-label">Ngày Sinh</div>
-                                        <div className="detail-input">
+                                        <div className="detail-label edit">
                                             <select className="birth-date ">
                                                 <option value>Ngày</option>
                                                 <option value>1</option>
@@ -111,15 +140,24 @@ export const MyProfile = () => {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="profile__form-detail">
+                                    <div className="detail-label">
+                                        <p></p>
                                         <button className="btn btn--primary ">Cập Nhật</button>
                                     </div>
                                 </form>
                                 <div className="profile__avatar">
                                     <div className="avatar__upload">
-                                        <img src="./assets/img/avartar.png" alt="" className="avatar__upload-img" />
-                                        <button className="btn btn--primary avatar__upload-btn">Chọn ảnh</button>
-                                        <div className="avtar__upload-text">
+                                        <img src={avatar} alt="" className="avatar__upload-img" />
+                                        <div className="custom-button">
+                                            <button onClick={handleButtonClick}>Chọn Ảnh</button>
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                ref={fileInputRef}
+                                                onChange={handleFileUpload}
+                                            />
+                                        </div>
+                                        <div className="avatar__upload-text">
                                             <div style={{ marginTop: 12 }}>Dụng lượng file tối đa 1 MB</div>
                                             <div style={{ marginTop: 12 }}>Định dạng .jpg .jpeg .png</div>
                                         </div>
