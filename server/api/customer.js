@@ -45,7 +45,7 @@ router.get('/products/:id', async function (req, res) {
     res.json(product);
 });
 // customer
-router.post('/signup', async function (req, res) {
+router.post('/register', async function (req, res) {
     const username = req.body.username;
     const password = req.body.password;
     const name = req.body.name;
@@ -53,15 +53,15 @@ router.post('/signup', async function (req, res) {
     const email = req.body.email;
     const dbCust = await CustomerDAO.selectByUsernameOrEmail(username, email);
     if (dbCust) {
-        res.json({ success: false, message: 'Exists username or email' });
+        res.json({ success: false, message: 'Đã tồn tại Email hoặc Username' });
     } else {
         const now = new Date().getTime(); // milliseconds
         const token = CryptoUtil.md5(now.toString());
         const newCust = {
             username: username,
             password: password,
-            name: name,
-            phone: phone,
+            name: username,
+            phone: null,
             email: email,
             active: 0,
             token: token,
@@ -70,12 +70,12 @@ router.post('/signup', async function (req, res) {
         if (result) {
             const send = await EmailUtil.send(email, result._id, token);
             if (send) {
-                res.json({ success: true, message: 'Please check email' });
+                res.json({ success: true, message: 'Hãy kiểm tra Email của bạn' });
             } else {
-                res.json({ success: false, message: 'Email failure' });
+                res.json({ success: false, message: 'Email không đúng' });
             }
         } else {
-            res.json({ success: false, message: 'Insert failure' });
+            res.json({ success: false, message: 'Đăng ký thất bại' });
         }
     }
 });
@@ -97,18 +97,18 @@ router.post('/login', async function (req, res) {
                 const token = JwtUtil.genToken();
                 res.json({
                     success: true,
-                    message: 'Authentication successful',
+                    message: 'Đăng nhập thành công',
                     token: token,
                     customer: customer,
                 });
             } else {
-                res.json({ success: false, message: 'Account is deactive' });
+                res.json({ success: false, message: 'Tài khoản không hoạt động' });
             }
         } else {
-            res.json({ success: false, message: 'Incorrect username or password' });
+            res.json({ success: false, message: 'Username hoặc mật khẩu không đúng' });
         }
     } else {
-        res.json({ success: false, message: 'Please input username and password' });
+        res.json({ success: false, message: 'Vui lòng nhập đầy đủ thông tin' });
     }
 });
 router.get('/token', JwtUtil.checkToken, function (req, res) {

@@ -1,7 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { BiLogoFacebookCircle, BiLogoInstagram, BiBell } from 'react-icons/bi';
 import { RiQuestionLine } from 'react-icons/ri';
+
+import MyContext from '../contexts/MyContext';
 
 import appStore from '../assets/img/app_store.png';
 import googlePlay from '../assets/img/google_play.png';
@@ -13,6 +15,25 @@ import Sale from '../assets/img/muahangxuyentet.png';
 import Avatar from '../assets/img/avartar.png';
 
 export const HeaderNavBar = () => {
+    const navigate = useNavigate();
+    const { token, customer } = useContext(MyContext);
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        if (customer) {
+            setName(customer.name); // Replace 'name' with the actual key in 'customer' object that holds the user's name
+        } else {
+            setName(''); // If 'customer' is null or undefined, reset the name state
+        }
+    }, [customer]);
+
+    // event-handlers
+    const btnLogoutClick = () => {
+        this.context.setToken('');
+        this.context.setCustomer({});
+        this.context.setMycart([]);
+    };
+
     return (
         <div>
             <nav className="header__navbar hide-on-mobile-tablet">
@@ -105,29 +126,58 @@ export const HeaderNavBar = () => {
                             Trợ giúp
                         </Link>
                     </li>
-                    {/* <li
-                        class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
-                        >
-                        Đăng ký
+                    {token === '' ? (
+                        <div>
+                            <li
+                                class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
+                                onClick={() => {
+                                    navigate('/customer/register');
+                                }}
+                            >
+                                Đăng ký
+                            </li>
+                            <li
+                                class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
+                                onClick={() => {
+                                    navigate('/customer/login');
+                                }}
+                            >
+                                Đăng nhập
+                            </li>
+                            <li
+                                class="header__navbar-item header__navbar-item--strong"
+                                onClick={() => {
+                                    navigate('/customer/active');
+                                }}
+                            >
+                                Active
+                            </li>
+                        </div>
+                    ) : (
+                        <li className="header__navbar-item header__navbar-user">
+                            <img src={Avatar} alt="" className="header__navbar-user-img" />
+                            <span className="header__navbar-user-name">{name}</span>
+                            <ul className="header__navbar-user-menu">
+                                <li className="header__navbar-user-item">
+                                    <Link to="/customer/user/profile">Tài khoản của tôi</Link>
+                                </li>
+                                <li className="header__navbar-user-item">
+                                    <Link to="/customer/user/order">Đơn mua</Link>
+                                </li>
+                                <li className="header__navbar-user-item header__navbar-user-item--separate">
+                                    <Link
+                                        to="/customer/home"
+                                        onClick={() => {
+                                            btnLogoutClick();
+                                        }}
+                                    >
+                                        Đăng xuất
+                                    </Link>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="header__navbar-item header__navbar-item--strong">
-                        Đăng nhập
-                        </li> */}
-                    <li className="header__navbar-item header__navbar-user">
-                        <img src={Avatar} alt="" className="header__navbar-user-img" />
-                        <span className="header__navbar-user-name">Đức Long</span>
-                        <ul className="header__navbar-user-menu">
-                            <li className="header__navbar-user-item">
-                                <Link to="/customer/user/profile">Tài khoản của tôi</Link>
-                            </li>
-                            <li className="header__navbar-user-item">
-                                <Link to="/customer/user/order">Đơn mua</Link>
-                            </li>
-                            <li className="header__navbar-user-item header__navbar-user-item--separate">
-                                <Link to="#">Đăng xuất</Link>
-                            </li>
-                        </ul>
-                    </li>
+                    )}
+                    <div></div>
                 </ul>
             </nav>
         </div>

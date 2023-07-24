@@ -40,6 +40,13 @@ body {
     height: 100vh;
 }
 
+.auth-form__message {
+    font-size: 1.4rem;
+    margin: 10px 0 0 5px;
+    color: #ff0000;
+    margin-bottom: 10px;
+}
+
 /* Responsive */
 
 .grid__row {
