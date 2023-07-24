@@ -10,6 +10,7 @@ import '../src/assets/css/Responsive.css';
 import '../src/assets/css/MyCart.css';
 import '../src/assets/css/Order.css';
 import '../src/assets/css/ProductDetail.css';
+import '../src/assets/css/ChangePassword.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

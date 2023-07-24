@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
-import { Home, Cart, Login, Register, MyProfile, Order, ProductDetail, Active } from '../pages';
+import { Home, Cart, Login, Register, MyProfile, Order, ProductDetail, Active, ChangePassword } from '../pages';
 
 const Router = () => {
     const routing = useRoutes([
@@ -24,6 +24,10 @@ const Router = () => {
                 {
                     path: '/customer/user/profile',
                     element: <MyProfile />,
+                },
+                {
+                    path: '/customer/user/change-password',
+                    element: <ChangePassword />,
                 },
                 {
                     path: '/customer/products/:id',
