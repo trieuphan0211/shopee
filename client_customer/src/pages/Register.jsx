@@ -1,14 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { BiLogoFacebookCircle, BiLogoInstagram } from 'react-icons/bi';
+
+const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+};
 
 export const Register = () => {
     const navigate = useNavigate();
     const email = useRef();
     const username = useRef();
     const password = useRef();
+    const [message, setMessage] = useState('');
 
     // event-handlers
     const btnRegisterClick = (e) => {
@@ -21,6 +27,11 @@ export const Register = () => {
         const phoneValue = '';
 
         if (emailValue && usernameValue && passwordValue) {
+            // Check if email is in the correct format
+            if (!validateEmail(emailValue)) {
+                setMessage('Vui lòng nhập một địa chỉ email hợp lệ.');
+                return;
+            }
             const account = {
                 email: emailValue,
                 username: usernameValue,
@@ -30,7 +41,7 @@ export const Register = () => {
             };
             apiRegister(account);
         } else {
-            alert('Vui lòng nhập đầy đủ thông tin');
+            setMessage('Vui lòng nhập đầy đủ thông tin');
         }
     };
 
@@ -83,6 +94,7 @@ export const Register = () => {
                                 />
                             </div>
                         </div>
+                        {message && <div className="auth-form__message">{message}</div>}
                         <div className="auth-form__aside">
                             <p className="auth-form__policy-text">
                                 Bằng việc đăng ký, bạn đã đồng ý với Shopee về{' '}

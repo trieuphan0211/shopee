@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -6,6 +6,7 @@ export const Active = () => {
     const navigate = useNavigate();
     const idRef = useRef();
     const tokenRef = useRef();
+    const [message, setMessage] = useState('');
 
     // event-handlers
     const btnActiveClick = (e) => {
@@ -17,7 +18,7 @@ export const Active = () => {
         if (idValue && tokenValue) {
             apiActive(idValue, tokenValue);
         } else {
-            alert('Vui lòng nhập đầy đủ thông tin');
+            setMessage('Vui lòng nhập đầy đủ thông tin');
         }
     };
     // apis
@@ -58,6 +59,7 @@ export const Active = () => {
                             />
                         </div>
                     </div>
+                    {message && <div className="auth-form__message">{message}</div>}
                     <div className="auth-form__aside"></div>
                     <div className="auth-form__control" style={{ marginBottom: 40 }}>
                         <button

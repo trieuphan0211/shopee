@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BiLogoFacebookCircle, BiLogoInstagram } from 'react-icons/bi';
@@ -10,6 +10,7 @@ export const Login = () => {
     const password = useRef(null);
     const context = useContext(MyContext);
     const navigate = useNavigate();
+    const [message, setMessage] = useState('');
 
     // event-handlers
     const btnLoginClick = (e) => {
@@ -20,7 +21,7 @@ export const Login = () => {
             const account = { username: username.current.value, password: password.current.value };
             apiLogin(account);
         } else {
-            alert('Vui lòng nhập đầy đủ thông tin');
+            setMessage('Vui lòng nhập đầy đủ thông tin');
         }
     };
 
@@ -64,11 +65,15 @@ export const Login = () => {
                             />
                         </div>
                     </div>
+                    {message && <div className="auth-form__message">{message}</div>}
                     <div className="auth-form__aside">
                         <div className="auth-form__help">
-                            <a href className="auth-form__help-link auth-form__help-link-fogot">
+                            <Link
+                                to={'/customer/forgot-password'}
+                                className="auth-form__help-link auth-form__help-link-fogot"
+                            >
                                 Quên mật khẩu
-                            </a>
+                            </Link>
                             <span className="auth-form__help-separate" />
                             <a href className="auth-form__help-link">
                                 Cần trợ giúp?
