@@ -51,7 +51,6 @@
 .header__navbar-user-menu {
     position: absolute;
     z-index: 1;
-    padding-left: 0;
     top: calc(100% + 6px);
     right: 0;
     width: 160px;
@@ -60,6 +59,7 @@
     list-style: none;
     box-shadow: 0 1px 2px #dbdbdb;
     display: none;
+    padding: 8px 4px;
 }
 
 .header__navbar-user-menu::before {

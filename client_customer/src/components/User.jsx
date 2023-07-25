@@ -1,15 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { GrEdit } from 'react-icons/gr';
 import { FiUser } from 'react-icons/fi';
 import { FaLock } from 'react-icons/fa6';
 import { BiShoppingBag } from 'react-icons/bi';
 import { Outlet } from 'react-router-dom';
+import MyContext from '../contexts/MyContext';
 
 import avatar from '../assets/img/avartar.png';
 
 export const User = () => {
+    const { customer } = useContext(MyContext);
+    const [name, setName] = useState('');
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (customer) {
+            setName(customer.name);
+        } else {
+            setName('unknown');
+        }
+    }, [customer]);
+
     return (
         <div className="col l-2 m-3 c-3">
             <div className="order">
@@ -17,8 +31,12 @@ export const User = () => {
                     <div className="oder_info_name">
                         <img src={avatar} className="order_info-img" alt="" />
                         <div className="order_info-edit">
-                            <p>Đức Long</p>
-                            <p>
+                            <p>{name}</p>
+                            <p
+                                onClick={(e) => {
+                                    navigate('/customer/user/profile');
+                                }}
+                            >
                                 <GrEdit /> Sửa Hồ Sơ{' '}
                             </p>
                         </div>
@@ -31,7 +49,7 @@ export const User = () => {
                             </Link>
                         </div>
                         <div>
-                            <Link to="#" className="none-decorate">
+                            <Link to="/customer/user/change-password" className="none-decorate">
                                 <FaLock style={{ marginRight: 0 }} /> Đổi Mật Khẩu {''}
                             </Link>
                         </div>
