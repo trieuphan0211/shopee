@@ -12,11 +12,6 @@ export const HeaderWithSearch = () => {
     const navigate = useNavigate();
     const context = useContext(MyContext);
 
-    console.log(context.mycart);
-    useEffect(() => {
-        console.log(context.mycart);
-    }, [context.mycart]);
-
     return (
         <div>
             {/* Header with search */}
@@ -58,29 +53,35 @@ export const HeaderWithSearch = () => {
                             <h4 className="header__cart-heading">Sản phẩm đã thêm</h4>
                             <ul className="header__cart-list-item">
                                 {/* Cart item */}
-                                <li className="header__cart-item">
-                                    <img
-                                        src={
-                                            'https://user-images.githubusercontent.com/102477140/215768914-e3129899-6e50-4a33-bbaa-cc730c61a4b4.png'
-                                        }
-                                        alt=""
-                                        className="header__cart-img"
-                                    />
-                                    <div className="header__cart-item-info">
-                                        <div className="header__cart-item-head">
-                                            <h5 className="header__cart-item-name">{}</h5>
-                                            <div className="header__cart-item-price-wrap">
-                                                <span className="header__cart-item-price">500.000Đ</span>
-                                                <span className="header__cart-item-multiply">x</span>
-                                                <span className="header__cart-item-qnt">1</span>
+                                {context.mycart?.map((e) => {
+                                    return (
+                                        <li className="header__cart-item">
+                                            <img
+                                                src={'data:image/jpg;base64,' + e?.product.image}
+                                                alt=""
+                                                className="header__cart-img"
+                                            />
+                                            <div className="header__cart-item-info">
+                                                <div className="header__cart-item-head">
+                                                    <h5 className="header__cart-item-name">{}</h5>
+                                                    <div className="header__cart-item-price-wrap">
+                                                        <span className="header__cart-item-price">
+                                                            {e?.product.price}.000Đ
+                                                        </span>
+                                                        <span className="header__cart-item-multiply">x</span>
+                                                        <span className="header__cart-item-qnt">{e?.quantity}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="header__cart-item-body">
+                                                    <span className="header__cart-item-description">
+                                                        Phân loại: Đen
+                                                    </span>
+                                                    <span className="header__cart-item-remove">Xóa</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="header__cart-item-body">
-                                            <span className="header__cart-item-description">Phân loại: Đen</span>
-                                            <span className="header__cart-item-remove">Xóa</span>
-                                        </div>
-                                    </div>
-                                </li>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                             <Link
                                 to="/customer/cart"

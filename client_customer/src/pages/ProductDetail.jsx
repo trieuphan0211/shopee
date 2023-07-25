@@ -6,13 +6,13 @@ import { BsCartPlus } from 'react-icons/bs';
 import MyContext from '../contexts/MyContext';
 
 export const ProductDetail = () => {
+    const context = useContext(MyContext);
     const [numberProduct, setNummberProduct] = useState(1);
     const [product, setProduct] = useState({});
-    const [txtQuantity, setTxtQuantity] = useState(1);
+
     const params = useParams();
 
-    const context = useContext(MyContext);
-
+    console.log(context);
     useEffect(() => {
         apiGetProduct(params.id);
     }, [params.id]); // Only runs when 'params.id' changes);
@@ -29,27 +29,31 @@ export const ProductDetail = () => {
     const btnAdd2CartClick = (e) => {
         e.preventDefault(); // Prevents the default form submission behavior of the button click event
 
-        const quantity = parseInt(txtQuantity); // Parse the input quantity to an integer
-
-        if (quantity) {
+        if (numberProduct !== 0) {
+            const mycart = context.mycart;
             // Check if a valid quantity is provided (greater than 0)
-            const mycart = context.mycart; // Get the cart items from the context
+            // Get the cart items from the context
+            console.log(mycart);
             const index = mycart.findIndex((x) => x.product._id === product._id); // Check if the product already exists in the cart
-
+            
             if (index === -1) {
                 // If the product is not found in the cart, add a new cart item
-                const newItem = { product: product, quantity: quantity };
-                mycart.push(newItem);
+                const newItem = { product: product, quantity: numberProduct };
+                context.setMycart([newItem]);
+                console.log(mycart);
             } else {
                 // If the product is already in the cart, increase its quantity
-                mycart[index].quantity += quantity;
+
+                mycart[index].quantity = numberProduct;
+                console.log(mycart);
             }
 
             // Update the cart in the context with the modified mycart array
-            context.setMycart(mycart);
-
+            // context.setMycart(mycart);
+            // context.setNumberProduct(mycart.length);
             // Show a success message
             alert('Thêm vào giỏ hàng thành công');
+            console.log(context);
         } else {
             // If an invalid quantity is provided (not a number or less than or equal to 0), show an error message
             alert('Số lượng không hợp lệ');
@@ -93,8 +97,8 @@ export const ProductDetail = () => {
                                     max="99"
                                     placeholder="0"
                                     value={txtQuantity}
-                                    onChange={(e) => {
-                                        setTxtQuantity(e.target.value);
+                                        onChange={(e) => {
+                                            setTxtQuantity(e.target.value);
                                     }}
                                 /> */}
                             </div>

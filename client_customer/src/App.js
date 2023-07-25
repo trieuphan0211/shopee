@@ -5,13 +5,13 @@ import { MyProvider } from './contexts';
 
 function App() {
     return (
-        <MyProvider>
-            <div className="app">
+        <div className="app">
+            <MyProvider>
                 <BrowserRouter>
                     <Router />
                 </BrowserRouter>
-            </div>
-        </MyProvider>
+            </MyProvider>
+        </div>
     );
 }
 

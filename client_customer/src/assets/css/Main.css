@@ -1176,7 +1176,7 @@
     font-size: 1.3rem;
 }
 
-i.home-product-item__like-icon-fill {
+svg.home-product-item__like-icon-fill {
     color: #ff6533;
     display: none;
 }
