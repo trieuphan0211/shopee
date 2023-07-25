@@ -1,28 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { Content, ListProducts, Pagination } from '../components';
 import axios from 'axios';
+import { Loading } from '../components';
+import Modal from 'react-bootstrap/Modal';
 
 export const Home = () => {
     const [categories, setCategories] = useState();
     const [product, setProduct] = useState();
-    console.log(product);
+    const [show, setShow] = useState(false);
     const apiGetCategories = () => {
+        setShow(true);
         axios.get('/api/customer/categories').then((res) => {
             const result = res.data;
-            setCategories(result);
+            if (res.data) {
+                setCategories(result);
+                setShow(false);
+            }
         });
     };
     const apiGetNewProducts = () => {
+        setShow(true);
         axios.get('/api/customer/products/new').then((res) => {
             const result = res.data;
-            console.log(result);
-            setProduct(result);
+            if (res.data) {
+                console.log(res.data);
+                setProduct(result);
+                setShow(false);
+            }
         });
     };
     const apiGetProductsByCatID = (cid) => {
+        setShow(true);
         axios.get('/api/customer/products/category/' + cid).then((res) => {
             const result = res.data;
-            setProduct(result);
+            if (res.data) {
+                console.log(res.data);
+                setProduct(result);
+                setShow(false);
+            }
         });
     };
     useEffect(() => {
@@ -93,6 +108,11 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
+            <>
+                <Modal show={show} style={{ backgroundColor: 'rgba(0,0,0,.7)' }}>
+                    <Loading />
+                </Modal>
+            </>
         </div>
     );
 };

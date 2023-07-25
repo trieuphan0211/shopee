@@ -7,3 +7,4 @@ export * from './HeaderWithSearch';
 export * from './Header';
 export * from './Content';
 export * from './User';
+export * from './Loading';

@@ -12,6 +12,7 @@ import '../src/assets/css/Order.css';
 import '../src/assets/css/ProductDetail.css';
 import '../src/assets/css/ChangePassword.css';
 import '../src/assets/css/MyProfile.css';
+import '../src/assets/css/Loading.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

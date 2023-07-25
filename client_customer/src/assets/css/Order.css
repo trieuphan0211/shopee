@@ -75,6 +75,7 @@
 }
 .item_info {
     display: flex;
+    margin: 10px 0;
     justify-content: space-between;
 }
 .item_info-name img {
