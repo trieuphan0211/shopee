@@ -32,87 +32,112 @@ class ProductDetail extends Component {
             }
         });
         return (
-            <div className="float-right">
-                <h2 className="text-center">PRODUCT DETAIL</h2>
-                <form>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>ID</td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        value={this.state.txtID}
-                                        onChange={(e) => {
-                                            this.setState({ txtID: e.target.value });
-                                        }}
-                                        readOnly={true}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        value={this.state.txtName}
-                                        onChange={(e) => {
-                                            this.setState({ txtName: e.target.value });
-                                        }}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Price</td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        value={this.state.txtPrice}
-                                        onChange={(e) => {
-                                            this.setState({ txtPrice: e.target.value });
-                                        }}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Image</td>
-                                <td>
-                                    <input
-                                        type="file"
-                                        name="fileImage"
-                                        accept="image/jpeg, image/png, image/gif"
-                                        onChange={(e) => this.previewImage(e)}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Category</td>
-                                <td>
-                                    <select
-                                        onChange={(e) => {
-                                            this.setState({ cmbCategory: e.target.value });
-                                        }}
-                                    >
-                                        {cates}
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <input type="submit" value="ADD NEW" onClick={(e) => this.btnAddClick(e)} />
-                                    <input type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} />
-                                    <input type="submit" value="DELETE" onClick={(e) => this.btnDeleteClick(e)} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">
-                                    <img src={this.state.imgProduct} width="300px" height="300px" alt="" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
+            <div className="app__container container__main ">
+                <div className="grid wide">
+                    <div className="row sm-gutter app__content style-product-Detail">
+                        <div className="col l-12 m-12 c-12">
+                            <div className="float-right">
+                                <h2 className="text-center">PRODUCT DETAIL</h2>
+                                <form className="dt">
+                                    <table className="PRODUCTDETAIL">
+                                        <tbody className="tbody">
+                                            <tr>
+                                                <td> ID</td>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        value={this.state.txtID}
+                                                        onChange={(e) => {
+                                                            this.setState({ txtID: e.target.value });
+                                                        }}
+                                                        readOnly={true}
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        value={this.state.txtName}
+                                                        onChange={(e) => {
+                                                            this.setState({ txtName: e.target.value });
+                                                        }}
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Price</td>
+                                                <td>
+                                                    <input
+                                                        type="text"
+                                                        value={this.state.txtPrice}
+                                                        onChange={(e) => {
+                                                            this.setState({ txtPrice: e.target.value });
+                                                        }}
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Image</td>
+                                                <td>
+                                                    <input
+                                                        type="file"
+                                                        name="fileImage"
+                                                        accept="image/jpeg, image/png, image/gif"
+                                                        onChange={(e) => this.previewImage(e)}
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Category</td>
+                                                <td>
+                                                    <select
+                                                        onChange={(e) => {
+                                                            this.setState({ cmbCategory: e.target.value });
+                                                        }}
+                                                    >
+                                                        {cates}
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <input
+                                                        type="submit"
+                                                        value="ADD NEW"
+                                                        onClick={(e) => this.btnAddClick(e)}
+                                                    />
+                                                    <input
+                                                        type="submit"
+                                                        value="UPDATE"
+                                                        onClick={(e) => this.btnUpdateClick(e)}
+                                                    />
+                                                    <input
+                                                        type="submit"
+                                                        value="DELETE"
+                                                        onClick={(e) => this.btnDeleteClick(e)}
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colSpan="2 tbody_1">
+                                                    <img
+                                                        src={this.state.imgProduct}
+                                                        width="300px"
+                                                        height="300px"
+                                                        alt=""
+                                                    />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

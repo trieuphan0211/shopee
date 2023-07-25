@@ -62,45 +62,53 @@ class Order extends Component {
             });
         }
         return (
-            <div>
-                <div className="align-center">
-                    <h2 className="text-center">ORDER LIST</h2>
-                    <table className="datatable" border="1">
-                        <tbody>
-                            <tr className="datatable">
-                                <th>ID</th>
-                                <th>Creation date</th>
-                                <th>Cust.name</th>
-                                <th>Cust.phone</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            {orders}
-                        </tbody>
-                    </table>
-                </div>
-                {this.state.order ? (
-                    <div className="align-center">
-                        <h2 className="text-center">ORDER DETAIL</h2>
-                        <table className="datatable" border="1">
-                            <tbody>
-                                <tr className="datatable">
-                                    <th>No.</th>
-                                    <th>Prod.ID</th>
-                                    <th>Prod.name</th>
-                                    <th>Image</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Amount</th>
-                                </tr>
-                                {items}
-                            </tbody>
-                        </table>
+            <div className="app__container container__main ">
+                <div className="grid wide">
+                    <div className="row sm-gutter app__content style-product-Detail">
+                        <div className="col l-12 m-12 c-12">
+                            <div>
+                                <div className="align-center">
+                                    <h2 className="text-center">ORDER LIST</h2>
+                                    <table className="datatable" border="1">
+                                        <tbody className='tbody'>
+                                            <tr className="datatable">
+                                                <th>ID</th>
+                                                <th>Creation date</th>
+                                                <th>Cust.name</th>
+                                                <th>Cust.phone</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            {orders}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {this.state.order ? (
+                                    <div className="align-center">
+                                        <h2 className="text-center">ORDER DETAIL</h2>
+                                        <table className="datatable" border="1">
+                                            <tbody className='tbody'>
+                                                <tr className="datatable">
+                                                    <th>No.</th>
+                                                    <th>Prod.ID</th>
+                                                    <th>Prod.name</th>
+                                                    <th>Image</th>
+                                                    <th>Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                                {items}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ) : (
+                                    <div />
+                                )}
+                            </div>
+                        </div>
                     </div>
-                ) : (
-                    <div />
-                )}
+                </div>
             </div>
         );
     }
