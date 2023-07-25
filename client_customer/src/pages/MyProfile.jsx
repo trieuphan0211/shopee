@@ -1,40 +1,98 @@
-import React, { useRef, useState } from 'react';
-import '../assets/css/MyProfile.css';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+
+import MyContext from '../contexts/MyContext';
 import { User } from '../components';
 
 export const MyProfile = () => {
-    const fileInputRef = useRef(null);
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
 
-    const handleButtonClick = () => {
-        fileInputRef.click();
-    };
+    const emailInputRef = useRef();
+    const usernameInputRef = useRef();
+    const nameInputRef = useRef();
+    const phoneInputRef = useRef();
 
-    const [avatar, setAvatar] = useState(0);
+    const [message, setMessage] = useState('');
 
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0];
-        if (event.target.files[0].name) {
-            const reader = new FileReader();
-            reader.readAsDataURL(event.target.files[0]);
-            reader.onload = (event) => {
-                var base64data = reader.result;
-                setAvatar(base64data);
+    const context = useContext(MyContext);
+
+    const [isUpdateButtonDisabled, setIsUpdateButtonDisabled] = useState(true);
+
+    useEffect(() => {
+        if (context.customer) {
+            setEmail(context.customer.email);
+            setUsername(context.customer.username);
+            setName(context.customer.name);
+            setPhone(context.customer.phone);
+        } else {
+            setEmail('');
+            setUsername('');
+            setName('');
+            setPhone('');
+        }
+    }, [context.customer]);
+
+    // event-handlers
+    const btnUpdateClick = (e) => {
+        e.preventDefault();
+
+        const usernameVlaue = usernameInputRef.current.value;
+        const nameValue = nameInputRef.current.value;
+        const phoneValue = phoneInputRef.current.value;
+
+        if (usernameVlaue && nameValue && phoneValue) {
+            const customer = {
+                username: usernameVlaue,
+                name: nameValue,
+                phone: phoneValue,
             };
+            apiPutCustomer(context.customer._id, customer);
+        } else {
+            setMessage('Vui lòng  kiểm tra lại thông tin');
         }
-
-        if (!file) {
-            alert('Vui lòng chọn một hình ảnh!');
-            return;
-        }
-
-        // Xử lý việc tải lên hình ảnh ở đây
-        console.log('Đã chọn hình ảnh:', file.name);
-
-        // export const Update = () => {
-        //     const username = useRef(null);
-        //     const
-        // }
     };
+    // apis
+    const apiPutCustomer = (id, customer) => {
+        const config = { headers: { 'x-access-token': context.token } };
+        axios.put('/api/customer/customers/' + id, customer, config).then((res) => {
+            const result = res.data;
+            if (result) {
+                alert('Cập nhật thông tin thành công');
+                context.setCustomer(result);
+
+                // Reset input fields and remove 'disabled' class after successful update
+                emailInputRef.current.value = '';
+                usernameInputRef.current.value = '';
+                nameInputRef.current.value = '';
+                phoneInputRef.current.value = '';
+                const inputs = [emailInputRef, usernameInputRef, nameInputRef, phoneInputRef];
+                inputs.forEach((inputRef) => inputRef.current.classList.add('disabled'));
+                setIsUpdateButtonDisabled(true);
+            } else {
+                alert('Cập nhật thông tin thất bại');
+            }
+        });
+    };
+
+    useEffect(() => {
+        const inputs = [emailInputRef, usernameInputRef, nameInputRef, phoneInputRef];
+        // Check if any input field is enabled (not having the class 'disabled')
+        const anyInputEnabled = inputs.some((inputRef) => !inputRef.current.classList.contains('disabled'));
+        setIsUpdateButtonDisabled(!anyInputEnabled);
+    }, [email, username, name, phone]);
+
+    const toggleSwitch = (inputRef) => {
+        inputRef.current.classList.toggle('disabled');
+
+        const inputs = [emailInputRef, usernameInputRef, nameInputRef, phoneInputRef];
+        // Check if any input field is enabled (not having the class 'disabled')
+        const anyInputEnabled = inputs.some((inputRef) => !inputRef.current.classList.contains('disabled'));
+        setIsUpdateButtonDisabled(!anyInputEnabled);
+    };
+
     return (
         <div className="app__container">
             <div className="grid wide">
@@ -50,115 +108,85 @@ export const MyProfile = () => {
                                 <form action className="profile__form">
                                     <div className="profile__form-detail">
                                         <div className="detail-label">Email</div>
-                                        <input placeholder="Tên Gmail" type="text" className="detail-input" />
+                                        <input
+                                            type="email"
+                                            className="detail-input disabled"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            ref={emailInputRef}
+                                        />
+                                        <span className="detail-switch" onClick={() => toggleSwitch(emailInputRef)}>
+                                            Thay đổi
+                                        </span>
+                                    </div>
+                                    <div className="profile__form-detail">
+                                        <div className="detail-label">Username</div>
+                                        <input
+                                            placeholder="Username"
+                                            type="text"
+                                            className="detail-input disabled"
+                                            value={username}
+                                            onChange={(e) => setUsername(e.target.value)}
+                                            ref={usernameInputRef}
+                                        />
+                                        <span className="detail-switch" onClick={() => toggleSwitch(usernameInputRef)}>
+                                            Thay đổi
+                                        </span>
                                     </div>
                                     <div className="profile__form-detail">
                                         <div className="detail-label">Tên</div>
-                                        <input placeholder="Tên người dùng" type="text" className="detail-input" />
+                                        <input
+                                            placeholder="Tên người dùng"
+                                            type="text"
+                                            className="detail-input disabled"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            ref={nameInputRef}
+                                        />
+                                        <span className="detail-switch" onClick={() => toggleSwitch(nameInputRef)}>
+                                            Thay đổi
+                                        </span>
                                     </div>
                                     <div className="profile__form-detail">
                                         <div className="detail-label">Số Điện Thoại</div>
-                                        <input placeholder="Số điện thoại" type="text" className="detail-input" />
+                                        <input
+                                            placeholder="Số điện thoại"
+                                            type="text"
+                                            className="detail-input disabled"
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
+                                            ref={phoneInputRef}
+                                        />
+                                        <span className="detail-switch" onClick={() => toggleSwitch(phoneInputRef)}>
+                                            Thay đổi
+                                        </span>
                                     </div>
-                                    <div className="profile__form-detail">
-                                        <div className="detail-label">Địa chỉ</div>
-                                        <input placeholder="Địa chỉ" type="text" className="detail-input" />
-                                    </div>
-                                    <div className="profile__form-detail">
-                                        <div className="detail-label">Ngày Sinh</div>
-                                        <div className="detail-label edit">
-                                            <select className="birth-date ">
-                                                <option value>Ngày</option>
-                                                <option value>1</option>
-                                                <option value>2</option>
-                                                <option value>3</option>
-                                                <option value>4</option>
-                                                <option value>5</option>
-                                                <option value>6</option>
-                                                <option value>7</option>
-                                                <option value>8</option>
-                                                <option value>9</option>
-                                                <option value>10</option>
-                                                <option value>11</option>
-                                                <option value>12</option>
-                                                <option value>13</option>
-                                                <option value>14</option>
-                                                <option value>15</option>
-                                                <option value>16</option>
-                                                <option value>17</option>
-                                                <option value>18</option>
-                                                <option value>19</option>
-                                                <option value>20</option>
-                                                <option value>21</option>
-                                                <option value>22</option>
-                                                <option value>23</option>
-                                                <option value>24</option>
-                                                <option value>25</option>
-                                                <option value>26</option>
-                                                <option value>27</option>
-                                                <option value>28</option>
-                                                <option value>29</option>
-                                                <option value>30</option>
-                                                <option value>31</option>
-                                            </select>
-                                            <select className="birth-month">
-                                                <option value>Tháng</option>
-                                                <option value>1</option>
-                                                <option value>2</option>
-                                                <option value>3</option>
-                                                <option value>4</option>
-                                                <option value>5</option>
-                                                <option value>6</option>
-                                                <option value>7</option>
-                                                <option value>8</option>
-                                                <option value>9</option>
-                                                <option value>10</option>
-                                                <option value>11</option>
-                                                <option value>12</option>
-                                            </select>
-                                            <select className="birth-year">
-                                                <option value>Năm</option>
-                                                <option value>1999</option>
-                                                <option value>2000</option>
-                                                <option value>2001</option>
-                                                <option value>2002</option>
-                                                <option value>2003</option>
-                                                <option value>2004</option>
-                                                <option value>2005</option>
-                                                <option value>2006</option>
-                                                <option value>2007</option>
-                                                <option value>2008</option>
-                                                <option value>2009</option>
-                                                <option value>2010</option>
-                                                <option value>2011</option>
-                                                <option value>2012</option>
-                                                <option value>2013</option>
-                                                <option value>2014</option>
-                                                <option value>2015</option>
-                                                <option value>2016</option>
-                                                <option value>2017</option>
-                                                <option value>2018</option>
-                                                <option value>2019</option>
-                                                <option value>2020</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="detail-label">
-                                        <p></p>
-                                        <button className="btn btn--primary ">Cập Nhật</button>
+                                    {message && <div className="auth-form__message">{message}</div>}
+                                    <div className="profile__btn">
+                                        <button
+                                            className={`btn btn__update ${
+                                                isUpdateButtonDisabled ? 'disabled' : 'btn--primary'
+                                            }`}
+                                            onClick={(e) => btnUpdateClick(e)}
+                                            disabled={isUpdateButtonDisabled}
+                                        >
+                                            Cập Nhật
+                                        </button>
                                     </div>
                                 </form>
+
                                 <div className="profile__avatar">
                                     <div className="avatar__upload">
-                                        <img src={avatar} alt="" className="avatar__upload-img" />
+                                        <img
+                                            src={
+                                                'https://user-images.githubusercontent.com/102477140/215768914-e3129899-6e50-4a33-bbaa-cc730c61a4b4.png'
+                                            }
+                                            alt=""
+                                            className="avatar__upload-img"
+                                        />
                                         <div className="custom-button">
-                                            <button onClick={handleButtonClick}>Chọn Ảnh</button>
-                                            <input
-                                                type="file"
-                                                accept="image/*"
-                                                ref={fileInputRef}
-                                                onChange={handleFileUpload}
-                                            />
+                                            <button>Chọn Ảnh</button>
+                                            <input type="file" accept="image/*" />
                                         </div>
                                         <div className="avatar__upload-text">
                                             <div style={{ marginTop: 12 }}>Dụng lượng file tối đa 1 MB</div>

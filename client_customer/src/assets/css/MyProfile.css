@@ -25,14 +25,14 @@
     margin-top: 2rem;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: space-between;
     font-size: 2rem;
     line-height: 1.75rem;
 }
 
 .profile__form {
-    width: 360px;
+    width: 70%;
     padding-left: 5rem;
-    box-sizing: content-box;
     border-width: 0;
     border-style: solid;
     border-color: #e5e7eb;
@@ -48,73 +48,54 @@
 .detail-label {
     padding: 8px 12px;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-}
-
-.detail-label {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    border-width: 1px;
-    border-radius: 0.125rem;
-    width: 100%;
-    display: flex;
+    width: 30%;
 }
 
 .detail-input {
-    justify-content: flex-end;
-}
-
-.Profile__detail-Email {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    border-width: 1px;
-    border-radius: 0.125rem;
-    width: 100%;
     display: flex;
+    align-content: center;
+    flex: 1;
 }
 
-.Profile__detail-buttonEmail {
-    justify-content: flex-end;
-    width: 60%;
+input.disabled {
+    border: none;
+    pointer-events: none;
 }
 
-.Ngaysinh {
-    padding-left: 1.25rem;
-    width: 62%;
+.detail-switch {
+    padding-left: 10px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--primary-color);
 }
 
-.Ngaysinh__1 {
-    padding-top: 0.75rem;
-    padding-left: 7.75rem;
-    padding-right: 0.75rem;
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    border-width: 1px;
-    width: 32%;
+.profile__btn {
+    display: flex;
+    justify-content: center;
+    padding: 10px 5px;
 }
 
 .btn__update {
-    padding: 12px 8px;
-    cursor: pointer;
-    width: 60%;
-    border: solid rgba(0, 0, 0, 0.1);
-    background-color: #ff6533;
+    justify-content: center;
+    width: 80%;
+}
+
+button.disabled {
+    background-color: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
 }
 
 /* ADD */
 .profile__avatar {
+    position: relative;
+    top: 40px;
+    right: 20px;
     font-size: 0.875rem;
     line-height: 1.25rem;
     display: flex;
-    width: 100%;
     justify-content: center;
 }
 
@@ -138,11 +119,6 @@
     width: 81px;
     height: 81px;
     border-radius: 50%;
-}
-
-.Import_img-1 {
-    justify-content: center;
-    display: flex;
 }
 
 .btn_push-avatar {
@@ -215,7 +191,6 @@
 }
 
 .edit {
-    width: 62%;
     display: flex;
     padding: 5px;
     justify-content: space-between;
@@ -233,31 +208,18 @@
 
 /* Định dạng kích thước và vị trí */
 .birth-date {
-    width: 60px;
+    width: 120px;
 }
 
 .birth-month {
-    width: 80px;
+    width: 210px;
     margin-left: 10px;
 }
 
 .birth-year {
-    width: 60px;
+    width: 120px;
     margin-left: 10px;
 }
-
-.btn--primary {
-    position: relative;
-    min-width: 200px;
-    height: 34px;
-    padding: 0 12px;
-    border-radius: 2px;
-    background-color: #fb5431;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 
 .custom-button {
     position: relative;
@@ -281,4 +243,3 @@
     height: 100%;
     cursor: pointer;
 }
-

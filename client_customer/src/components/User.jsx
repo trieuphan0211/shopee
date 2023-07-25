@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { GrEdit } from 'react-icons/gr';
 import { FiUser } from 'react-icons/fi';
@@ -13,6 +13,8 @@ import avatar from '../assets/img/avartar.png';
 export const User = () => {
     const { customer } = useContext(MyContext);
     const [name, setName] = useState('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (customer) {
@@ -30,7 +32,11 @@ export const User = () => {
                         <img src={avatar} className="order_info-img" alt="" />
                         <div className="order_info-edit">
                             <p>{name}</p>
-                            <p>
+                            <p
+                                onClick={(e) => {
+                                    navigate('/customer/user/profile');
+                                }}
+                            >
                                 <GrEdit /> Sửa Hồ Sơ{' '}
                             </p>
                         </div>
