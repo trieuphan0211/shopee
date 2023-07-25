@@ -9,8 +9,7 @@ export const MyProfile = () => {
         fileInputRef.click();
     };
 
-    const [avatar , setAvatar] = useState(0);
-    
+    const [avatar, setAvatar] = useState(0);
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
@@ -18,8 +17,8 @@ export const MyProfile = () => {
             const reader = new FileReader();
             reader.readAsDataURL(event.target.files[0]);
             reader.onload = (event) => {
-              var base64data = reader.result;
-              setAvatar(base64data);
+                var base64data = reader.result;
+                setAvatar(base64data);
             };
         }
 
@@ -31,6 +30,10 @@ export const MyProfile = () => {
         // Xử lý việc tải lên hình ảnh ở đây
         console.log('Đã chọn hình ảnh:', file.name);
 
+        // export const Update = () => {
+        //     const username = useRef(null);
+        //     const
+        // }
     };
     return (
         <div className="app__container">
