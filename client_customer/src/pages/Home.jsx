@@ -3,6 +3,7 @@ import { Content, ListProducts, Pagination } from '../components';
 import axios from 'axios';
 import { Loading } from '../components';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
     const [categories, setCategories] = useState();
@@ -21,7 +22,6 @@ export const Home = () => {
         axios.get('/api/customer/products/all').then((res) => {
             const result = res.data;
             if (res.data) {
-                console.log(res.data);
                 setProduct(result);
                 setShow(false);
             }
@@ -32,7 +32,6 @@ export const Home = () => {
         axios.get('/api/customer/products/category/' + cid).then((res) => {
             const result = res.data;
             if (res.data !== []) {
-                console.log(res.data);
                 setProduct(result);
                 setShow(false);
             }
@@ -57,50 +56,34 @@ export const Home = () => {
                         <nav className="mobile-category">
                             <ul className="mobile-category__list">
                                 <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
+                                    <Link
+                                        onClick={(e) => apiGetAllProducts(e)}
+                                        className="mobile-category__link"
+                                        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                    >
+                                        Tất cả
+                                    </Link>
                                 </li>
-                                <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
-                                </li>
-                                <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
-                                </li>
-                                <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
-                                </li>
-                                <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
-                                </li>
-                                <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
-                                </li>
-                                <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
-                                </li>
-                                <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
-                                </li>
-                                <li className="mobile-category__item">
-                                    <a href className="mobile-category__link">
-                                        Dụng cụ &amp; Thiết bị tiện ích
-                                    </a>
-                                </li>
+                                {categories?.map((element, index) => {
+                                    return (
+                                        <li
+                                            key={index}
+                                            onClick={(e) => apiGetProductsByCatID(element._id, e)}
+                                            className="mobile-category__item"
+                                        >
+                                            <Link
+                                                className="mobile-category__link"
+                                                style={{
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center',
+                                                }}
+                                            >
+                                                {element.name}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </nav>
                         <div className="home-product">

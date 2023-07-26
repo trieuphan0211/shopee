@@ -13,7 +13,6 @@ export const ListProducts = ({ categories, apiGetProductsByCatID, apiGetAllProdu
             <ul className="category-list">
                 <li onClick={() => apiGetAllProducts()}>Tất cả</li>
                 {categories?.map((element, index) => {
-                    console.log(element._id);
                     return (
                         <li
                             key={index}

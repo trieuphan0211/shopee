@@ -118,7 +118,7 @@ export const MyProfile = () => {
     useEffect(() => {
         // Update the prevImage state with the new image from context.customer
         setPrevImage({
-            image: 'data:image/jpg;base64,' + context.customer?.image,
+            image: 'data:image/jpeg;base64,' + context.customer?.image,
         });
     }, [context.customer]);
 

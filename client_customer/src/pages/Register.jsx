@@ -25,6 +25,7 @@ export const Register = () => {
         const passwordValue = password.current.value;
         const nameValue = usernameValue;
         const phoneValue = '';
+        const imageValue = '';
 
         if (emailValue && usernameValue && passwordValue) {
             // Check if email is in the correct format
@@ -38,6 +39,7 @@ export const Register = () => {
                 password: passwordValue,
                 name: nameValue,
                 phone: phoneValue,
+                image: imageValue,
             };
             apiRegister(account);
         } else {
