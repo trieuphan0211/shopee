@@ -34,6 +34,7 @@ export const MyProfile = () => {
             setUsername('');
             setName('');
             setPhone('');
+            setPrevImage('');
         }
     }, [context.customer]);
 
