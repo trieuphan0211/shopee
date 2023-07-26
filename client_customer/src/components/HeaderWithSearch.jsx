@@ -42,7 +42,7 @@ export const HeaderWithSearch = () => {
 
                 {/* Cart layout */}
                 <div className="header__cart">
-                    <div className="header__cart-wrap">
+                    <div className="header__cart-wrap" onClick={() => navigate('/customer/cart')}>
                         <HiShoppingCart className="header__cart-icon fa-solid fa-cart-shopping" />
                         <span className="header__cart-notice">{context.mycart.length}</span>
 
@@ -63,7 +63,7 @@ export const HeaderWithSearch = () => {
                                             />
                                             <div className="header__cart-item-info">
                                                 <div className="header__cart-item-head">
-                                                    <h5 className="header__cart-item-name">{}</h5>
+                                                    <h5 className="header__cart-item-name">{e?.product.name}</h5>
                                                     <div className="header__cart-item-price-wrap">
                                                         <span className="header__cart-item-price">
                                                             {e?.product.price}.000Đ

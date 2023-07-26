@@ -1,28 +1,103 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaStar, FaArrowDown, FaAngleLeft, FaAngleRight, FaRegHeart, FaCheck } from 'react-icons/fa6';
+import axios from 'axios';
 
-export const Content = ({ product }) => {
+export const Content = ({ product, setProduct, setShow }) => {
     const navigate = useNavigate();
+    const apiGetNewroducts = () => {
+        setShow(true);
+        axios.get('/api/customer/products/new').then((res) => {
+            const result = res.data;
+            if (res.data) {
+                setProduct(result);
+                setShow(false);
+            }
+        });
+    };
+    const apiGetPopularProducts = () => {
+        setShow(true);
+        axios.get('/api/customer/products/hot').then((res) => {
+            const result = res.data;
+            if (res.data) {
+                setProduct(result);
+                setShow(false);
+            }
+        });
+    };
+    const risePriceProduct = () => {
+        const len = product.length;
+        const array = [...product];
+        for (let i = 0; i < len - 1; i++) {
+            for (let j = 0; j < len - 1 - i; j++) {
+                if (array[j].price > array[j + 1].price) {
+                    const temp = array[j].price;
+                    array[j].price = array[j + 1].price;
+                    array[j + 1].price = temp;
+                }
+            }
+        }
+        setProduct(array);
+    };
+    const reducePriceProduct = () => {
+        const len = product.length;
+        const array = [...product];
+        for (let i = 0; i < len - 1; i++) {
+            for (let j = 0; j < len - 1 - i; j++) {
+                if (array[j].price < array[j + 1].price) {
+                    const temp = array[j].price;
+                    array[j].price = array[j + 1].price;
+                    array[j + 1].price = temp;
+                }
+            }
+        }
+        setProduct(array);
+    };
     return (
         <div>
             <div className="home-filter hide-on-mobile-tablet">
                 <span className="home-filter__label">Sắp xếp theo</span>
-                <button className="home-filter__btn btn">Phổ Biến</button>
-                <button className="home-filter__btn btn btn--primary">Mới Nhất</button>
-                <button className="home-filter__btn btn">Bán Chạy</button>
+                <button className="home-filter__btn btn ">Phổ Biến</button>
+                <button
+                    className="home-filter__btn btn "
+                    onClick={(e) => {
+                        document.querySelector('.btn--primary')?.classList.remove('btn--primary');
+                        e.currentTarget.classList.add('btn--primary');
+                        apiGetNewroducts();
+                    }}
+                >
+                    Mới Nhất
+                </button>
+                <button
+                    className="home-filter__btn btn"
+                    onClick={(e) => {
+                        document.querySelector('.btn--primary')?.classList.remove('btn--primary');
+                        e.currentTarget.classList.add('btn--primary');
+                        apiGetPopularProducts();
+                    }}
+                >
+                    Bán Chạy
+                </button>
                 <div className="select-input">
                     <span className="select-input__label">Giá</span>
                     {/*     <i className="select-input__icon fa-solid fa-angle-down" /> */}
                     <FaArrowDown className="select-input__icon" />
                     {/* List options */}
                     <ul className="select-input__list">
-                        <li className="select-input__item">
+                        <li
+                            className="select-input__item"
+                            onClick={() => risePriceProduct()}
+                            style={{ cursor: 'pointer' }}
+                        >
                             <a href className="select-input__link">
                                 Giá thấp đến cao
                             </a>
                         </li>
-                        <li className="select-input__item">
+                        <li
+                            className="select-input__item"
+                            onClick={() => reducePriceProduct()}
+                            style={{ cursor: 'pointer' }}
+                        >
                             <a href className="select-input__link">
                                 Giá cao đến thấp
                             </a>

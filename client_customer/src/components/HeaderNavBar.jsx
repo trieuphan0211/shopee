@@ -21,7 +21,8 @@ export const HeaderNavBar = () => {
     const { token, customer } = useContext(MyContext);
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
-
+    const context = useContext(MyContext);
+    console.log('content', context.token);
     useEffect(() => {
         if (customer) {
             setName(customer.name); // Replace 'name' with the actual key in 'customer' object that holds the user's name
@@ -34,9 +35,9 @@ export const HeaderNavBar = () => {
 
     // event-handlers
     const btnLogoutClick = () => {
-        this.context.setToken('');
-        this.context.setCustomer({});
-        this.context.setMycart([]);
+        context.setToken('');
+        context.setCustomer({});
+        context.setMycart([]);
     };
 
     return (
@@ -134,7 +135,7 @@ export const HeaderNavBar = () => {
                             Trợ giúp
                         </Link>
                     </li>
-                    {token === '' ? (
+                    {!token && (
                         <div>
                             <li
                                 class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
@@ -161,7 +162,8 @@ export const HeaderNavBar = () => {
                                 Active
                             </li>
                         </div>
-                    ) : (
+                    )}
+                    {token && (
                         <li className="header__navbar-item header__navbar-user">
                             <img src={'data:image/jpg;base64,' + image} alt="" className="header__navbar-user-img" />
                             <span className="header__navbar-user-name">{name}</span>

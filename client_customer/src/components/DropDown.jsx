@@ -41,12 +41,7 @@ export function Dropdown() {
 
     return (
         <div className="dropdown">
-            <Button
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-                onClick={handleClick}
-                style={{ zIndex: '2', height: '26px' }}
-            >
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{ height: '26px' }}>
                 {language}
                 <BiChevronDown
                     className="dropdown-icon"

@@ -15,7 +15,8 @@ export const Login = () => {
     const { setToken } = context;
 
     useEffect(() => {
-        const token = sessionStorage.getItem('token');
+        // const token = sessionStorage.getItem('token');
+        const token = '';
         if (token) {
             // Assuming you have the "context" object available to set the token
             setToken(token);
@@ -44,7 +45,7 @@ export const Login = () => {
             const result = res.data;
             if (result.success === true) {
                 // Save the token to session storage
-                sessionStorage.setItem('token', result.token);
+                // sessionStorage.setItem('token', result.token);
                 // Assuming you have the "context" object available to set the token and customer
                 setToken(result.token);
                 context.setCustomer(result.customer);

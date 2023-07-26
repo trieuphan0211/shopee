@@ -30,7 +30,7 @@ router.get('/categories', async function (req, res) {
 });
 // product
 router.get('/products/new', async function (req, res) {
-    const products = await ProductDAO.selectTopNew(3);
+    const products = await ProductDAO.selectTopNew(10);
     res.json(products);
 });
 router.get('/products/all', async function (req, res) {
@@ -38,7 +38,7 @@ router.get('/products/all', async function (req, res) {
     res.json(products);
 });
 router.get('/products/hot', async function (req, res) {
-    const products = await ProductDAO.selectTopHot(3);
+    const products = await ProductDAO.selectTopHot(10);
     res.json(products);
 });
 // product

@@ -3,12 +3,15 @@ import { Content, ListProducts, Pagination } from '../components';
 import axios from 'axios';
 import { Loading } from '../components';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const Home = () => {
     const [categories, setCategories] = useState();
     const [product, setProduct] = useState();
     const [show, setShow] = useState(false);
+
     const apiGetCategories = () => {
+        document.querySelector('.btn--primary')?.classList.remove('btn--primary');
         axios.get('/api/customer/categories').then((res) => {
             const result = res.data;
             if (res.data) {
@@ -17,6 +20,7 @@ export const Home = () => {
         });
     };
     const apiGetAllProducts = () => {
+        document.querySelector('.btn--primary')?.classList.remove('btn--primary');
         setShow(true);
         axios.get('/api/customer/products/all').then((res) => {
             const result = res.data;
@@ -28,6 +32,7 @@ export const Home = () => {
         });
     };
     const apiGetProductsByCatID = (cid) => {
+        document.querySelector('.btn--primary')?.classList.remove('btn--primary');
         setShow(true);
         axios.get('/api/customer/products/category/' + cid).then((res) => {
             const result = res.data;
@@ -40,7 +45,7 @@ export const Home = () => {
     };
     useEffect(() => {
         apiGetCategories();
-        // apiGetAllProducts();
+        apiGetAllProducts();
     }, []);
     return (
         <div className="app__container">
@@ -104,7 +109,7 @@ export const Home = () => {
                             </ul>
                         </nav>
                         <div className="home-product">
-                            <Content product={product} />
+                            <Content product={product} setProduct={setProduct} setShow={setShow} />
                         </div>
                         <Pagination />
                     </div>
