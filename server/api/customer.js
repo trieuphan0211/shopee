@@ -66,6 +66,7 @@ router.post('/register', async function (req, res) {
     const name = req.body.name;
     const phone = req.body.phone;
     const email = req.body.email;
+    const image = req.body.image;
     const dbCust = await CustomerDAO.selectByUsernameOrEmail(username, email);
     if (dbCust) {
         res.json({ success: false, message: 'Đã tồn tại Email hoặc Username' });
@@ -80,8 +81,10 @@ router.post('/register', async function (req, res) {
             email: email,
             active: 0,
             token: token,
+            image: null,
         };
         const result = await CustomerDAO.insert(newCust);
+        console.log(result);
         if (result) {
             const send = await EmailUtil.send(email, result._id, token);
             if (send) {
