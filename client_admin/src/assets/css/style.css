@@ -76,16 +76,23 @@
     font-size: 1.4rem;
 }
 
-.tbody_price {
-    width: 70px;
-}
-
-.tbody_date {
+.tbody_username,
+.tbody_password,
+.tbody_date,
+.tbody_custname,
+.tbody_phone,
+.tbody_total,
+.tbody_status {
     width: 100px;
 }
 
+.tbody_price,
 .tbody_cate {
     width: 70px;
+}
+
+.tbody_action {
+    width: 150px;
 }
 
 .tbody_img {

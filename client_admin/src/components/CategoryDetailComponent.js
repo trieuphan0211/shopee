@@ -19,13 +19,14 @@ class CategoryDetail extends Component {
                         <div className="col l-12 m-12 c-12">
                             <div className="float-right">
                                 <h2 className="text-Cattgory text-center">CATEGORY DETAIL</h2>
-                                <form className='dt'>
+                                <form className="dt">
                                     <table className="CATEGORYDETAIL">
                                         <tbody className="tbody">
-                                            <tr className='tbody_Catgorydetail'>
+                                            <tr className="tbody_Catgorydetail">
                                                 <td>ID</td>
                                                 <td>
                                                     <input
+                                                        className="p-6 w-100 mb-4"
                                                         type="text"
                                                         value={this.state.txtID}
                                                         onChange={(e) => {
@@ -39,6 +40,7 @@ class CategoryDetail extends Component {
                                                 <td>Name</td>
                                                 <td>
                                                     <input
+                                                        className="p-6 w-100 mb-4"
                                                         type="text"
                                                         value={this.state.txtName}
                                                         onChange={(e) => {
@@ -51,16 +53,19 @@ class CategoryDetail extends Component {
                                                 <td></td>
                                                 <td>
                                                     <input
+                                                        className="btn btn--primary mr-4 product-btn"
                                                         type="submit"
                                                         value="ADD NEW"
                                                         onClick={(e) => this.btnAddClick(e)}
                                                     />
                                                     <input
+                                                        className="btn btn--primary mr-4 product-btn"
                                                         type="submit"
                                                         value="UPDATE"
                                                         onClick={(e) => this.btnUpdateClick(e)}
                                                     />
                                                     <input
+                                                        className="btn btn--primary product-btn"
                                                         type="submit"
                                                         value="DELETE"
                                                         onClick={(e) => this.btnDeleteClick(e)}
