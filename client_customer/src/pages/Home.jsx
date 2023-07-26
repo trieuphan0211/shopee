@@ -9,18 +9,16 @@ export const Home = () => {
     const [product, setProduct] = useState();
     const [show, setShow] = useState(false);
     const apiGetCategories = () => {
-        setShow(true);
         axios.get('/api/customer/categories').then((res) => {
             const result = res.data;
             if (res.data) {
                 setCategories(result);
-                setShow(false);
             }
         });
     };
-    const apiGetNewProducts = () => {
+    const apiGetAllProducts = () => {
         setShow(true);
-        axios.get('/api/customer/products/new').then((res) => {
+        axios.get('/api/customer/products/all').then((res) => {
             const result = res.data;
             if (res.data) {
                 console.log(res.data);
@@ -33,7 +31,7 @@ export const Home = () => {
         setShow(true);
         axios.get('/api/customer/products/category/' + cid).then((res) => {
             const result = res.data;
-            if (res.data) {
+            if (res.data !== []) {
                 console.log(res.data);
                 setProduct(result);
                 setShow(false);
@@ -42,14 +40,18 @@ export const Home = () => {
     };
     useEffect(() => {
         apiGetCategories();
-        apiGetNewProducts();
+        // apiGetAllProducts();
     }, []);
     return (
         <div className="app__container">
             <div className="grid wide">
                 <div className="row sm-gutter app__content">
                     <div className="col l-2 m-0 c-0">
-                        <ListProducts categories={categories} apiGetProductsByCatID={apiGetProductsByCatID} />
+                        <ListProducts
+                            apiGetAllProducts={apiGetAllProducts}
+                            categories={categories}
+                            apiGetProductsByCatID={apiGetProductsByCatID}
+                        />
                     </div>
                     <div className="col l-10 m-12 c-12">
                         <nav className="mobile-category">

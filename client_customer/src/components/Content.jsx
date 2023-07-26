@@ -97,10 +97,6 @@ export const Content = ({ product }) => {
                                         <FaCheck />
                                         <span>Yêu thích</span>
                                     </div>
-                                    <div className="home-product-item__sale-off">
-                                        <span className="home-product-item__sale-off-percent">20%</span>
-                                        <span className="home-product-item__sale-off-label">GIẢM</span>
-                                    </div>
                                 </Link>
                             </div>
                         );

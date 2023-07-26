@@ -33,6 +33,10 @@ router.get('/products/new', async function (req, res) {
     const products = await ProductDAO.selectTopNew(3);
     res.json(products);
 });
+router.get('/products/all', async function (req, res) {
+    const products = await ProductDAO.selectAll();
+    res.json(products);
+});
 router.get('/products/hot', async function (req, res) {
     const products = await ProductDAO.selectTopHot(3);
     res.json(products);
@@ -135,6 +139,7 @@ router.put('/customers/:id', JwtUtil.checkToken, async function (req, res) {
     const phone = req.body.phone;
     const email = req.body.email;
     const image = req.body.image;
+
     const customer = {
         _id: _id,
         username: username,

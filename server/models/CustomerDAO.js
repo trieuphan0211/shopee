@@ -36,6 +36,8 @@ const CustomerDAO = {
             image: customer.image,
         };
         const result = await Models.Customer.findByIdAndUpdate(customer._id, newvalues, { new: true });
+        console.log(result);
+
         return result;
     },
     async selectAll() {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaList } from 'react-icons/fa6';
 
-export const ListProducts = ({ categories, apiGetProductsByCatID }) => {
+export const ListProducts = ({ categories, apiGetProductsByCatID, apiGetAllProducts }) => {
     return (
         <nav className="category">
             <h3 className="category__heading" style={{ display: 'flex', alignItems: 'center' }}>
@@ -11,6 +11,7 @@ export const ListProducts = ({ categories, apiGetProductsByCatID }) => {
                 Danh Mục
             </h3>
             <ul className="category-list">
+                <li onClick={() => apiGetAllProducts()}>Tất cả</li>
                 {categories?.map((element, index) => {
                     console.log(element._id);
                     return (
