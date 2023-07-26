@@ -12,18 +12,20 @@ import downloadQR from '../assets/img/qr_code.png';
 import Spay from '../assets/img/shopee.png';
 import Voucher from '../assets/img/samnganmayman.png';
 import Sale from '../assets/img/muahangxuyentet.png';
-import Avatar from '../assets/img/avartar.png';
 
 export const HeaderNavBar = () => {
     const navigate = useNavigate();
     const { token, customer } = useContext(MyContext);
     const [name, setName] = useState('');
+    const [image, setImage] = useState('');
 
     useEffect(() => {
         if (customer) {
             setName(customer.name); // Replace 'name' with the actual key in 'customer' object that holds the user's name
+            setImage(customer.image);
         } else {
             setName(''); // If 'customer' is null or undefined, reset the name state
+            setImage('');
         }
     }, [customer]);
 
@@ -45,42 +47,42 @@ export const HeaderNavBar = () => {
                         <div className="header__qr">
                             <img src={downloadQR} alt="QR Code" className="header__qr-img" />
                             <div className="header__qr-apps">
-                                <a className="header__qr-link">
+                                <Link to="#" className="header__qr-link">
                                     <img src={appStore} alt="App Store" className="header__qr-download-img" />
-                                </a>
-                                <a className="header__qr-link">
+                                </Link>
+                                <Link to="#" className="header__qr-link">
                                     <img src={googlePlay} alt="Google Play" className="header__qr-download-img" />
-                                </a>
-                                <a className="header__qr-link">
+                                </Link>
+                                <Link to="#" className="header__qr-link">
                                     <img src={appGalley} alt="App Gallery" className="header__qr-download-img" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </li>
                     <li className="header__navbar-item">
                         <span className="header__navbar-title--no-pointer">Kết nối</span>
-                        <a className="header__navbar-icon-link">
+                        <Link to="#" className="header__navbar-icon-link">
                             <BiLogoFacebookCircle className="header__navbar-icon fa-brands fa-facebook" />
-                        </a>
-                        <a className="header__navbar-icon-link">
+                        </Link>
+                        <Link to="#" className="header__navbar-icon-link">
                             <BiLogoInstagram className="header__navbar-icon fa-brands fa-instagram" />
-                        </a>
+                        </Link>
                     </li>
                 </ul>
                 <ul className="header__navbar-list">
                     <li className="header__navbar-item header__navbar-item--has-notify">
-                        <a className="header__navbar-item-link">
+                        <Link to="#" className="header__navbar-item-link">
                             <BiBell className="header__navbar-icon fa-regular fa-bell" />
                             Thông báo
-                        </a>
+                        </Link>
                         <div className="header__notify">
                             <header className="header__notify-header">
                                 <h3>Thông Báo Mới Nhận</h3>
                             </header>
                             <ul className="header__notify-list">
                                 <li className="header__notify-item header__notify-item--viewed">
-                                    <a className="header__notify-link">
-                                        <img src={Spay} className="header__notify-img" />
+                                    <Link to="#" className="header__notify-link">
+                                        <img src={Spay} className="header__notify-img" alt="" />
                                         <div className="header__notify-info">
                                             <span className="header__notify-name">Bảo trì hệ thống SPayLater</span>
                                             <span className="header__notify-descriotion">
@@ -88,11 +90,11 @@ export const HeaderNavBar = () => {
                                                 SPayLater do bảo trì hệ thống. Hãy quay lại sau thời gian trên nhé!
                                             </span>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="header__notify-item">
-                                    <a className="header__notify-link">
-                                        <img src={Voucher} className="header__notify-img" />
+                                    <Link to="#" className="header__notify-link">
+                                        <img src={Voucher} className="header__notify-img" alt="" />
                                         <div className="header__notify-info">
                                             <span className="header__notify-name">MUA HÀNG HOÀN ĐẾN 50.000XU</span>
                                             <span className="header__notify-descriotion">
@@ -100,7 +102,7 @@ export const HeaderNavBar = () => {
                                                 mã 10.000Đ đơn từ 150.000Đ. Mua hàng xuyên Tết, Shopee có hết
                                             </span>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="header__notify-item header__notify-item--viewed">
                                     <Link className="header__notify-link">
@@ -155,7 +157,7 @@ export const HeaderNavBar = () => {
                         </div>
                     ) : (
                         <li className="header__navbar-item header__navbar-user">
-                            <img src={Avatar} alt="" className="header__navbar-user-img" />
+                            <img src={'data:image/jpg;base64,' + image} alt="" className="header__navbar-user-img" />
                             <span className="header__navbar-user-name">{name}</span>
                             <ul className="header__navbar-user-menu">
                                 <li className="header__navbar-user-item">

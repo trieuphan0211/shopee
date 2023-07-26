@@ -32,46 +32,52 @@ class Product extends Component {
         const pagination = Array.from({ length: this.state.noPages }, (_, index) => {
             if (index + 1 === this.state.curPage) {
                 return (
-                    <span key={index}>
+                    <span className="tbody_pagination" key={index}>
                         | <b>{index + 1}</b> |
                     </span>
                 );
             } else {
                 return (
-                    <span key={index} className="link" onClick={() => this.lnkPageClick(index + 1)}>
+                    <span key={index} className="link tbody_pagination" onClick={() => this.lnkPageClick(index + 1)}>
                         | {index + 1} |
                     </span>
                 );
             }
         });
         return (
-            <div>
-                <div className="float-left">
-                    <h2 className="text-center">PRODUCT LIST</h2>
-                    <table className="datatable" border="1">
-                        <tbody>
-                            <tr className="datatable">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Creation date</th>
-                                <th>Category</th>
-                                <th>Image</th>
-                            </tr>
-                            {prods}
-                            <tr>
-                                <td colSpan="6">{pagination}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div className="app__container container__main ">
+                <div className="grid wide">
+                    <div className="row sm-gutter app__content style-product-Detail">
+                        <div className="col l-12 m-12 c-12">
+                            <div className="float-left">
+                                <h2 className="text-center">PRODUCT LIST</h2>
+                                <table className="datatable" border="1">
+                                    <tbody className="tbody">
+                                        <tr className="datatable">
+                                            <td className="tbody_id">ID</td>
+                                            <td className="tbody_name">Name</td>
+                                            <td className="tbody_price">Price</td>
+                                            <td className="tbody_date">Creation date</td>
+                                            <td className="tbody_cate">Category</td>
+                                            <td className="tbody_img">Image</td>
+                                        </tr>
+                                        {prods}
+                                        <tr>
+                                            <td colSpan="6">{pagination}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="inline" />
+                            <ProductDetail
+                                item={this.state.itemSelected}
+                                curPage={this.state.curPage}
+                                updateProducts={this.updateProducts}
+                            />
+                            <div className="float-clear" />
+                        </div>
+                    </div>
                 </div>
-                <div className="inline" />
-                <ProductDetail
-                    item={this.state.itemSelected}
-                    curPage={this.state.curPage}
-                    updateProducts={this.updateProducts}
-                />
-                <div className="float-clear" />
             </div>
         );
     }

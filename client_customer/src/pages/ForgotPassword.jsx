@@ -2,14 +2,46 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+};
+
 export const ForgotPassword = () => {
     const navigate = useNavigate();
     const email = useRef(null);
     const [message, setMessage] = useState('');
 
     // event-handlers
-    const btnForgotPasswordClick = async (e) => {};
+    const btnForgotPasswordClick = async (e) => {
+        e.preventDefault();
 
+        const emailValue = email.current.value;
+
+        if (emailValue) {
+            // Check if email is in the correct format
+            if (!validateEmail(emailValue)) {
+                setMessage('Vui lòng kiểm tra lại email của bạn.');
+                return;
+            }
+            const account = {
+                email: emailValue,
+            };
+            apiForgotPassword(account);
+        }
+    };
+
+    // apis
+    const apiForgotPassword = (account) => {
+        axios.post('/api/customer/forgot-password', account).then((res) => {
+            const result = res.data;
+            alert(result.message);
+            // Redirect to login page after sending token
+            if (result.success) {
+                navigate('/customer/login');
+            }
+        });
+    };
     return (
         <div className="auth-modal">
             {/* Forgot Password form */}
@@ -38,7 +70,7 @@ export const ForgotPassword = () => {
                             TRỞ LẠI
                         </button>
                         <button className="btn btn--primary" onClick={(e) => btnForgotPasswordClick(e)}>
-                            GỬI MÃ
+                            GỬI TOKEN
                         </button>
                     </div>
                 </div>

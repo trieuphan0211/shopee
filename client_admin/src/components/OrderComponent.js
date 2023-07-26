@@ -19,7 +19,7 @@ class Order extends Component {
                     <td>{new Date(item.cdate).toLocaleString()}</td>
                     <td>{item.customer.name}</td>
                     <td>{item.customer.phone}</td>
-                    <td>{item.total}</td>
+                    <td>{item.total}.000đ</td>
                     <td>{item.status}</td>
                     <td>
                         {item.status === 'PENDING' ? (
@@ -54,53 +54,61 @@ class Order extends Component {
                                 alt=""
                             />
                         </td>
-                        <td>{item.product.price}</td>
+                        <td>{item.product.price}.000đ</td>
                         <td>{item.quantity}</td>
-                        <td>{item.product.price * item.quantity}</td>
+                        <td>{item.product.price * item.quantity}.000đ</td>
                     </tr>
                 );
             });
         }
         return (
-            <div>
-                <div className="align-center">
-                    <h2 className="text-center">ORDER LIST</h2>
-                    <table className="datatable" border="1">
-                        <tbody>
-                            <tr className="datatable">
-                                <th>ID</th>
-                                <th>Creation date</th>
-                                <th>Cust.name</th>
-                                <th>Cust.phone</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            {orders}
-                        </tbody>
-                    </table>
-                </div>
-                {this.state.order ? (
-                    <div className="align-center">
-                        <h2 className="text-center">ORDER DETAIL</h2>
-                        <table className="datatable" border="1">
-                            <tbody>
-                                <tr className="datatable">
-                                    <th>No.</th>
-                                    <th>Prod.ID</th>
-                                    <th>Prod.name</th>
-                                    <th>Image</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Amount</th>
-                                </tr>
-                                {items}
-                            </tbody>
-                        </table>
+            <div className="app__container container__main ">
+                <div className="grid wide">
+                    <div className="row sm-gutter app__content style-product-Detail">
+                        <div className="col l-12 m-12 c-12">
+                            <div>
+                                <div className="align-center">
+                                    <h2 className="text-center">ORDER LIST</h2>
+                                    <table className="datatable" border="1">
+                                        <tbody className="tbody">
+                                            <tr className="datatable">
+                                                <th className="tbody_id">ID</th>
+                                                <th className="tbody_date">Creation date</th>
+                                                <th className="tbody_custname ">Cust.name</th>
+                                                <th className="tbody_phone">Cust.phone</th>
+                                                <th className="tbody_total">Total</th>
+                                                <th className="tbody_status">Status</th>
+                                                <th className="tbody_action">Action</th>
+                                            </tr>
+                                            {orders}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {this.state.order ? (
+                                    <div className="align-center">
+                                        <h2 className="text-center">ORDER DETAIL</h2>
+                                        <table className="datatable" border="1">
+                                            <tbody className="tbody">
+                                                <tr className="datatable">
+                                                    <th>No.</th>
+                                                    <th>Prod.ID</th>
+                                                    <th>Prod.name</th>
+                                                    <th>Image</th>
+                                                    <th>Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                                {items}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ) : (
+                                    <div />
+                                )}
+                            </div>
+                        </div>
                     </div>
-                ) : (
-                    <div />
-                )}
+                </div>
             </div>
         );
     }

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BiLogoFacebookCircle, BiLogoInstagram } from 'react-icons/bi';
@@ -11,6 +11,19 @@ export const Login = () => {
     const context = useContext(MyContext);
     const navigate = useNavigate();
     const [message, setMessage] = useState('');
+
+    const { setToken } = context;
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (token) {
+            // Assuming you have the "context" object available to set the token
+            setToken(token);
+
+            // Fetch user data if needed and set the customer in context
+            // For this example, we assume the user data is already stored in context.
+        }
+    }, [setToken]);
 
     // event-handlers
     const btnLoginClick = (e) => {
@@ -30,8 +43,10 @@ export const Login = () => {
         axios.post('/api/customer/login', account).then((res) => {
             const result = res.data;
             if (result.success === true) {
+                // Save the token to session storage
+                sessionStorage.setItem('token', result.token);
                 // Assuming you have the "context" object available to set the token and customer
-                context.setToken(result.token);
+                setToken(result.token);
                 context.setCustomer(result.customer);
                 // Assuming you have access to "props" to navigate to the home page
                 navigate('/customer/home');

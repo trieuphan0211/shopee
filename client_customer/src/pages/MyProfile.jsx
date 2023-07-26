@@ -9,6 +9,7 @@ export const MyProfile = () => {
     const [username, setUsername] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const [prevImage, setPrevImage] = useState({});
 
     const emailInputRef = useRef();
     const usernameInputRef = useRef();
@@ -27,11 +28,13 @@ export const MyProfile = () => {
             setUsername(context.customer.username);
             setName(context.customer.name);
             setPhone(context.customer.phone);
+            setPrevImage(context.customer.image);
         } else {
             setEmail('');
             setUsername('');
             setName('');
             setPhone('');
+            setPrevImage('');
         }
     }, [context.customer]);
 
@@ -39,15 +42,19 @@ export const MyProfile = () => {
     const btnUpdateClick = (e) => {
         e.preventDefault();
 
+        const emailValue = emailInputRef.current.value;
         const usernameVlaue = usernameInputRef.current.value;
         const nameValue = nameInputRef.current.value;
         const phoneValue = phoneInputRef.current.value;
+        const imageData = prevImage.image.replace(/^data:image\/[a-z]+;base64,/, '');
 
-        if (usernameVlaue && nameValue && phoneValue) {
+        if (emailValue && usernameVlaue && nameValue && phoneValue && imageData) {
             const customer = {
+                email: emailValue,
                 username: usernameVlaue,
                 name: nameValue,
                 phone: phoneValue,
+                image: imageData,
             };
             apiPutCustomer(context.customer._id, customer);
         } else {
@@ -79,7 +86,7 @@ export const MyProfile = () => {
 
     useEffect(() => {
         const inputs = [emailInputRef, usernameInputRef, nameInputRef, phoneInputRef];
-        // Check if any input field is enabled (not having the class 'disabled')
+        // Check if any input field is enabled (not having the class 'disabled') or if an image is selected
         const anyInputEnabled = inputs.some((inputRef) => !inputRef.current.classList.contains('disabled'));
         setIsUpdateButtonDisabled(!anyInputEnabled);
     }, [email, username, name, phone]);
@@ -92,6 +99,28 @@ export const MyProfile = () => {
         const anyInputEnabled = inputs.some((inputRef) => !inputRef.current.classList.contains('disabled'));
         setIsUpdateButtonDisabled(!anyInputEnabled);
     };
+
+    // Image preview
+    const previewImage = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setPrevImage({ image: e.target.result });
+            };
+            reader.readAsDataURL(file);
+        }
+        setIsUpdateButtonDisabled(false);
+    };
+
+    console.log(prevImage);
+
+    useEffect(() => {
+        // Update the prevImage state with the new image from context.customer
+        setPrevImage({
+            image: 'data:image/jpg;base64,' + context.customer?.image,
+        });
+    }, [context.customer]);
 
     return (
         <div className="app__container">
@@ -178,15 +207,19 @@ export const MyProfile = () => {
                                 <div className="profile__avatar">
                                     <div className="avatar__upload">
                                         <img
-                                            src={
-                                                'https://user-images.githubusercontent.com/102477140/215768914-e3129899-6e50-4a33-bbaa-cc730c61a4b4.png'
-                                            }
+                                            src={prevImage.image}
                                             alt=""
                                             className="avatar__upload-img"
+                                            onChange={(e) => previewImage(e)}
                                         />
                                         <div className="custom-button">
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                name="fileImage"
+                                                onChange={(e) => previewImage(e)}
+                                            />
                                             <button>Chọn Ảnh</button>
-                                            <input type="file" accept="image/*" />
                                         </div>
                                         <div className="avatar__upload-text">
                                             <div style={{ marginTop: 12 }}>Dụng lượng file tối đa 1 MB</div>

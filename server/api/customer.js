@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const session = require('express-session');
 // utils
 const CryptoUtil = require('../utils/CryptoUtil');
 const EmailUtil = require('../utils/EmailUtil');
@@ -12,6 +13,16 @@ const ProductDAO = require('../models/ProductDAO');
 const CustomerDAO = require('../models/CustomerDAO');
 // daos
 const OrderDAO = require('../models/OrderDAO');
+
+router.use(
+    session({
+        secret: '55063etrytuj135trwhgnfbdv657sae',
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }, // Set secure to true in production with HTTPS
+    }),
+);
+
 // category
 router.get('/categories', async function (req, res) {
     const categories = await CategoryDAO.selectAll();
@@ -123,6 +134,7 @@ router.put('/customers/:id', JwtUtil.checkToken, async function (req, res) {
     const name = req.body.name;
     const phone = req.body.phone;
     const email = req.body.email;
+    const image = req.body.image;
     const customer = {
         _id: _id,
         username: username,
@@ -130,6 +142,7 @@ router.put('/customers/:id', JwtUtil.checkToken, async function (req, res) {
         name: name,
         phone: phone,
         email: email,
+        image: image,
     };
     const result = await CustomerDAO.update(customer);
     res.json(result);
