@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import aoKhoatLong from '../assets/img/ao_khoac_long.png';
 import { User } from '../components';
 import axios from 'axios';
 import MyContext from '../contexts/MyContext';
@@ -107,7 +106,10 @@ export const Order = () => {
                                                 return (
                                                     <div className="item_info">
                                                         <div className="item_info-name">
-                                                            <img src={'data:image/jpg;base64,' + e.product.image} />
+                                                            <img
+                                                                alt=""
+                                                                src={'data:image/jpg;base64,' + e.product.image}
+                                                            />
                                                             <div>
                                                                 <p>{e.product.name}</p>
                                                                 <p> x{e.quantity} </p>
@@ -134,14 +136,17 @@ export const Order = () => {
                                 })}
                             {type === 'accept' &&
                                 order.map((item) => {
-                                    if (item.status == 'PENDING') {
+                                    if (item.status === 'PENDING') {
                                         return (
                                             <div className="order_product-item">
                                                 {item.items.map((e) => {
                                                     return (
                                                         <div className="item_info">
                                                             <div className="item_info-name">
-                                                                <img src={'data:image/jpg;base64,' + e.product.image} />
+                                                                <img
+                                                                    alt=""
+                                                                    src={'data:image/jpg;base64,' + e.product.image}
+                                                                />
                                                                 <div>
                                                                     <p>{e.product.name}</p>
                                                                     <p> x{e.quantity} </p>
@@ -175,18 +180,23 @@ export const Order = () => {
                                                 </div>
                                             </div>
                                         );
+                                    } else {
+                                        return null;
                                     }
                                 })}
                             {type === 'getItems' &&
                                 order.map((item) => {
-                                    if (item.status == 'APPROVED') {
+                                    if (item.status === 'APPROVED') {
                                         return (
                                             <div className="order_product-item">
                                                 {item.items.map((e) => {
                                                     return (
                                                         <div className="item_info">
                                                             <div className="item_info-name">
-                                                                <img src={'data:image/jpg;base64,' + e.product.image} />
+                                                                <img
+                                                                    alt=""
+                                                                    src={'data:image/jpg;base64,' + e.product.image}
+                                                                />
                                                                 <div>
                                                                     <p>{e.product.name}</p>
                                                                     <p> x{e.quantity} </p>
@@ -220,18 +230,23 @@ export const Order = () => {
                                                 </div>
                                             </div>
                                         );
+                                    } else {
+                                        return null;
                                     }
                                 })}
                             {type === 'cancel' &&
                                 order.map((item) => {
-                                    if (item.status == 'CANCELED') {
+                                    if (item.status === 'CANCELED') {
                                         return (
                                             <div className="order_product-item">
                                                 {item.items.map((e) => {
                                                     return (
                                                         <div className="item_info">
                                                             <div className="item_info-name">
-                                                                <img src={'data:image/jpg;base64,' + e.product.image} />
+                                                                <img
+                                                                    alt=""
+                                                                    src={'data:image/jpg;base64,' + e.product.image}
+                                                                />
                                                                 <div>
                                                                     <p>{e.product.name}</p>
                                                                     <p> x{e.quantity} </p>
@@ -265,6 +280,8 @@ export const Order = () => {
                                                 </div>
                                             </div>
                                         );
+                                    } else {
+                                        return null;
                                     }
                                 })}
                         </div>
