@@ -16,6 +16,7 @@ import vtPost from '../assets/img/viettel_post.png';
 import jTExpress from '../assets/img/j&t_epress.png';
 import ninjaVan from '../assets/img/ninja_van.png';
 import CCDV from '../assets/img/logoCCDV.png';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
     return (
@@ -26,37 +27,59 @@ export const Footer = () => {
                         <h3 className="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
                         <ul className="footer-list">
                             <li className="footer-item">
-                                <a className="footer-item__link">Trung Tâm Trợ Giúp</a>
+                                <Link to="#" className="footer-item__link">
+                                    Trung Tâm Trợ Giúp
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Shopee Blog</a>
+                                <Link to="#" className="footer-item__link">
+                                    Shopee Blog
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Shopee Mall</a>
+                                <Link to="#" className="footer-item__link">
+                                    Shopee Mall
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Hướng Dẫn Mua Hàng</a>
+                                <Link to="#" className="footer-item__link">
+                                    Hướng Dẫn Mua Hàng
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Hướng Dẫn Bán Hàng</a>
+                                <Link to="#" className="footer-item__link">
+                                    Hướng Dẫn Bán Hàng
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Thanh Toán</a>
+                                <Link to="#" className="footer-item__link">
+                                    Thanh Toán
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Shopee Xu</a>
+                                <Link to="#" className="footer-item__link">
+                                    Shopee Xu
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Vận Chuyển</a>
+                                <Link to="#" className="footer-item__link">
+                                    Vận Chuyển
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Trả Hàng &amp; Hoàn Tiền</a>
+                                <Link to="#" className="footer-item__link">
+                                    Trả Hàng &amp; Hoàn Tiền
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Chăm Sóc Khách Hàng</a>
+                                <Link to="#" className="footer-item__link">
+                                    Chăm Sóc Khách Hàng
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Chính Sách Bảo Hành</a>
+                                <Link to="#" className="footer-item__link">
+                                    Chính Sách Bảo Hành
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -64,31 +87,49 @@ export const Footer = () => {
                         <h3 className="footer__heading">VỀ SHOPEE</h3>
                         <ul className="footer-list">
                             <li className="footer-item">
-                                <a className="footer-item__link">Giới Thiệu Về Shopee Việt Nam</a>
+                                <Link to="#" className="footer-item__link">
+                                    Giới Thiệu Về Shopee Việt Nam
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Tuyển Dụng</a>
+                                <Link to="#" className="footer-item__link">
+                                    Tuyển Dụng
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Điều Khoản Shopee</a>
+                                <Link to="#" className="footer-item__link">
+                                    Điều Khoản Shopee
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Chính Sách Bảo Mật</a>
+                                <Link to="#" className="footer-item__link">
+                                    Chính Sách Bảo Mật
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Chính Hãng</a>
+                                <Link to="#" className="footer-item__link">
+                                    Chính Hãng
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Kênh Người Bán</a>
+                                <Link to="#" className="footer-item__link">
+                                    Kênh Người Bán
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Flash Sales</a>
+                                <Link to="#" className="footer-item__link">
+                                    Flash Sales
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Chương Trình Tiếp Thị Liên Kết Shopee</a>
+                                <Link to="#" className="footer-item__link">
+                                    Chương Trình Tiếp Thị Liên Kết Shopee
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">Liên Hệ Với Truyền Thông</a>
+                                <Link to="#" className="footer-item__link">
+                                    Liên Hệ Với Truyền Thông
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -96,34 +137,34 @@ export const Footer = () => {
                         <h3 className="footer__heading">ĐƠN VỊ VẬN CHUYỂN</h3>
                         <ul className="footer-list">
                             <li className="footer-list__shipping">
-                                <img src={shopeeExpress} className="footer-list__shipping-img" />
+                                <img alt="" src={shopeeExpress} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={giaoHangTietKiem} className="footer-list__shipping-img" />
+                                <img alt="" src={giaoHangTietKiem} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={giaoHangNhanh} className="footer-list__shipping-img" />
+                                <img alt="" src={giaoHangNhanh} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={vtPost} className="footer-list__shipping-img" />
+                                <img alt="" src={vtPost} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={vnPost} className="footer-list__shipping-img" />
+                                <img alt="" src={vnPost} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={jTExpress} className="footer-list__shipping-img" />
+                                <img alt="" src={jTExpress} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={grabExpress} className="footer-list__shipping-img" />
+                                <img alt="" src={grabExpress} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={ninjaVan} className="footer-list__shipping-img" />
+                                <img alt="" src={ninjaVan} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={bestExpress} className="footer-list__shipping-img" />
+                                <img alt="" src={bestExpress} className="footer-list__shipping-img" />
                             </li>
                             <li className="footer-list__shipping">
-                                <img src={Be} className="footer-list__shipping-img" />
+                                <img alt="" src={Be} className="footer-list__shipping-img" />
                             </li>
                         </ul>
                     </div>
@@ -131,22 +172,22 @@ export const Footer = () => {
                         <h3 className="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
                         <ul className="footer-list">
                             <li className="footer-item">
-                                <a className="footer-item__link">
+                                <Link to="#" className="footer-item__link">
                                     <BiLogoFacebookCircle className="footer-item__icon fa-brands fa-facebook" />
                                     Facebook
-                                </a>
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">
+                                <Link to="#" className="footer-item__link">
                                     <BiLogoInstagram className="footer-item__icon fa-brands fa-instagram" />
                                     Instagram
-                                </a>
+                                </Link>
                             </li>
                             <li className="footer-item">
-                                <a className="footer-item__link">
+                                <Link to="#" className="footer-item__link">
                                     <BiLogoLinkedinSquare className="footer-item__icon fa-brands fa-linkedin" />
                                     LinkedIn
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -155,15 +196,15 @@ export const Footer = () => {
                         <div className="footer__download">
                             <img src={downloadQR} alt="Download QR" className="footer__download-qr" />
                             <div className="footer__download-apps">
-                                <a className="footer__download-app-link">
+                                <Link to="#" className="footer__download-app-link">
                                     <img src={appStore} alt="App Store" className="footer__download-app-img" />
-                                </a>
-                                <a className="footer__download-app-link">
+                                </Link>
+                                <Link to="#" className="footer__download-app-link">
                                     <img src={googlePlay} alt="Google Play" className="footer__download-app-img" />
-                                </a>
-                                <a className="footer__download-app-link">
+                                </Link>
+                                <Link to="#" className="footer__download-app-link">
                                     <img src={appGalley} alt="App Gallery" className="footer__download-app-img" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -173,9 +214,9 @@ export const Footer = () => {
                 <div className="grid wide">
                     <div className="footer-contents">
                         <div className="footer-content__ccdv">
-                            <a href="#" className="footer-content__ccdv-link">
-                                <img src={CCDV} alt className="footer-content__ccdv-img" />
-                            </a>
+                            <Link to="#" className="footer-content__ccdv-link">
+                                <img alt="" src={CCDV} className="footer-content__ccdv-img" />
+                            </Link>
                         </div>
                         <div className="footer-content__heading">
                             <h4>Công ty TNHH Shopee</h4>
