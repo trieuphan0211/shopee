@@ -85,8 +85,7 @@ figure.caption-right {
 }
 span.link {
     cursor: pointer;
-    color: blue;
-    text-decoration: underline;
+    color: #23adad;
 }
 /* datatable.css */
 .datatable {

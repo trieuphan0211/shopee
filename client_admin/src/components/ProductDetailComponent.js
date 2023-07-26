@@ -45,6 +45,7 @@ class ProductDetail extends Component {
                                                 <td> ID</td>
                                                 <td>
                                                     <input
+                                                        className="p-6 w-100 mb-4"
                                                         type="text"
                                                         value={this.state.txtID}
                                                         onChange={(e) => {
@@ -58,6 +59,7 @@ class ProductDetail extends Component {
                                                 <td>Name</td>
                                                 <td>
                                                     <input
+                                                        className="p-6 w-100 mb-4"
                                                         type="text"
                                                         value={this.state.txtName}
                                                         onChange={(e) => {
@@ -70,6 +72,7 @@ class ProductDetail extends Component {
                                                 <td>Price</td>
                                                 <td>
                                                     <input
+                                                        className="p-6 w-100 mb-4"
                                                         type="text"
                                                         value={this.state.txtPrice}
                                                         onChange={(e) => {
@@ -82,6 +85,7 @@ class ProductDetail extends Component {
                                                 <td>Image</td>
                                                 <td>
                                                     <input
+                                                        className="w-100 mb-4"
                                                         type="file"
                                                         name="fileImage"
                                                         accept="image/jpeg, image/png, image/gif"
@@ -93,6 +97,7 @@ class ProductDetail extends Component {
                                                 <td>Category</td>
                                                 <td>
                                                     <select
+                                                        className="p-6 w-100 mb-4"
                                                         onChange={(e) => {
                                                             this.setState({ cmbCategory: e.target.value });
                                                         }}
@@ -105,16 +110,19 @@ class ProductDetail extends Component {
                                                 <td></td>
                                                 <td>
                                                     <input
+                                                        className="btn btn--primary mr-4 product-btn"
                                                         type="submit"
                                                         value="ADD NEW"
                                                         onClick={(e) => this.btnAddClick(e)}
                                                     />
                                                     <input
+                                                        className="btn btn--primary mr-4 product-btn"
                                                         type="submit"
                                                         value="UPDATE"
                                                         onClick={(e) => this.btnUpdateClick(e)}
                                                     />
                                                     <input
+                                                        className="btn btn--primary product-btn"
                                                         type="submit"
                                                         value="DELETE"
                                                         onClick={(e) => this.btnDeleteClick(e)}
@@ -124,9 +132,10 @@ class ProductDetail extends Component {
                                             <tr>
                                                 <td colSpan="2 tbody_1">
                                                     <img
+                                                        className="mt-6 product-detail__img"
                                                         src={this.state.imgProduct}
-                                                        width="300px"
-                                                        height="300px"
+                                                        width="400px"
+                                                        height="400px"
                                                         alt=""
                                                     />
                                                 </td>

@@ -32,13 +32,13 @@ class Product extends Component {
         const pagination = Array.from({ length: this.state.noPages }, (_, index) => {
             if (index + 1 === this.state.curPage) {
                 return (
-                    <span key={index}>
+                    <span className="tbody_pagination" key={index}>
                         | <b>{index + 1}</b> |
                     </span>
                 );
             } else {
                 return (
-                    <span key={index} className="link" onClick={() => this.lnkPageClick(index + 1)}>
+                    <span key={index} className="link tbody_pagination" onClick={() => this.lnkPageClick(index + 1)}>
                         | {index + 1} |
                     </span>
                 );
@@ -54,12 +54,12 @@ class Product extends Component {
                                 <table className="datatable" border="1">
                                     <tbody className="tbody">
                                         <tr className="datatable">
-                                            <td className='tbody_1'>ID</td>
-                                            <td>Name</td>
-                                            <td>Price</td>
-                                            <td>Creation date</td>
-                                            <td>Category</td>
-                                            <td>Image</td>
+                                            <td className="tbody_id">ID</td>
+                                            <td className="tbody_name">Name</td>
+                                            <td className="tbody_price">Price</td>
+                                            <td className="tbody_date">Creation date</td>
+                                            <td className="tbody_cate">Category</td>
+                                            <td className="tbody_img">Image</td>
                                         </tr>
                                         {prods}
                                         <tr>

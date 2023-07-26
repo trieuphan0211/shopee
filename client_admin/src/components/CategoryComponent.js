@@ -17,7 +17,7 @@ class Category extends Component {
             return (
                 <tr key={item._id} className="datatable" onClick={() => this.trItemClick(item)}>
                     <td>{item._id}</td>
-                    <td>{item.name}</td>
+                    <td className="data-name">{item.name}</td>
                 </tr>
             );
         });
@@ -26,24 +26,24 @@ class Category extends Component {
                 <div className="grid wide">
                     <div className="row sm-gutter app__content">
                         <div className="col l-12 m-12 c-12">
-                        <div className="float-left">
-                            <h2 className="text-center">CATEGORY LIST</h2>
-                            <table className="category_body" border="1">
-                                <tbody className="tbody">
-                                    <tr className="datatable">
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                    </tr>
-                                    {cates}
-                                </tbody>
-                            </table>
+                            <div className="float-left">
+                                <h2 className="text-center">CATEGORY LIST</h2>
+                                <table className="category_body" border="1">
+                                    <tbody className="tbody">
+                                        <tr className="datatable">
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                        </tr>
+                                        {cates}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="inline" />
+                            <CategoryDetail item={this.state.itemSelected} updateCategories={this.updateCategories} />
+                            <div className="float-clear" />
                         </div>
-                        <div className="inline" />
-                        <CategoryDetail item={this.state.itemSelected} updateCategories={this.updateCategories} />
-                        <div className="float-clear" />
                     </div>
                 </div>
-            </div>
             </div>
         );
     }
