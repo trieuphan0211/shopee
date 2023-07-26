@@ -33,6 +33,7 @@ const CustomerDAO = {
             name: customer.name,
             phone: customer.phone,
             email: customer.email,
+            image: customer.image,
         };
         const result = await Models.Customer.findByIdAndUpdate(customer._id, newvalues, { new: true });
         return result;

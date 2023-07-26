@@ -123,6 +123,7 @@ router.put('/customers/:id', JwtUtil.checkToken, async function (req, res) {
     const name = req.body.name;
     const phone = req.body.phone;
     const email = req.body.email;
+    const image = req.body.image;
     const customer = {
         _id: _id,
         username: username,
@@ -130,6 +131,7 @@ router.put('/customers/:id', JwtUtil.checkToken, async function (req, res) {
         name: name,
         phone: phone,
         email: email,
+        image: image,
     };
     const result = await CustomerDAO.update(customer);
     res.json(result);
