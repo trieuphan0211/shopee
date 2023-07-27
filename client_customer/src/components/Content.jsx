@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FaStar, FaArrowDown, FaAngleLeft, FaAngleRight, FaRegHeart, FaCheck } from 'react-icons/fa6';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 export const Content = ({ product, setProduct, setShow, setCurrentPage, currentPage }) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const params = useParams();
     const apiGetNewroducts = () => {
         setShow(true);
         axios.get('/api/customer/products/new').then((res) => {
@@ -55,6 +56,11 @@ export const Content = ({ product, setProduct, setShow, setCurrentPage, currentP
         }
         setProduct(array);
     };
+    useEffect(() => {
+        if (!params.key) {
+            apiGetNewroducts();
+        }
+    }, []);
     return (
         <div>
             <div className="home-filter hide-on-mobile-tablet">

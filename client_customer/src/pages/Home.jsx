@@ -56,9 +56,6 @@ export const Home = () => {
 
     useEffect(() => {
         apiGetCategories();
-        if (!params.key) {
-            apiGetAllProducts();
-        }
     }, []);
     useEffect(() => {
         if (params.key) {
