@@ -10,10 +10,13 @@ import MyContext from '../contexts/MyContext';
 
 import avatar from '../assets/img/avartar.png';
 
+import { useTranslation } from 'react-i18next';
+
 export const User = () => {
     const { customer } = useContext(MyContext);
     const [image, setImage] = useState('');
     const [name, setName] = useState('');
+    const { t } = useTranslation();
 
     useEffect(() => {
         if (customer) {
@@ -34,7 +37,7 @@ export const User = () => {
                         <div className="order_info-edit">
                             <p>{name}</p>
                             <p>
-                                <GrEdit /> Sửa Hồ Sơ{' '}
+                                <GrEdit /> {t('user1.edit')}{' '}
                             </p>
                         </div>
                     </div>
@@ -42,17 +45,17 @@ export const User = () => {
                     <div className="oder_list">
                         <div>
                             <Link to="/customer/user/profile" className="none-decorate">
-                                <FiUser style={{ marginRight: 0 }} /> Tài Khoản Của Tôi {''}
+                                <FiUser style={{ marginRight: 0 }} /> {t('layout7.taikhoan')} {''}
                             </Link>
                         </div>
                         <div>
                             <Link to="/customer/user/change-password" className="none-decorate">
-                                <FaLock style={{ marginRight: 0 }} /> Đổi Mật Khẩu {''}
+                                <FaLock style={{ marginRight: 0 }} /> {t('user2.doimk')} {''}
                             </Link>
                         </div>
                         <div className="sellected">
                             <Link to="/customer/user/order" className="none-decorate">
-                                <BiShoppingBag style={{ marginRight: 0 }} /> Đơn Mua
+                                <BiShoppingBag style={{ marginRight: 0 }} /> {t('layout8.donmua')}
                             </Link>
                         </div>
                     </div>

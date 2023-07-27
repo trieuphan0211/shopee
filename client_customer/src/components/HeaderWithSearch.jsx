@@ -8,8 +8,11 @@ import MyContext from '../contexts/MyContext';
 
 import NoCart from '../assets/img/no_cart.png';
 
+import { useTranslation } from 'react-i18next';
+
 export const HeaderWithSearch = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const context = useContext(MyContext);
 
     return (
@@ -52,13 +55,13 @@ export const HeaderWithSearch = () => {
                                 <>
                                     <img src={NoCart} alt="" className="header__cart-no-cart-img" />
                                     <h4 className="header__cart-heading" style={{ textAlign: 'center' }}>
-                                        Chưa Có Sản Phẩm
+                                        {t('header1.chuacosp')}
                                     </h4>
                                 </>
                             )}
                             {context.mycart.length > 0 && (
                                 <>
-                                    <h4 className="header__cart-heading">Sản phẩm đã thêm</h4>
+                                    <h4 className="header__cart-heading">{t('header2.themsp')}</h4>
                                     <ul className="header__cart-list-item">
                                         {/* Cart item */}
                                         {context.mycart?.map((e) => {
@@ -89,9 +92,11 @@ export const HeaderWithSearch = () => {
                                                         </div>
                                                         <div className="header__cart-item-body">
                                                             <span className="header__cart-item-description">
-                                                                Phân loại: Đen
+                                                                {t('header4.phanloai')}
                                                             </span>
-                                                            <span className="header__cart-item-remove">Xóa</span>
+                                                            <span className="header__cart-item-remove">
+                                                                {t('header5.xoa')}
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </li>

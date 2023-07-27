@@ -2,12 +2,14 @@ import React, { useContext, useRef, useState } from 'react';
 import axios from 'axios';
 import { FaAngleDown, FaCheck, FaMagnifyingGlass } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import MyContext from '../contexts/MyContext';
 
 export const Search = () => {
     const [categories, setCategories] = useState([]);
     const key = useRef();
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const context = useContext(MyContext);
     // event-handlers
     const btnSearchClick = () => {
@@ -28,15 +30,15 @@ export const Search = () => {
                 />
             </div>
             <div className="header__search-select" style={{ display: 'flex', alignItems: 'center' }}>
-                <span className="header__search-select-label">Trong Shop</span>
+                <span className="header__search-select-label">{t('search1.trongshop')}</span>
                 <FaAngleDown className="header__search-select-icon " />
                 <ul className="header__search-option">
                     <li className="header__search-option-item header__search-option-item--active">
-                        <span>Trong Shop</span>
+                        <span>{t('search1.trongshop')}</span>
                         <FaCheck />
                     </li>
                     <li className="header__search-option-item">
-                        <span>Ngoài Shop</span>
+                        <span>{t('search2.ngoaishop')}</span>
                         <FaCheck />
                     </li>
                 </ul>
