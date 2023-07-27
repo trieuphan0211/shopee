@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BiLogoFacebookCircle, BiLogoInstagram } from 'react-icons/bi';
 
 import MyContext from '../contexts/MyContext';
 
 export const Login = () => {
+    const param = useLocation();
     const username = useRef(null);
     const password = useRef(null);
     const context = useContext(MyContext);
@@ -44,7 +45,24 @@ export const Login = () => {
             }
         });
     };
-
+    useEffect(() => {
+        // activeSub
+        console.log(param.pathname);
+        switch (param.pathname) {
+            case '/login':
+                document.title = 'Đăng nhập';
+                break;
+            case '/register':
+                document.title = 'Đăng ký';
+                break;
+            case '/active':
+                document.title = 'Kích hoạt tài khoản';
+                break;
+            case '/forgot-password':
+                document.title = 'Quên mật khẩu';
+                break;
+        }
+    }, [param.pathname]);
     return (
         <div className="auth-modal">
             {/* Login form */}

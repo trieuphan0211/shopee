@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,6 +42,25 @@ export const ForgotPassword = () => {
             }
         });
     };
+    const param = useLocation();
+    useEffect(() => {
+        // activeSub
+        console.log(param.pathname);
+        switch (param.pathname) {
+            case '/login':
+                document.title = 'Đăng nhập';
+                break;
+            case '/register':
+                document.title = 'Đăng ký';
+                break;
+            case '/active':
+                document.title = 'Kích hoạt tài khoản';
+                break;
+            case '/forgot-password':
+                document.title = 'Quên mật khẩu';
+                break;
+        }
+    }, [param.pathname]);
     return (
         <div className="auth-modal">
             {/* Forgot Password form */}

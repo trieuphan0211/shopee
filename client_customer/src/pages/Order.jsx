@@ -39,6 +39,7 @@ export const Order = () => {
                                             .classList.remove('header_sellected');
                                         e.currentTarget.classList.add('header_sellected');
                                     }}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <p> Tất Cả </p>
                                 </div>
@@ -50,6 +51,7 @@ export const Order = () => {
                                             .classList.remove('header_sellected');
                                         e.currentTarget.classList.add('header_sellected');
                                     }}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <p> Chờ Xác Nhận </p>
                                 </div>
@@ -61,6 +63,7 @@ export const Order = () => {
                                             .classList.remove('header_sellected');
                                         e.currentTarget.classList.add('header_sellected');
                                     }}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <p> Chờ Lấy Hàng </p>
                                 </div>
@@ -72,6 +75,7 @@ export const Order = () => {
                                             .classList.remove('header_sellected');
                                         e.currentTarget.classList.add('header_sellected');
                                     }}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <p> Đang Giao </p>
                                 </div>
@@ -83,6 +87,7 @@ export const Order = () => {
                                             .classList.remove('header_sellected');
                                         e.currentTarget.classList.add('header_sellected');
                                     }}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <p> Đã Giao </p>
                                 </div>
@@ -94,6 +99,7 @@ export const Order = () => {
                                             .classList.remove('header_sellected');
                                         e.currentTarget.classList.add('header_sellected');
                                     }}
+                                    style={{ cursor: 'pointer' }}
                                 >
                                     <p> Đã Huỷ </p>
                                 </div>

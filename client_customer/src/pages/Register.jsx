@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BiLogoFacebookCircle, BiLogoInstagram } from 'react-icons/bi';
 
 const validateEmail = (email) => {
@@ -10,6 +10,7 @@ const validateEmail = (email) => {
 };
 
 export const Register = () => {
+    const param = useLocation();
     const navigate = useNavigate();
     const email = useRef();
     const username = useRef();
@@ -57,7 +58,24 @@ export const Register = () => {
             }
         });
     };
-
+    useEffect(() => {
+        // activeSub
+        console.log(param.pathname);
+        switch (param.pathname) {
+            case '/login':
+                document.title = 'Đăng nhập';
+                break;
+            case '/register/':
+                document.title = 'Đăng ký';
+                break;
+            case '/active':
+                document.title = 'Kích hoạt tài khoản';
+                break;
+            case '/forgot-password':
+                document.title = 'Quên mật khẩu';
+                break;
+        }
+    }, [param.pathname]);
     return (
         <div>
             {/* Register form */}

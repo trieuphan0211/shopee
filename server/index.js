@@ -28,7 +28,7 @@ app.get('admin/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client_admin/build', 'index.html'));
 });
 // '/' serve the files at client-customer/build/* as static files
-app.use('/customer', express.static(path.resolve(__dirname, '../client_customer/build')));
-app.get('/customer/*', (req, res) => {
+app.use('/', express.static(path.resolve(__dirname, '../client_customer/build')));
+app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client_customer/build', 'index.html'));
 });
