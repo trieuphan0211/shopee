@@ -11,7 +11,11 @@ export const ListProducts = ({ categories, apiGetProductsByCatID, apiGetAllProdu
                 Danh Mục
             </h3>
             <ul className="category-list">
-                <li onClick={() => apiGetAllProducts()}>Tất cả</li>
+                <li className="category-item category-item-active" onClick={() => apiGetAllProducts()}>
+                    <Link to="" className="category-item__link">
+                        Tất cả
+                    </Link>
+                </li>
                 {categories?.map((element, index) => {
                     return (
                         <li

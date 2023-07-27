@@ -22,6 +22,9 @@ class Customer extends Component {
                     <td>{item.name}</td>
                     <td>{item.phone}</td>
                     <td>{item.email}</td>
+                    <td>
+                        <img src={'data:image/jpg;base64,' + item.image} width="70px" height="70px" alt="" />
+                    </td>
                     <td>{item.active}</td>
                     <td>
                         {item.active === 0 ? (
@@ -88,6 +91,7 @@ class Customer extends Component {
                                                 <th className="tbody_name">Name</th>
                                                 <th className="tbody_phone">Phone</th>
                                                 <th>Email</th>
+                                                <th>Image</th>
                                                 <th>Active</th>
                                                 <th>Action</th>
                                             </tr>

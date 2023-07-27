@@ -12,13 +12,17 @@ import downloadQR from '../assets/img/qr_code.png';
 import Spay from '../assets/img/shopee.png';
 import Voucher from '../assets/img/samnganmayman.png';
 import Sale from '../assets/img/muahangxuyentet.png';
+import Dropdown from './DropDown';
+import { useTranslation } from 'react-i18next';
 
 export const HeaderNavBar = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const { token, customer } = useContext(MyContext);
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
-
+    const context = useContext(MyContext);
+    console.log('content', context.token);
     useEffect(() => {
         if (customer) {
             setName(customer.name); // Replace 'name' with the actual key in 'customer' object that holds the user's name
@@ -31,16 +35,16 @@ export const HeaderNavBar = () => {
 
     // event-handlers
     const btnLogoutClick = () => {
-        this.context.setToken('');
-        this.context.setCustomer({});
-        this.context.setMycart([]);
+        context.setToken('');
+        context.setCustomer({});
+        context.setMycart([]);
     };
 
     return (
         <div>
             <nav className="header__navbar hide-on-mobile-tablet">
                 <ul className="header__navbar-list">
-                    <li className="header__navbar-item header__navbar-item--separate">Kênh Người Bán</li>
+                    <li className="header__navbar-item header__navbar-item--separate">{t('layout.kenh')}</li>
                     <li className="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate">
                         Tải ứng dụng
                         {/* Header QR code */}
@@ -67,6 +71,9 @@ export const HeaderNavBar = () => {
                         <Link to="#" className="header__navbar-icon-link">
                             <BiLogoInstagram className="header__navbar-icon fa-brands fa-instagram" />
                         </Link>
+                    </li>
+                    <li className="header__navbar-user-item">
+                        <Dropdown />
                     </li>
                 </ul>
                 <ul className="header__navbar-list">
@@ -128,7 +135,7 @@ export const HeaderNavBar = () => {
                             Trợ giúp
                         </Link>
                     </li>
-                    {token === '' ? (
+                    {!token && (
                         <div>
                             <li
                                 class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
@@ -155,7 +162,8 @@ export const HeaderNavBar = () => {
                                 Active
                             </li>
                         </div>
-                    ) : (
+                    )}
+                    {token && (
                         <li className="header__navbar-item header__navbar-user">
                             <img src={'data:image/jpg;base64,' + image} alt="" className="header__navbar-user-img" />
                             <span className="header__navbar-user-name">{name}</span>

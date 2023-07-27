@@ -31,13 +31,12 @@ const CustomerDAO = {
             username: customer.username,
             password: customer.password,
             name: customer.name,
+            image: customer.image,
             phone: customer.phone,
             email: customer.email,
-            image: customer.image,
         };
         const result = await Models.Customer.findByIdAndUpdate(customer._id, newvalues, { new: true });
-        console.log(result);
-
+        console.log('result', result);
         return result;
     },
     async selectAll() {
