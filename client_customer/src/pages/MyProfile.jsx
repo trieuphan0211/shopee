@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import MyContext from '../contexts/MyContext';
 import { User } from '../components';
+import { useTranslation } from 'react-i18next';
 
 export const MyProfile = () => {
     const [email, setEmail] = useState('');
@@ -21,6 +22,8 @@ export const MyProfile = () => {
     const context = useContext(MyContext);
 
     const [isUpdateButtonDisabled, setIsUpdateButtonDisabled] = useState(true);
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         if (context.customer) {
@@ -130,8 +133,8 @@ export const MyProfile = () => {
                     <div className="col l-10 m-9 c-9">
                         <div className="profile__contents">
                             <div className="profile__contents-header">
-                                <h1 className="content-heading">Hồ Sơ Của Tôi</h1>
-                                <div className="content-des">Quản lý thông tin hồ sơ để bảo mật tài khoản</div>
+                                <h1 className="content-heading">{t('profile1.my')}</h1>
+                                <div className="content-des">{t('profile2.qlyhoso')}</div>
                             </div>
                             <div className="profile__info">
                                 <form action className="profile__form">

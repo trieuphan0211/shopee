@@ -46,6 +46,29 @@ export default {
         xoa: 'Xoá',
     },
 
+    headernav1: {
+        spay: 'Bảo trì hệ thống SPayLater',
+    },
+    headernav2: {
+        baotri: 'Từ 21h30 ngày 20/1 đến 14h30 ngày 23/1, bạn có thể không kích hoạt được SPayLater do bảo trì hệ thống. Hãy quay lại sau thời gian trên nhé!',
+    },
+    headernav3: {
+        voucher: 'MUA HÀNG HOÀN ĐẾN 50.000XU',
+    },
+    headernav4: {
+        vouchers:
+            'Voucher hoàn đến 50.000 Xu đơn từ 250.000Đ. Mã hoàn đến 40.000 Xu. Thêm mã 10.000Đ đơn từ 150.000Đ. Mua hàng xuyên Tết, Shopee có hết',
+    },
+    headernav5: {
+        fuji: 'Quạt Fujihome, tẩy trang Bioderma... Thêm Voucher 50.000 Xu hấp dẫn. Tết sẵn hàng hiệu, Sắm hàng cực điệu',
+    },
+    headernav6: {
+        view: 'Xem tất cả',
+    },
+    headernav7: {
+        tet: 'TẾT SALE HÀNG HIỆU TỚI 50%',
+    },
+
     list1: {
         danhmuc: 'Danh Mục',
     },
@@ -65,6 +88,47 @@ export default {
     },
     user2: {
         doimk: 'Đổi Mật Khẩu',
+    },
+
+    order1: {
+        wait: 'Chờ Xác Nhận',
+    },
+    order2: {
+        layhang: 'Chờ Lấy Hàng',
+    },
+    order3: {
+        giaohang: 'Đang Giao',
+    },
+    order4: {
+        giaotc: 'Đã Giao',
+    },
+    order5: {
+        huy: 'Đã Huỷ',
+    },
+
+    profile1: {
+        my: 'Hồ Sơ Của Tôi',
+    },
+    profile2: {
+        qlyhoso: 'Quản lý thông tin hồ sơ để bảo mật tài khoản',
+    },
+    profile3: {
+        thaydoi: 'Change',
+    },
+    profile4: {
+        sdt: 'Telephone Number',
+    },
+    profile5: {
+        capnhat: 'Update',
+    },
+    profile6: {
+        select: 'Select Image',
+    },
+    profile7: {
+        file: 'Maximum file size 1 MB',
+    },
+    profile8: {
+        format: 'Format. jpg. jpeg. png',
     },
 
     content1: {
@@ -172,5 +236,49 @@ export default {
     },
     footer26: {
         hoantien: 'Hoàn Tiền',
+    },
+
+    product1: {
+        soluong: 'Số Lượng',
+    },
+    product2: {
+        themcart: 'Thêm Vào Giỏ Hàng',
+    },
+    product3: {
+        buy: 'Mua Ngay',
+    },
+    product4: {
+        splienquan: 'Các sản phẩm liên quan khác',
+    },
+    product5: {
+        addspthanhcong: 'Thêm vào giỏ hàng thành công',
+    },
+    product6: {
+        addspfail: 'Số lượng không hợp lệ',
+    },
+
+    register1: {
+        email: 'Vui lòng nhập một địa chỉ email hợp lệ',
+    },
+    register2: {
+        profile: 'Vui lòng nhập đầy đủ thông tin',
+    },
+    register3: {
+        agree: 'Bằng việc đăng ký, bạn đã đồng ý với Shopee về',
+    },
+    register4: {
+        back: 'TRỞ LẠI',
+    },
+    register5: {
+        dangky: 'ĐĂNG KÝ',
+    },
+    register6: {
+        connectfb: 'Kết nối với Facebook',
+    },
+    register7: {
+        connectgg: 'Kết nối với Google',
+    },
+    register8: {
+        dichvu: 'Điều Khoản Dịch Vụ',
     },
 };

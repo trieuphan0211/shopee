@@ -92,11 +92,8 @@ export const HeaderNavBar = () => {
                                     <Link to="#" className="header__notify-link">
                                         <img src={Spay} className="header__notify-img" alt="" />
                                         <div className="header__notify-info">
-                                            <span className="header__notify-name">Bảo trì hệ thống SPayLater</span>
-                                            <span className="header__notify-descriotion">
-                                                Từ 21h30 ngày 20/1 đến 14h30 ngày 23/1, bạn có thể không kích hoạt được
-                                                SPayLater do bảo trì hệ thống. Hãy quay lại sau thời gian trên nhé!
-                                            </span>
+                                            <span className="header__notify-name">{t('headernav1.spay')}</span>
+                                            <span className="header__notify-descriotion">{t('headernav2.baotri')}</span>
                                         </div>
                                     </Link>
                                 </li>
@@ -104,10 +101,9 @@ export const HeaderNavBar = () => {
                                     <Link to="#" className="header__notify-link">
                                         <img src={Voucher} className="header__notify-img" alt="" />
                                         <div className="header__notify-info">
-                                            <span className="header__notify-name">MUA HÀNG HOÀN ĐẾN 50.000XU</span>
+                                            <span className="header__notify-name">{t('headernav3.voucher')}</span>
                                             <span className="header__notify-descriotion">
-                                                Voucher hoàn đến 50.000 Xu đơn từ 250.000Đ. Mã hoàn đến 40.000 Xu. Thêm
-                                                mã 10.000Đ đơn từ 150.000Đ. Mua hàng xuyên Tết, Shopee có hết
+                                                {t('headernav4.vouchers')}
                                             </span>
                                         </div>
                                     </Link>
@@ -116,17 +112,14 @@ export const HeaderNavBar = () => {
                                     <Link className="header__notify-link">
                                         <img alt="" src={Sale} className="header__notify-img" />
                                         <div className="header__notify-info">
-                                            <span className="header__notify-name">TẾT SALE HÀNG HIỆU TỚI 50%</span>
-                                            <span className="header__notify-descriotion">
-                                                Quạt Fujihome, tẩy trang Bioderma... Thêm Voucher 50.000 Xu hấp dẫn. Tết
-                                                sẵn hàng hiệu, Sắm hàng cực điệu
-                                            </span>
+                                            <span className="header__notify-name">{t('headernav7.tet')}</span>
+                                            <span className="header__notify-descriotion">{t('headernav5.fuji')}</span>
                                         </div>
                                     </Link>
                                 </li>
                             </ul>
                             <footer className="header__notify-footer">
-                                <Link className="header__notify-footer-btn">Xem tất cả</Link>
+                                <Link className="header__notify-footer-btn">{t('headernav6.view')}</Link>
                             </footer>
                         </div>
                     </li>

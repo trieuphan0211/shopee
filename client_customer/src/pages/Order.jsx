@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { User } from '../components';
 import axios from 'axios';
 import MyContext from '../contexts/MyContext';
+import { useTranslation } from 'react-i18next';
 
 export const Order = () => {
     const context = useContext(MyContext);
     const [type, setType] = useState('all');
     const [order, setOrder] = useState([]);
+    const { t } = useTranslation();
     console.log(order);
     const apiGetOrdersByCustID = (cid) => {
         const config = { headers: { 'x-access-token': context.token } };
@@ -41,7 +43,7 @@ export const Order = () => {
                                     }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <p> Tất Cả </p>
+                                    <p> {t('list2.tatca')} </p>
                                 </div>
                                 <div
                                     onClick={(e) => {
@@ -53,7 +55,7 @@ export const Order = () => {
                                     }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <p> Chờ Xác Nhận </p>
+                                    <p> {t('order1.wait')} </p>
                                 </div>
                                 <div
                                     onClick={(e) => {
@@ -65,7 +67,7 @@ export const Order = () => {
                                     }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <p> Chờ Lấy Hàng </p>
+                                    <p> {t('order2.layhang')} </p>
                                 </div>
                                 <div
                                     onClick={(e) => {
@@ -77,7 +79,7 @@ export const Order = () => {
                                     }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <p> Đang Giao </p>
+                                    <p> {t('order3.giaohang')} </p>
                                 </div>
                                 <div
                                     onClick={(e) => {
@@ -89,7 +91,7 @@ export const Order = () => {
                                     }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <p> Đã Giao </p>
+                                    <p> {t('order4.giaotc')} </p>
                                 </div>
                                 <div
                                     onClick={(e) => {
@@ -101,7 +103,7 @@ export const Order = () => {
                                     }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <p> Đã Huỷ </p>
+                                    <p> {t('order5.huy')} </p>
                                 </div>
                             </div>
                             {type === 'all' &&

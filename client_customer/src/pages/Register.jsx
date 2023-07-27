@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BiLogoFacebookCircle, BiLogoInstagram } from 'react-icons/bi';
+import { useTranslation } from 'react-i18next';
 
 const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -16,6 +17,7 @@ export const Register = () => {
     const username = useRef();
     const password = useRef();
     const [message, setMessage] = useState('');
+    const { t } = useTranslation();
 
     // event-handlers
     const btnRegisterClick = (e) => {
@@ -85,7 +87,7 @@ export const Register = () => {
                         <div className="auth-form__header">
                             <h3 className="auth-form__heading">Đăng ký</h3>
                             <Link to={'/login'} className="none-decorate">
-                                <span className="auth-form__switch-btn">Đăng nhập</span>
+                                <span className="auth-form__switch-btn">{t('layout6.dangnhap')}</span>
                             </Link>
                         </div>
                         <div className="auth-form__form">
@@ -117,13 +119,13 @@ export const Register = () => {
                         {message && <div className="auth-form__message">{message}</div>}
                         <div className="auth-form__aside">
                             <p className="auth-form__policy-text">
-                                Bằng việc đăng ký, bạn đã đồng ý với Shopee về{' '}
+                                {t('register1.argee')}{' '}
                                 <a href className="auth-form__text-link">
-                                    Điều khoản dịch vụ
+                                    {t('register8.dicvu')}
                                 </a>{' '}
                                 &amp;{' '}
                                 <a href className="auth-form__text-link">
-                                    Chính sách bảo mật
+                                    {t('footer12.baomat')}
                                 </a>
                             </p>
                         </div>
@@ -134,7 +136,7 @@ export const Register = () => {
                                     navigate('/home');
                                 }}
                             >
-                                TRỞ LẠI
+                                {t('register4.back')}
                             </button>
                             <button
                                 className="btn btn--primary"
@@ -142,18 +144,18 @@ export const Register = () => {
                                     btnRegisterClick(e);
                                 }}
                             >
-                                ĐĂNG KÝ
+                                {t('register5.dangky')}
                             </button>
                         </div>
                     </div>
                     <div className="auth-form__socials">
                         <a href className="auth-form__socials--facebook btn btn--size-s btn--with-icon">
                             <BiLogoFacebookCircle className="auth-form__socials-icon fa-brands fa-square-facebook" />
-                            <span className="auth-form__socials-title">Kết nối với Facebook</span>
+                            <span className="auth-form__socials-title">{t('register6.connectfb')}</span>
                         </a>
                         <a href className="auth-form__socials--google btn btn--size-s btn--with-icon">
                             <BiLogoInstagram className="auth-form__socials-icon fa-brands fa-google" />
-                            <span className="auth-form__socials-title">Kết nối với Google</span>
+                            <span className="auth-form__socials-title">{t('register7.connectgg')}</span>
                         </a>
                     </div>
                 </div>
