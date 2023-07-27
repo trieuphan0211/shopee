@@ -1,0 +1,38 @@
+.app__container {
+    background-color: var(--white-color);
+}
+
+.footer {
+    margin-top: 0%;
+}
+
+.app__content {
+    margin-bottom: 49px;
+}
+
+.datatable {
+    font-size: 1.7rem;
+    padding: 10px;
+    height: 60px;
+}
+
+.content-table {
+    background-color: #ffce3d;
+    font-size: 18px;
+    padding: 10px;
+    height: 30px;
+}
+
+.content-heading {
+    font-size: 20px;
+}
+
+.content-tablein {
+    color: #333;
+    padding: 10px;
+}
+
+.td {
+    display: flex;
+    flex-wrap: wrap;
+}

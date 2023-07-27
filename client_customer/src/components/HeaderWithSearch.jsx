@@ -8,8 +8,11 @@ import MyContext from '../contexts/MyContext';
 
 import NoCart from '../assets/img/no_cart.png';
 
+import { useTranslation } from 'react-i18next';
+
 export const HeaderWithSearch = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const context = useContext(MyContext);
 
     return (
@@ -49,8 +52,8 @@ export const HeaderWithSearch = () => {
                         {/* No cart: header__cart-list--no-cart */}
                         <div className="header__cart-list">
                             <img src={NoCart} alt="" className="header__cart-no-cart-img" />
-                            <span className="header__cart-list-no-cart-msg">Chưa Có Sản Phẩm</span>
-                            <h4 className="header__cart-heading">Sản phẩm đã thêm</h4>
+                            <span className="header__cart-list-no-cart-msg">{t('header1.chuacosp')}</span>
+                            <h4 className="header__cart-heading">{t('header2.themsp')}</h4>
                             <ul className="header__cart-list-item">
                                 {/* Cart item */}
                                 {context.mycart?.map((e) => {
@@ -74,9 +77,9 @@ export const HeaderWithSearch = () => {
                                                 </div>
                                                 <div className="header__cart-item-body">
                                                     <span className="header__cart-item-description">
-                                                        Phân loại: Đen
+                                                        {t('header4.phanloai')}
                                                     </span>
-                                                    <span className="header__cart-item-remove">Xóa</span>
+                                                    <span className="header__cart-item-remove">{t('header5.xoa')}</span>
                                                 </div>
                                             </div>
                                         </li>
@@ -88,7 +91,7 @@ export const HeaderWithSearch = () => {
                                 onClick={() => navigate('/customer/cart')}
                                 className="header__cart-view-cart btn btn--primary"
                             >
-                                Xem giỏ hàng
+                                {t('header3.xemgiohang')}
                             </Link>
                         </div>
                     </div>

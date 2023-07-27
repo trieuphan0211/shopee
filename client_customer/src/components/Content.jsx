@@ -2,9 +2,11 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaStar, FaArrowDown, FaAngleLeft, FaAngleRight, FaRegHeart, FaCheck } from 'react-icons/fa6';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 export const Content = ({ product, setProduct, setShow }) => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const apiGetNewroducts = () => {
         setShow(true);
         axios.get('/api/customer/products/new').then((res) => {
@@ -56,8 +58,8 @@ export const Content = ({ product, setProduct, setShow }) => {
     return (
         <div>
             <div className="home-filter hide-on-mobile-tablet">
-                <span className="home-filter__label">Sắp xếp theo</span>
-                <button className="home-filter__btn btn ">Phổ Biến</button>
+                <span className="home-filter__label">{t('content1.sapxep')}</span>
+                <button className="home-filter__btn btn ">{t('content2.phobien')}</button>
                 <button
                     className="home-filter__btn btn "
                     onClick={(e) => {
@@ -66,7 +68,7 @@ export const Content = ({ product, setProduct, setShow }) => {
                         apiGetNewroducts();
                     }}
                 >
-                    Mới Nhất
+                    {t('content3.moi')}
                 </button>
                 <button
                     className="home-filter__btn btn"
@@ -76,10 +78,10 @@ export const Content = ({ product, setProduct, setShow }) => {
                         apiGetPopularProducts();
                     }}
                 >
-                    Bán Chạy
+                    {t('content4.banchay')}
                 </button>
                 <div className="select-input">
-                    <span className="select-input__label">Giá</span>
+                    <span className="select-input__label">{t('content5.gia')}</span>
                     {/*     <i className="select-input__icon fa-solid fa-angle-down" /> */}
                     <FaArrowDown className="select-input__icon" />
                     {/* List options */}
@@ -90,7 +92,7 @@ export const Content = ({ product, setProduct, setShow }) => {
                             style={{ cursor: 'pointer' }}
                         >
                             <a href className="select-input__link">
-                                Giá thấp đến cao
+                                {t('content6.giathap')}
                             </a>
                         </li>
                         <li
@@ -99,7 +101,7 @@ export const Content = ({ product, setProduct, setShow }) => {
                             style={{ cursor: 'pointer' }}
                         >
                             <a href className="select-input__link">
-                                Giá cao đến thấp
+                                {t('content7.giacao')}
                             </a>
                         </li>
                     </ul>
@@ -165,12 +167,12 @@ export const Content = ({ product, setProduct, setShow }) => {
                                     </div>
                                     <div className="home-product-item__origin">
                                         <span className="home-product-item__brand">MCM</span>
-                                        <span className="home-product-item__origin-name">Hà Nội</span>
+                                        <span className="home-product-item__origin-name">{t('content9.hn')}</span>
                                     </div>
                                     <div className="home-product-item__favourite">
                                         {/*             <i className="fa-solid fa-check" /> */}
                                         <FaCheck />
-                                        <span>Yêu thích</span>
+                                        <span>{t('content8.yeuthich')}</span>
                                     </div>
                                 </Link>
                             </div>

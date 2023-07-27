@@ -17,18 +17,20 @@ import jTExpress from '../assets/img/j&t_epress.png';
 import ninjaVan from '../assets/img/ninja_van.png';
 import CCDV from '../assets/img/logoCCDV.png';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
+    const { t } = useTranslation();
     return (
         <footer className="footer">
             <div className="grid wide footer__content">
                 <div className="grid__row">
                     <div className="col l-2-4 m-4 c-6">
-                        <h3 className="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
+                        <h3 className="footer__heading">{t('footer1.chamsoc')}</h3>
                         <ul className="footer-list">
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Trung Tâm Trợ Giúp
+                                    {t('footer2.trungtam')}
                                 </Link>
                             </li>
                             <li className="footer-item">
@@ -43,17 +45,17 @@ export const Footer = () => {
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Hướng Dẫn Mua Hàng
+                                    {t('footer3.muahang')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Hướng Dẫn Bán Hàng
+                                    {t('footer4.banhang')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Thanh Toán
+                                    {t('footer5.thanhtoan')}
                                 </Link>
                             </li>
                             <li className="footer-item">
@@ -63,57 +65,57 @@ export const Footer = () => {
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Vận Chuyển
+                                    {t('footer6.vanchuyen')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Trả Hàng &amp; Hoàn Tiền
+                                    {t('footer25.tratien')} &amp; {t('footer26.hoantien')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Chăm Sóc Khách Hàng
+                                    {t('footer1.chamsoc')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Chính Sách Bảo Hành
+                                    {t('footer7.chinhsach')}
                                 </Link>
                             </li>
                         </ul>
                     </div>
                     <div className="col l-2-4 m-4 c-6">
-                        <h3 className="footer__heading">VỀ SHOPEE</h3>
+                        <h3 className="footer__heading">{t('footer8.veshopee')}</h3>
                         <ul className="footer-list">
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Giới Thiệu Về Shopee Việt Nam
+                                    {t('footer9.vespvn')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Tuyển Dụng
+                                    {t('footer10.tuyendung')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Điều Khoản Shopee
+                                    {t('footer11.dieukhoan')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Chính Sách Bảo Mật
+                                    {t('footer12.baomat')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Chính Hãng
+                                    {t('footer13.chinhhang')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Kênh Người Bán
+                                    {t('layout.kenh')}
                                 </Link>
                             </li>
                             <li className="footer-item">
@@ -123,18 +125,18 @@ export const Footer = () => {
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Chương Trình Tiếp Thị Liên Kết Shopee
+                                    {t('footer14.lienket')}
                                 </Link>
                             </li>
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
-                                    Liên Hệ Với Truyền Thông
+                                    {t('footer15.lienhett')}
                                 </Link>
                             </li>
                         </ul>
                     </div>
                     <div className="col l-2-4 m-4 c-6">
-                        <h3 className="footer__heading">ĐƠN VỊ VẬN CHUYỂN</h3>
+                        <h3 className="footer__heading">{t('footer16.donvivc')}</h3>
                         <ul className="footer-list">
                             <li className="footer-list__shipping">
                                 <img alt="" src={shopeeExpress} className="footer-list__shipping-img" />
@@ -169,7 +171,7 @@ export const Footer = () => {
                         </ul>
                     </div>
                     <div className="col l-2-4 m-4 c-6">
-                        <h3 className="footer__heading">THEO DÕI CHÚNG TÔI TRÊN</h3>
+                        <h3 className="footer__heading">{t('footer17.theodoi')}</h3>
                         <ul className="footer-list">
                             <li className="footer-item">
                                 <Link to="#" className="footer-item__link">
@@ -192,7 +194,7 @@ export const Footer = () => {
                         </ul>
                     </div>
                     <div className="col l-2-4 m-8 c-12">
-                        <h3 className="footer__heading">TẢI ỨNG DỤNG SHOPEE NGAY THÔI</h3>
+                        <h3 className="footer__heading">{t('footer18.taiapp')}</h3>
                         <div className="footer__download">
                             <img src={downloadQR} alt="Download QR" className="footer__download-qr" />
                             <div className="footer__download-apps">
@@ -219,29 +221,21 @@ export const Footer = () => {
                             </Link>
                         </div>
                         <div className="footer-content__heading">
-                            <h4>Công ty TNHH Shopee</h4>
+                            <h4>{t('footer19.cty')}</h4>
+                        </div>
+                        <div className="footer-content__text">
+                            <p>{t('footer20.diachi')}</p>
+                        </div>
+                        <div className="footer-content__text">
+                            <p>{t('footer21.noidung')}</p>
                         </div>
                         <div className="footer-content__text">
                             <p>
-                                Địa chỉ: Tầng 4-5-6, Tòa nhà Capital Place, số 29 đường Liễu Giai, Phường Ngọc Khánh,
-                                Quận Ba Đình, Thành phố Hà Nội, Việt Nam. Tổng đài hỗ trợ: 19001221 - Email:
-                                cskh@hotro.shopee.vn
+                                {t('footer22.msdn')} &amp; {t('footer23.ngaycap')}
                             </p>
                         </div>
                         <div className="footer-content__text">
-                            <p>
-                                Chịu Trách Nhiệm Quản Lý Nội Dung: Nguyễn Đức Long - Điện thoại liên hệ: 024 9999999
-                                (ext 4567)
-                            </p>
-                        </div>
-                        <div className="footer-content__text">
-                            <p>
-                                Mã số doanh nghiệp: 0106773786 do Sở Kế hoạch &amp; Đầu tư TP Hà Nội cấp lần đầu ngày
-                                10/02/2015
-                            </p>
-                        </div>
-                        <div className="footer-content__text">
-                            <p>© 2015 - Bản quyền thuộc về Công ty TNHH Shopee</p>
+                            <p>{t('footer24.banquyen')}</p>
                         </div>
                     </div>
                 </div>

@@ -46,25 +46,26 @@ export const HeaderNavBar = () => {
                 <ul className="header__navbar-list">
                     <li className="header__navbar-item header__navbar-item--separate">{t('layout.kenh')}</li>
                     <li className="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate">
-                        Tải ứng dụng
-                        {/* Header QR code */}
-                        <div className="header__qr">
-                            <img src={downloadQR} alt="QR Code" className="header__qr-img" />
-                            <div className="header__qr-apps">
-                                <Link to="#" className="header__qr-link">
-                                    <img src={appStore} alt="App Store" className="header__qr-download-img" />
-                                </Link>
-                                <Link to="#" className="header__qr-link">
-                                    <img src={googlePlay} alt="Google Play" className="header__qr-download-img" />
-                                </Link>
-                                <Link to="#" className="header__qr-link">
-                                    <img src={appGalley} alt="App Gallery" className="header__qr-download-img" />
-                                </Link>
-                            </div>
-                        </div>
+                        {t('layout1.taiungdung')}
                     </li>
+                    {/* Header QR code */}
+                    <div className="header__qr">
+                        <img src={downloadQR} alt="QR Code" className="header__qr-img" />
+                        <div className="header__qr-apps">
+                            <Link to="#" className="header__qr-link">
+                                <img src={appStore} alt="App Store" className="header__qr-download-img" />
+                            </Link>
+                            <Link to="#" className="header__qr-link">
+                                <img src={googlePlay} alt="Google Play" className="header__qr-download-img" />
+                            </Link>
+                            <Link to="#" className="header__qr-link">
+                                <img src={appGalley} alt="App Gallery" className="header__qr-download-img" />
+                            </Link>
+                        </div>
+                    </div>
+
                     <li className="header__navbar-item">
-                        <span className="header__navbar-title--no-pointer">Kết nối</span>
+                        <span className="header__navbar-title--no-pointer">{t('layout2.ketnoi')}</span>
                         <Link to="#" className="header__navbar-icon-link">
                             <BiLogoFacebookCircle className="header__navbar-icon fa-brands fa-facebook" />
                         </Link>
@@ -80,7 +81,7 @@ export const HeaderNavBar = () => {
                     <li className="header__navbar-item header__navbar-item--has-notify">
                         <Link to="#" className="header__navbar-item-link">
                             <BiBell className="header__navbar-icon fa-regular fa-bell" />
-                            Thông báo
+                            {t('layout3.thongbao')}
                         </Link>
                         <div className="header__notify">
                             <header className="header__notify-header">
@@ -132,7 +133,7 @@ export const HeaderNavBar = () => {
                     <li className="header__navbar-item">
                         <Link className="header__navbar-item-link">
                             <RiQuestionLine className="header__navbar-icon fa-regular fa-circle-question" />
-                            Trợ giúp
+                            {t('layout4.giup')}
                         </Link>
                     </li>
                     {!token && (
@@ -143,7 +144,7 @@ export const HeaderNavBar = () => {
                                     navigate('/customer/register');
                                 }}
                             >
-                                Đăng ký
+                                {t('layout5.dangky')}
                             </li>
                             <li
                                 class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
@@ -151,7 +152,7 @@ export const HeaderNavBar = () => {
                                     navigate('/customer/login');
                                 }}
                             >
-                                Đăng nhập
+                                {t('layout6.dangnhap')}
                             </li>
                             <li
                                 class="header__navbar-item header__navbar-item--strong"
@@ -169,10 +170,10 @@ export const HeaderNavBar = () => {
                             <span className="header__navbar-user-name">{name}</span>
                             <ul className="header__navbar-user-menu">
                                 <li className="header__navbar-user-item">
-                                    <Link to="/customer/user/profile">Tài khoản của tôi</Link>
+                                    <Link to="/customer/user/profile">{t('layout7.taikhoan')}</Link>
                                 </li>
                                 <li className="header__navbar-user-item">
-                                    <Link to="/customer/user/order">Đơn mua</Link>
+                                    <Link to="/customer/user/order">{t('layout8.donmua')}</Link>
                                 </li>
                                 <li className="header__navbar-user-item header__navbar-user-item--separate">
                                     <Link
@@ -181,7 +182,7 @@ export const HeaderNavBar = () => {
                                             btnLogoutClick();
                                         }}
                                     >
-                                        Đăng xuất
+                                        {t('layout8.donmua')}
                                     </Link>
                                 </li>
                             </ul>
