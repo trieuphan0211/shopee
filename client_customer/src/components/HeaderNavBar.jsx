@@ -141,7 +141,7 @@ export const HeaderNavBar = () => {
                             <li
                                 class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
                                 onClick={() => {
-                                    navigate('/customer/register');
+                                    navigate('/register');
                                 }}
                             >
                                 {t('layout5.dangky')}
@@ -149,7 +149,7 @@ export const HeaderNavBar = () => {
                             <li
                                 class="header__navbar-item header__navbar-item--strong header__navbar-item--separate"
                                 onClick={() => {
-                                    navigate('/customer/login');
+                                    navigate('/login');
                                 }}
                             >
                                 {t('layout6.dangnhap')}
@@ -157,7 +157,7 @@ export const HeaderNavBar = () => {
                             <li
                                 class="header__navbar-item header__navbar-item--strong"
                                 onClick={() => {
-                                    navigate('/customer/active');
+                                    navigate('/active');
                                 }}
                             >
                                 Active
@@ -170,14 +170,14 @@ export const HeaderNavBar = () => {
                             <span className="header__navbar-user-name">{name}</span>
                             <ul className="header__navbar-user-menu">
                                 <li className="header__navbar-user-item">
-                                    <Link to="/customer/user/profile">{t('layout7.taikhoan')}</Link>
+                                    <Link to="/user/profile">{t('layout7.taikhoan')}</Link>
                                 </li>
                                 <li className="header__navbar-user-item">
-                                    <Link to="/customer/user/order">{t('layout8.donmua')}</Link>
+                                    <Link to="/user/order">{t('layout8.donmua')}</Link>
                                 </li>
                                 <li className="header__navbar-user-item header__navbar-user-item--separate">
                                     <Link
-                                        to="/customer/home"
+                                        to="/home"
                                         onClick={() => {
                                             btnLogoutClick();
                                         }}

@@ -17,54 +17,54 @@ import {
 const Router = () => {
     const routing = useRoutes([
         {
-            path: '/customer',
+            path: '/',
             element: <MainLayout />,
             children: [
                 {
-                    path: '/customer/home',
+                    path: '/home',
                     element: <Home />,
                 },
                 {
-                    path: '/customer/home/:key',
+                    path: '/home/:key',
                     element: <Home />,
                 },
                 {
-                    path: '/customer/cart',
+                    path: '/cart',
                     element: <Cart />,
                 },
                 {
-                    path: '/customer/user/order',
+                    path: '/user/order',
                     element: <Order />,
                 },
                 {
-                    path: '/customer/user/profile',
+                    path: '/user/profile',
                     element: <MyProfile />,
                 },
                 {
-                    path: '/customer/user/change-password',
+                    path: '/user/change-password',
                     element: <ChangePassword />,
                 },
                 {
-                    path: '/customer/products/:id',
+                    path: '/products/:id',
                     element: <ProductDetail />,
                 },
             ],
         },
         {
-            path: '/customer/login',
-            children: [{ path: '/customer/login', element: <Login /> }],
+            path: '/login',
+            children: [{ path: '/login', element: <Login /> }],
         },
         {
-            path: '/customer/register',
-            children: [{ path: '/customer/register', element: <Register /> }],
+            path: '/register',
+            children: [{ path: '/register', element: <Register /> }],
         },
         {
-            path: '/customer/active',
-            children: [{ path: '/customer/active', element: <Active /> }],
+            path: '/active',
+            children: [{ path: '/active', element: <Active /> }],
         },
         {
-            path: '/customer/forgot-password',
-            children: [{ path: '/customer/forgot-password', element: <ForgotPassword /> }],
+            path: '/forgot-password',
+            children: [{ path: '/forgot-password', element: <ForgotPassword /> }],
         },
         {
             path: '*',

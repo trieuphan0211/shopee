@@ -1,5 +1,5 @@
 {
-    "homepage": "/customer",
+    "homepage": "/",
     "proxy": "http://localhost:3000/",
     "name": "client_customer",
     "version": "0.1.0",

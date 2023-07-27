@@ -53,7 +53,7 @@ export const Register = () => {
             const result = res.data;
             alert(result.message);
             if (result.success === true) {
-                navigate('/customer/active');
+                navigate('/active');
             }
         });
     };
@@ -66,7 +66,7 @@ export const Register = () => {
                     <div className="auth-form__container">
                         <div className="auth-form__header">
                             <h3 className="auth-form__heading">Đăng ký</h3>
-                            <Link to={'/customer/login'} className="none-decorate">
+                            <Link to={'/login'} className="none-decorate">
                                 <span className="auth-form__switch-btn">Đăng nhập</span>
                             </Link>
                         </div>
@@ -113,7 +113,7 @@ export const Register = () => {
                             <button
                                 className="btn btn--normal auth-form__control-back"
                                 onClick={() => {
-                                    navigate('/customer/home');
+                                    navigate('/home');
                                 }}
                             >
                                 TRỞ LẠI

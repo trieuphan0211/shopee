@@ -38,7 +38,7 @@ export const ForgotPassword = () => {
             alert(result.message);
             // Redirect to login page after sending token
             if (result.success) {
-                navigate('/customer/login');
+                navigate('/login');
             }
         });
     };
@@ -64,7 +64,7 @@ export const ForgotPassword = () => {
                         <button
                             className="btn btn--normal auth-form__control-back"
                             onClick={() => {
-                                navigate('/customer/login');
+                                navigate('/login');
                             }}
                         >
                             TRỞ LẠI

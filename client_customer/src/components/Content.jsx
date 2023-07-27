@@ -140,7 +140,7 @@ export const Content = ({ product, setProduct, setShow, setCurrentPage, currentP
                                 className="col l-2-4 m-4 c-6"
                                 key={e._id}
                                 onClick={() => {
-                                    navigate('/customer/products/' + e._id);
+                                    navigate('/products/' + e._id);
                                 }}
                             >
                                 <Link to="#" className="home-product-item">

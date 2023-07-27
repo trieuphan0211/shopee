@@ -23,12 +23,7 @@ export const HeaderWithSearch = () => {
                     <HiMagnifyingGlass className="header__mobile-search-icon fa-solid fa-magnifying-glass" />
                 </label>
                 <div className="header__logo hide-on-tablet">
-                    <Link
-                        to="/customer/home"
-                        onClick={() => navigate('/customer/home')}
-                        className="header__logo-link"
-                        style={{ cursor: 'pointer' }}
-                    >
+                    <Link to="/home" className="header__logo-link" style={{ cursor: 'pointer' }}>
                         <svg viewBox="0 0 192 65" className="header__logo-img">
                             <g fillRule="evenodd">
                                 <path
@@ -66,10 +61,7 @@ export const HeaderWithSearch = () => {
                                         {/* Cart item */}
                                         {context.mycart?.map((e) => {
                                             return (
-                                                <li
-                                                    className="header__cart-item"
-                                                    onClick={() => navigate('/customer/cart')}
-                                                >
+                                                <li className="header__cart-item" onClick={() => navigate('/cart')}>
                                                     <img
                                                         src={'data:image/jpg;base64,' + e?.product.image}
                                                         alt=""
@@ -106,11 +98,7 @@ export const HeaderWithSearch = () => {
                                 </>
                             )}
                             {context.mycart.length > 0 && (
-                                <Link
-                                    to="/customer/cart"
-                                    onClick={() => navigate('/customer/cart')}
-                                    className="header__cart-view-cart btn btn--primary"
-                                >
+                                <Link to="/cart" className="header__cart-view-cart btn btn--primary">
                                     Xem giỏ hàng
                                 </Link>
                             )}

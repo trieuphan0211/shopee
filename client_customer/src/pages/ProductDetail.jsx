@@ -166,7 +166,7 @@ export const ProductDetail = () => {
                                             <div
                                                 className="home-product-item__img"
                                                 onClick={() => {
-                                                    navigate('/customer/products/' + e._id);
+                                                    navigate('/products/' + e._id);
                                                 }}
                                             >
                                                 <img

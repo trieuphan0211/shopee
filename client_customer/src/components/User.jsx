@@ -44,17 +44,17 @@ export const User = () => {
 
                     <div className="oder_list">
                         <div>
-                            <Link to="/customer/user/profile" className="none-decorate">
+                            <Link to="/user/profile" className="none-decorate">
                                 <FiUser style={{ marginRight: 0 }} /> {t('layout7.taikhoan')} {''}
                             </Link>
                         </div>
                         <div>
-                            <Link to="/customer/user/change-password" className="none-decorate">
+                            <Link to="/user/change-password" className="none-decorate">
                                 <FaLock style={{ marginRight: 0 }} /> {t('user2.doimk')} {''}
                             </Link>
                         </div>
                         <div className="sellected">
-                            <Link to="/customer/user/order" className="none-decorate">
+                            <Link to="/user/order" className="none-decorate">
                                 <BiShoppingBag style={{ marginRight: 0 }} /> {t('layout8.donmua')}
                             </Link>
                         </div>

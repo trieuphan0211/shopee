@@ -38,7 +38,7 @@ export const Login = () => {
                 setToken(result.token);
                 context.setCustomer(result.customer);
                 // Assuming you have access to "props" to navigate to the home page
-                navigate('/customer/home');
+                navigate('/home');
             } else {
                 alert(result.message);
             }
@@ -52,7 +52,7 @@ export const Login = () => {
                 <div className="auth-form__container">
                     <div className="auth-form__header">
                         <h3 className="auth-form__heading">Đăng nhập</h3>
-                        <Link to={'/customer/register/'} className="none-decorate">
+                        <Link to={'/register/'} className="none-decorate">
                             <span className="auth-form__switch-btn">Đăng ký</span>
                         </Link>
                     </div>
@@ -72,10 +72,7 @@ export const Login = () => {
                     {message && <div className="auth-form__message">{message}</div>}
                     <div className="auth-form__aside">
                         <div className="auth-form__help">
-                            <Link
-                                to={'/customer/forgot-password'}
-                                className="auth-form__help-link auth-form__help-link-fogot"
-                            >
+                            <Link to={'/forgot-password'} className="auth-form__help-link auth-form__help-link-fogot">
                                 Quên mật khẩu
                             </Link>
                             <span className="auth-form__help-separate" />
@@ -88,7 +85,7 @@ export const Login = () => {
                         <button
                             className="btn btn--normal auth-form__control-back"
                             onClick={() => {
-                                navigate('/customer/home');
+                                navigate('/home');
                             }}
                         >
                             TRỞ LẠI

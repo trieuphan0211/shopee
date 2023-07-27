@@ -48,7 +48,7 @@ export function Cart() {
                 if (context.customer) {
                     apiCheckout(total, isCheck, context.customer);
                 } else {
-                    navigate('/customer/login');
+                    navigate('/login');
                 }
             } else {
                 alert('Your cart is empty');

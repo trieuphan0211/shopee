@@ -7,9 +7,8 @@ const MainLayout = () => {
     const navigate = useNavigate();
     useEffect(() => {
         // activeSub
-        console.log(param.pathname);
-        if (param.pathname === '/customer' || param.pathname === '/customer/') {
-            navigate('/customer/home');
+        if (param.pathname === '/') {
+            navigate('/home');
         }
     }, [param.pathname]);
     return (

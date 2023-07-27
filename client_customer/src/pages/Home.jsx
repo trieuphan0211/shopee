@@ -30,7 +30,7 @@ export const Home = () => {
         return product.slice(firstPageIndex, lastPageIndex);
     }, [product, currentPage]);
     const apiGetAllProducts = () => {
-        navigate('/customer/home');
+        navigate('/home');
         document.querySelector('.btn--primary')?.classList.remove('btn--primary');
         setShow(true);
         axios.get('/api/customer/products/all').then((res) => {
@@ -42,7 +42,7 @@ export const Home = () => {
         });
     };
     const apiGetProductsByCatID = (cid) => {
-        navigate('/customer/home');
+        navigate('/home');
         document.querySelector('.btn--primary')?.classList.remove('btn--primary');
         setShow(true);
         axios.get('/api/customer/products/category/' + cid).then((res) => {

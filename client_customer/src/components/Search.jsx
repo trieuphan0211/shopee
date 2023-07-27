@@ -13,7 +13,7 @@ export const Search = () => {
     const context = useContext(MyContext);
     // event-handlers
     const btnSearchClick = () => {
-        navigate('/customer/home/' + key.current.value);
+        navigate('/home/' + key.current.value);
     };
 
     return (

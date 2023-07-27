@@ -28,7 +28,7 @@ export const Active = () => {
             const result = res.data;
             if (result) {
                 alert('Kích hoạt tài khoản thành công!');
-                navigate('/customer/login');
+                navigate('/login');
             } else {
                 alert('Kích hoạt tài khoản thất bại!');
             }
@@ -42,7 +42,7 @@ export const Active = () => {
                 <div className="auth-form__container">
                     <div className="auth-form__header">
                         <h3 className="auth-form__heading">Active Tài Khoản</h3>
-                        <Link to={'/customer/register/'} className="none-decorate">
+                        <Link to={'/register/'} className="none-decorate">
                             <span className="auth-form__switch-btn">Đăng ký</span>
                         </Link>
                     </div>
@@ -65,7 +65,7 @@ export const Active = () => {
                         <button
                             className="btn btn--normal auth-form__control-back"
                             onClick={() => {
-                                navigate('/customer/home');
+                                navigate('/home');
                             }}
                         >
                             TRỞ LẠI
