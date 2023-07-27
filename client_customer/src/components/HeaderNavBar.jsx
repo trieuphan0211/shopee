@@ -175,7 +175,7 @@ export const HeaderNavBar = () => {
                                             btnLogoutClick();
                                         }}
                                     >
-                                        {t('layout8.donmua')}
+                                        {t('layout9.dangxuat')}
                                     </Link>
                                 </li>
                             </ul>

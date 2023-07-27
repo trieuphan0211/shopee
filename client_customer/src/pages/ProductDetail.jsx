@@ -59,7 +59,7 @@ export const ProductDetail = () => {
     };
 
     // event-handlers
-    const btnAdd2CartClick = (e) => {
+    const btnAdd2CartClick = (e, navi) => {
         e.preventDefault(); // Prevents the default form submission behavior of the button click event
 
         if (numberProduct !== 0) {
@@ -78,12 +78,14 @@ export const ProductDetail = () => {
 
             alert(t('product5.addspthanhcong'));
             console.log(context);
+            if (navi) {
+                navigate('/cart');
+            }
         } else {
             // If an invalid quantity is provided (not a number or less than or equal to 0), show an error message
             alert(t('product6.addspfail'));
         }
     };
-
     // Slider
     const sliderSettings = {
         dots: true,
@@ -147,7 +149,12 @@ export const ProductDetail = () => {
                                         <BsCartPlus className="detail__icon" />
                                         {t('product2.themcart')}
                                     </button>
-                                    <button className="btn btn--primary detail__button detail__button-hover">
+                                    <button
+                                        className="btn btn--primary detail__button detail__button-hover"
+                                        onClick={(e) => {
+                                            btnAdd2CartClick(e, '/cart');
+                                        }}
+                                    >
                                         {t('product3.buy')}
                                     </button>
                                 </div>
