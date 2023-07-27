@@ -76,11 +76,11 @@ export const ProductDetail = () => {
                 context.setMycart(updatedmycart);
             }
 
-            alert {t('product5.addspthanhcong')};
+            alert(t('product5.addspthanhcong'));
             console.log(context);
         } else {
             // If an invalid quantity is provided (not a number or less than or equal to 0), show an error message
-            alert {t('product6.addspfail')};
+            alert(t('product6.addspfail'));
         }
     };
 
