@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { FaAngleDown, FaCheck, FaMagnifyingGlass } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
@@ -11,19 +11,16 @@ export const Search = () => {
     // event-handlers
     const btnSearchClick = (e) => {
         e.preventDefault();
+        apiGetProductsBySearch(keyword);
 
-        navigate('/product/search/' + setKeyword.keyword);
+        navigate('/product/search/' + keyword);
     };
 
-    useEffect(() => {
-        apiGetCategories();
-    }, []);
-
     // apis
-    const apiGetCategories = () => {
-        axios.get('/api/customer/categories').then((res) => {
+    const apiGetProductsBySearch = (keyword) => {
+        axios.get('/api/customer/products/search/' + keyword).then((res) => {
             const result = res.data;
-            setCategories({ categories: result });
+            setKeyword(result);
         });
     };
 
@@ -34,9 +31,9 @@ export const Search = () => {
                     type="search"
                     className="header__search-input"
                     placeholder="Nhập để tìm kiếm sản phẩm"
-                    value={setKeyword.keyword}
+                    value={keyword}
                     onChange={(e) => {
-                        setKeyword({ keyword: e.target.value });
+                        setKeyword(e.target.value);
                     }}
                 />
                 {/* Search history */}

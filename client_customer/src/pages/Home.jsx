@@ -3,12 +3,13 @@ import { Content, ListProducts, Pagination } from '../components';
 import axios from 'axios';
 import { Loading } from '../components';
 import Modal from 'react-bootstrap/Modal';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const Home = () => {
     const [categories, setCategories] = useState();
     const [product, setProduct] = useState();
     const [show, setShow] = useState(false);
+    const { keyword } = useParams();
 
     const apiGetCategories = () => {
         document.querySelector('.btn--primary')?.classList.remove('btn--primary');
@@ -41,10 +42,12 @@ export const Home = () => {
             }
         });
     };
+
     useEffect(() => {
         apiGetCategories();
         apiGetAllProducts();
     }, []);
+
     return (
         <div className="app__container">
             <div className="grid wide">
