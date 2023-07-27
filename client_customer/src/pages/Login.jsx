@@ -14,18 +14,6 @@ export const Login = () => {
 
     const { setToken } = context;
 
-    useEffect(() => {
-        // const token = sessionStorage.getItem('token');
-        const token = '';
-        if (token) {
-            // Assuming you have the "context" object available to set the token
-            setToken(token);
-
-            // Fetch user data if needed and set the customer in context
-            // For this example, we assume the user data is already stored in context.
-        }
-    }, [setToken]);
-
     // event-handlers
     const btnLoginClick = (e) => {
         e.preventDefault();
@@ -45,7 +33,7 @@ export const Login = () => {
             const result = res.data;
             if (result.success === true) {
                 // Save the token to session storage
-                // sessionStorage.setItem('token', result.token);
+                sessionStorage.setItem('token', result.token);
                 // Assuming you have the "context" object available to set the token and customer
                 setToken(result.token);
                 context.setCustomer(result.customer);

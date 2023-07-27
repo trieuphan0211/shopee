@@ -13,6 +13,7 @@ import '../src/assets/css/ProductDetail.css';
 import '../src/assets/css/ChangePassword.css';
 import '../src/assets/css/MyProfile.css';
 import '../src/assets/css/Loading.css';
+import '../src/assets/css/pagination.css';
 import './language/i18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

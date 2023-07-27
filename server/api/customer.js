@@ -131,7 +131,7 @@ router.post('/login', async function (req, res) {
 });
 router.get('/token', JwtUtil.checkToken, function (req, res) {
     const token = req.headers['x-access-token'] || req.headers['authorization'];
-    res.json({ success: true, message: 'Token is valid', token: token });
+    res.json({ success: true, message: 'Token is valid', token: token, req: req.decoded });
 });
 // myprofile
 router.put('/customers/:id', JwtUtil.checkToken, async function (req, res) {

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaStar, FaArrowDown, FaAngleLeft, FaAngleRight, FaRegHeart, FaCheck } from 'react-icons/fa6';
 import axios from 'axios';
 
-export const Content = ({ product, setProduct, setShow }) => {
+export const Content = ({ product, setProduct, setShow, setCurrentPage, currentPage }) => {
     const navigate = useNavigate();
     const apiGetNewroducts = () => {
         setShow(true);
@@ -57,7 +57,7 @@ export const Content = ({ product, setProduct, setShow }) => {
         <div>
             <div className="home-filter hide-on-mobile-tablet">
                 <span className="home-filter__label">Sắp xếp theo</span>
-                <button className="home-filter__btn btn ">Phổ Biến</button>
+                {/* <button className="home-filter__btn btn ">Phổ Biến</button> */}
                 <button
                     className="home-filter__btn btn "
                     onClick={(e) => {
@@ -106,15 +106,17 @@ export const Content = ({ product, setProduct, setShow }) => {
                 </div>
                 <div className="home-filter__page">
                     <span className="home-filter__page-num">
-                        <span className="home-filter__page-current">1</span>
+                        <span className="home-filter__page-current">{currentPage}</span>
                     </span>
                     <div className="home-filter__page-control">
-                        <a href className="home-filter__page-btn home-filter__page-btn--disabled">
-                            {/*  <i className="home-filter__page-icon fa-solid fa-angle-left" /> */}
+                        <a
+                            href
+                            className="home-filter__page-btn home-filter__page-btn--disabled"
+                            onClick={() => setCurrentPage(currentPage - 1)}
+                        >
                             <FaAngleLeft className="home-filter__page-icon" />
                         </a>
-                        <a href className="home-filter__page-btn">
-                            {/*         <i className="home-filter__page-icon fa-solid fa-angle-right" /> */}
+                        <a href className="home-filter__page-btn" onClick={() => setCurrentPage(currentPage + 1)}>
                             <FaAngleRight className="home-filter__page-icon" />
                         </a>
                     </div>
