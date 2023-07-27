@@ -46,6 +46,29 @@ export default {
         xoa: 'Remove',
     },
 
+    headernav1: {
+        spay: 'SPayLater System Maintenance',
+    },
+    headernav2: {
+        baotri: 'From 21:30 on January 20th to 14:30 on January 23rd, due to system maintenance, you may not be able to activate SPayLater. Come back after the above time!',
+    },
+    headernav3: {
+        voucher: 'BUY UP TO 50,000 COINS',
+    },
+    headernav4: {
+        vouchers:
+            'Refund Voucher up to 50,000 Coins from 250,000 VND. Cashback code up to 40,000 Coins. Add code 10,000 VND for orders from 150,000 VND. New Years shopping, Shopee all ',
+    },
+    headernav5: {
+        fuji: 'Fujihome Fan, Bioderma makeup remover... Add an attractive 50,000 Coin Voucher. New Year branded goods, Super shopping',
+    },
+    headernav6: {
+        view: 'View All',
+    },
+    headernav7: {
+        tet: 'New Years SALE BRAND UP TO 50%',
+    },
+
     list1: {
         danhmuc: 'List',
     },
@@ -65,6 +88,47 @@ export default {
     },
     user2: {
         doimk: 'Change Password',
+    },
+
+    order1: {
+        wait: 'Waiting for confirmation',
+    },
+    order2: {
+        layhang: 'Waiting for pickup',
+    },
+    order3: {
+        giaohang: 'Being delivered',
+    },
+    order4: {
+        giaotc: 'Delivered',
+    },
+    order5: {
+        huy: 'Cancelled',
+    },
+
+    profile1: {
+        my: 'My profile',
+    },
+    profile2: {
+        qlyhoso: 'Manage profile information to protect your account',
+    },
+    profile3: {
+        thaydoi: 'Change',
+    },
+    profile4: {
+        sdt: 'Telephone Number',
+    },
+    profile5: {
+        capnhat: 'Update',
+    },
+    profile6: {
+        select: 'Select Image',
+    },
+    profile7: {
+        file: 'Maximum file size 1 MB',
+    },
+    profile8: {
+        format: 'Format. jpg. jpeg. png',
     },
 
     content1: {
@@ -172,5 +236,49 @@ export default {
     },
     footer26: {
         hoantien: 'Refund',
+    },
+
+    product1: {
+        soluong: 'Quantity',
+    },
+    product2: {
+        themcart: 'Add To Cart',
+    },
+    product3: {
+        buy: 'Buy Now',
+    },
+    product4: {
+        splienquan: 'Other Related Products',
+    },
+    product5: {
+        addspthanhcong: 'Successfully Added To Cart',
+    },
+    product6: {
+        addspfail: 'Invalid Quantity',
+    },
+
+    register1: {
+        email: 'Please enter a valid email address',
+    },
+    register2: {
+        profile: 'Please enter complete information',
+    },
+    register3: {
+        agree: 'By registering, you agree with Shopee regarding',
+    },
+    register4: {
+        back: 'BACK',
+    },
+    register5: {
+        dangky: 'SIGN UP',
+    },
+    register6: {
+        connectfb: 'Connect with Facebook',
+    },
+    register7: {
+        connectgg: 'Connect with Google',
+    },
+    register8: {
+        dichvu: 'Terms of Service',
     },
 };

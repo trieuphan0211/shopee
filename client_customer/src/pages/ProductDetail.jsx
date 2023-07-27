@@ -10,6 +10,8 @@ import MyContext from '../contexts/MyContext';
 import { Loading } from '../components';
 import Modal from 'react-bootstrap/Modal';
 
+import { useTranslation } from 'react-i18next';
+
 export const ProductDetail = () => {
     const context = useContext(MyContext);
     const [numberProduct, setNummberProduct] = useState(1);
@@ -18,6 +20,7 @@ export const ProductDetail = () => {
     const params = useParams();
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const [categories, setCategories] = useState([]);
 
@@ -73,11 +76,11 @@ export const ProductDetail = () => {
                 context.setMycart(updatedmycart);
             }
 
-            alert('Thêm vào giỏ hàng thành công');
+            alert {t('product5.addspthanhcong')};
             console.log(context);
         } else {
             // If an invalid quantity is provided (not a number or less than or equal to 0), show an error message
-            alert('Số lượng không hợp lệ');
+            alert {t('product6.addspfail')};
         }
     };
 
@@ -118,7 +121,7 @@ export const ProductDetail = () => {
                                     <span className="detail__price">{product.price}.000đ</span>
                                 </div>
                                 <div className="product-detail__quantity">
-                                    <span className="detail__quantity">Số Lượng</span>
+                                    <span className="detail__quantity">{t('product1.soluong')}</span>
                                     <div className="product_number">
                                         <button onClick={() => setNummberProduct(numberProduct - 1)}>-</button>
                                         <div>{numberProduct}</div>
@@ -142,10 +145,10 @@ export const ProductDetail = () => {
                                         onClick={(e) => btnAdd2CartClick(e)}
                                     >
                                         <BsCartPlus className="detail__icon" />
-                                        Thêm Vào Giỏ Hàng
+                                        {t('product2.themcart')}
                                     </button>
                                     <button className="btn btn--primary detail__button detail__button-hover">
-                                        Mua Ngay
+                                        {t('product3.buy')}
                                     </button>
                                 </div>
                             </div>
@@ -157,7 +160,7 @@ export const ProductDetail = () => {
                     <div className="grid wide">
                         <div className="row sm-gutter app__content">
                             <div className="col l-12 m-12 c-12">
-                                <span className="product-detail__title">Các sản phẩm liên quan khác</span>
+                                <span className="product-detail__title">{t('product4.splienquan')}</span>
                             </div>
                             <Slider {...sliderSettings} className="col l-12 m-12 c-12 product-container">
                                 {categories?.map((e) => {
@@ -187,11 +190,13 @@ export const ProductDetail = () => {
 
                                             <div className="home-product-item__origin">
                                                 <span className="home-product-item__brand">MCM</span>
-                                                <span className="home-product-item__origin-name">Hà Nội</span>
+                                                <span className="home-product-item__origin-name">
+                                                    {t('content9.hn')}
+                                                </span>
                                             </div>
                                             <div className="home-product-item__favourite">
                                                 <i className="fa-solid fa-check" />
-                                                <span>Yêu thích</span>
+                                                <span>{t('content8.yeuthich')}</span>
                                             </div>
                                         </div>
                                     );
