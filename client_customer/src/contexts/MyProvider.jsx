@@ -6,6 +6,7 @@ export const MyProvider = (props) => {
     const [numberProduct, setNumberProduct] = useState(0);
     const [customer, setCustomer] = useState(null);
     const [mycart, setMycart] = useState([]);
+    const [keyWord, setKeyWord] = useState([]);
     const contextValue = {
         token,
         setToken,
@@ -15,6 +16,8 @@ export const MyProvider = (props) => {
         setMycart,
         numberProduct,
         setNumberProduct,
+        keyWord,
+        setKeyWord,
     };
     console.log(contextValue);
     // Provide the context value as an object

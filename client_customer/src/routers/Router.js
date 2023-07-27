@@ -25,6 +25,10 @@ const Router = () => {
                     element: <Home />,
                 },
                 {
+                    path: '/customer/home/:key',
+                    element: <Home />,
+                },
+                {
                     path: '/customer/cart',
                     element: <Cart />,
                 },

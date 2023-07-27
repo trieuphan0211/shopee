@@ -858,9 +858,9 @@
 }
 
 .header__cart-view-cart:hover {
-    background-color: #f0684d;
+    background-color: var(--primary-color);
+    color: #fff;
 }
-
 /* Header sort bar */
 
 .header__sort-bar {

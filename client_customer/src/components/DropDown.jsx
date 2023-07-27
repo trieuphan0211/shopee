@@ -15,7 +15,7 @@ export function Dropdown() {
         setAnchorEl(null);
     };
 
-    const [language, setLanguage] = useState(<img src={English} alt="" style={{ width: '30px' }} />);
+    const [language, setLanguage] = useState(<img src={Vietnamese} alt="" style={{ width: '30px' }} />);
     const changeIcon = (name) => {
         switch (name) {
             case 'English':

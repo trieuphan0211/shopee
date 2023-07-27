@@ -17,7 +17,6 @@ export const ListProducts = ({ categories, apiGetProductsByCatID, apiGetAllProdu
                     </Link>
                 </li>
                 {categories?.map((element, index) => {
-                    console.log(element._id);
                     return (
                         <li
                             key={index}

@@ -76,7 +76,7 @@ router.post('/register', async function (req, res) {
         const newCust = {
             username: username,
             password: password,
-            name: username,
+            name: name,
             phone: null,
             email: email,
             active: 0,

@@ -42,7 +42,7 @@ export const HeaderWithSearch = () => {
 
                 {/* Cart layout */}
                 <div className="header__cart">
-                    <div className="header__cart-wrap" onClick={() => navigate('/customer/cart')}>
+                    <div className="header__cart-wrap">
                         <HiShoppingCart className="header__cart-icon fa-solid fa-cart-shopping" />
                         <span className="header__cart-notice">{context.mycart.length}</span>
 
@@ -63,7 +63,10 @@ export const HeaderWithSearch = () => {
                                         {/* Cart item */}
                                         {context.mycart?.map((e) => {
                                             return (
-                                                <li className="header__cart-item">
+                                                <li
+                                                    className="header__cart-item"
+                                                    onClick={() => navigate('/customer/cart')}
+                                                >
                                                     <img
                                                         src={'data:image/jpg;base64,' + e?.product.image}
                                                         alt=""
@@ -97,14 +100,15 @@ export const HeaderWithSearch = () => {
                                     </ul>
                                 </>
                             )}
-
-                            <Link
-                                to="/customer/cart"
-                                onClick={() => navigate('/customer/cart')}
-                                className="header__cart-view-cart btn btn--primary"
-                            >
-                                Xem giỏ hàng
-                            </Link>
+                            {context.mycart.length > 0 && (
+                                <Link
+                                    to="/customer/cart"
+                                    onClick={() => navigate('/customer/cart')}
+                                    className="header__cart-view-cart btn btn--primary"
+                                >
+                                    Xem giỏ hàng
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>
